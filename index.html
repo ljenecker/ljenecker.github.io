@@ -7,6 +7,7 @@
   <meta name="description" content="A people-centred global forum transforming communities, livelihoods and nations through structured development.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="/assets/1.png">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -71,24 +72,16 @@
 
   <main>
     <!-- Hero Section -->
-    <section class="bg-gradient-to-br from-navy to-navy/90 text-white">
-      <div class="max-w-6xl mx-auto px-4 py-16 md:py-24">
-        <div class="grid md:grid-cols-2 gap-10 items-center">
-          <div>
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">Informal Economy Global Forum</h1>
-            <p class="text-lg md:text-xl text-white/90 mb-8 leading-relaxed">A people-centred global movement transforming communities, livelihoods and nations through skills, access, community empowerment and sustainable structured systems.</p>
-            <p class="text-lg md:text-xl text-white/90 mb-8 leading-relaxed">Empowering People. Shaping Nations.</p>
-            <!-- <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">Empowering People.<br>Shaping Nations.</h1> -->
-            <div class="flex flex-col sm:flex-row gap-4">
-              <a href="get-involved.html" class="bg-green text-white px-8 py-3 rounded-lg font-semibold text-center hover:bg-opacity-90 transition focus:outline-none focus:ring-2 focus:ring-green focus:ring-offset-2 focus:ring-offset-navy">Join the Movement</a>
-              <a href="get-involved.html#partner" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold text-center hover:bg-white hover:text-navy transition focus:outline-none focus:ring-2 focus:ring-white">Partner With Us</a>
-            </div>
-          </div>
-          <div class="relative">
-            <div class="aspect-[4/3] rounded-2xl bg-gradient-to-br from-green/30 to-navy/50 flex items-center justify-center border border-white/20">
-              <p class="text-white/70 text-center px-6">Image: Diverse African communities, entrepreneurs working, youth training, women leaders</p>
-            </div>
-            <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-green/20 rounded-full blur-2xl"></div>
+    <section class="relative isolate min-h-[calc(100vh-70px)] overflow-hidden text-white bg-center bg-cover bg-no-repeat bg-[url(/assets/1.png)]">
+      <div class="absolute inset-0 bg-gradient-to-l from-black/50 to-[#052a64]/90"></div>
+      <div class="relative max-w-6xl mx-auto px-6 py-20 md:py-28 min-h-[calc(100vh-70px)] flex items-center">
+        <div class="text-left max-w-3xl">
+          <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight mb-6">Informal Economy Global Forum</h1>
+          <p class="text-lg md:text-2xl text-white/90 leading-relaxed mb-5">A people-centred global movement transforming communities, livelihoods and nations through skills, access, community empowerment and sustainable structured systems.</p>
+          <p class="text-lg md:text-2xl text-white/90 mb-10">Empowering People. Shaping Nations.</p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="get-involved.html" class="bg-green text-white px-8 py-3 rounded-lg font-semibold text-center hover:bg-opacity-90 transition focus:outline-none focus:ring-2 focus:ring-green focus:ring-offset-2 focus:ring-offset-black">Join the Movement</a>
+            <a href="get-involved.html#partner" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold text-center hover:bg-white hover:text-navy transition focus:outline-none focus:ring-2 focus:ring-white">Partner With Us</a>
           </div>
         </div>
       </div>
@@ -103,8 +96,11 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <!-- Members -->
           <a href="get-involved.html#register" class="bg-white rounded-2xl p-6 border border-lightgrey hover:shadow-lg hover:border-green transition group">
-            <div class="w-12 h-12 bg-green/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-green/20 transition">
-              <svg class="w-6 h-6 text-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-navy to-green text-white flex items-center justify-center mb-4 shadow-lg shadow-navy/20 ring-1 ring-white/20 group-hover:scale-105 transition">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 19a8 8 0 0 1 16 0"/>
+              </svg>
             </div>
             <h3 class="text-lg font-bold text-navy mb-2">I'm an Individual or Community</h3>
             <p class="text-darkgrey text-sm mb-4">Access training, support, and opportunities to grow your livelihood.</p>
@@ -116,8 +112,12 @@
 
           <!-- Partners -->
           <a href="partners.html" class="bg-white rounded-2xl p-6 border border-lightgrey hover:shadow-lg hover:border-green transition group">
-            <div class="w-12 h-12 bg-navy/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-navy/20 transition">
-              <svg class="w-6 h-6 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-navy to-green text-white flex items-center justify-center mb-4 shadow-lg shadow-navy/20 ring-1 ring-white/20 group-hover:scale-105 transition">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 20h16"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M6.5 20V8.5a1 1 0 0 1 1-1H11a1 1 0 0 1 1 1V20"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12.5 20V5.5a1 1 0 0 1 1-1H17a1 1 0 0 1 1 1V20"/>
+              </svg>
             </div>
             <h3 class="text-lg font-bold text-navy mb-2">I'm a Partner Organisation</h3>
             <p class="text-darkgrey text-sm mb-4">Collaborate through CSI alignment, supplier development, or co-programming.</p>
@@ -129,8 +129,11 @@
 
           <!-- Donors/Funders -->
           <a href="partners.html#funders" class="bg-white rounded-2xl p-6 border border-lightgrey hover:shadow-lg hover:border-green transition group">
-            <div class="w-12 h-12 bg-green/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-green/20 transition">
-              <svg class="w-6 h-6 text-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-navy to-green text-white flex items-center justify-center mb-4 shadow-lg shadow-navy/20 ring-1 ring-white/20 group-hover:scale-105 transition">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 3.5v17"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 7.5h-6.5a2.5 2.5 0 0 0 0 5H14a2.5 2.5 0 0 1 0 5H7.5"/>
+              </svg>
             </div>
             <h3 class="text-lg font-bold text-navy mb-2">I'm a Funder or Sponsor</h3>
             <p class="text-darkgrey text-sm mb-4">See our impact metrics, sponsorship model, and how your investment drives change.</p>
@@ -142,8 +145,11 @@
 
           <!-- Media -->
           <a href="news-events.html#media" class="bg-white rounded-2xl p-6 border border-lightgrey hover:shadow-lg hover:border-green transition group">
-            <div class="w-12 h-12 bg-navy/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-navy/20 transition">
-              <svg class="w-6 h-6 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-navy to-green text-white flex items-center justify-center mb-4 shadow-lg shadow-navy/20 ring-1 ring-white/20 group-hover:scale-105 transition">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 6.5h14a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-9a1 1 0 0 1 1-1Z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M8 10h8M8 13h5"/>
+              </svg>
             </div>
             <h3 class="text-lg font-bold text-navy mb-2">I'm from the Media</h3>
             <p class="text-darkgrey text-sm mb-4">Access press releases, story angles, and spokesperson contacts.</p>
@@ -164,32 +170,46 @@
 
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           <div class="bg-white border border-lightgrey rounded-xl p-6 hover:shadow-lg transition group">
-            <div class="w-12 h-12 bg-navy rounded-lg flex items-center justify-center mb-4 group-hover:scale-105 transition">
-              <span class="text-xl">🔵</span>
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-navy to-green text-white flex items-center justify-center mb-4 shadow-lg shadow-navy/20 ring-1 ring-white/20 group-hover:scale-105 transition">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4.5 18.5h15"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M7 18.5V9.5a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1v9"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12.5 18.5V6.5a1 1 0 0 1 1-1H17a1 1 0 0 1 1 1v12"/>
+              </svg>
             </div>
             <h3 class="text-lg font-semibold text-navy mb-2">Market Access & Growth</h3>
             <p class="text-darkgrey text-sm">Preparing businesses to enter formal markets.</p>
           </div>
 
           <div class="bg-white border border-lightgrey rounded-xl p-6 hover:shadow-lg transition group">
-            <div class="w-12 h-12 bg-green rounded-lg flex items-center justify-center mb-4 group-hover:scale-105 transition">
-              <span class="text-xl">🟢</span>
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-navy to-green text-white flex items-center justify-center mb-4 shadow-lg shadow-navy/20 ring-1 ring-white/20 group-hover:scale-105 transition">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 20.5c4.4-3.2 7-6.1 7-9.2a4 4 0 0 0-7-2.6A4 4 0 0 0 5 11.3c0 3.1 2.6 6 7 9.2Z"/>
+              </svg>
             </div>
             <h3 class="text-lg font-semibold text-navy mb-2">Grassroots Impact</h3>
             <p class="text-darkgrey text-sm">Local connect spaces driving opportunity and services.</p>
           </div>
 
           <div class="bg-white border border-lightgrey rounded-xl p-6 hover:shadow-lg transition group">
-            <div class="w-12 h-12 bg-lightgrey rounded-lg flex items-center justify-center mb-4 group-hover:scale-105 transition">
-              <span class="text-xl">⚪</span>
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-navy to-green text-white flex items-center justify-center mb-4 shadow-lg shadow-navy/20 ring-1 ring-white/20 group-hover:scale-105 transition">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4.5 19h15"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M7.5 19V8a1 1 0 0 1 1-1H11a1 1 0 0 1 1 1v11"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12.5 19v-8a1 1 0 0 1 1-1H16a1 1 0 0 1 1 1v8"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M6.5 4.5h3M5.5 6.5l1-2 1 2"/>
+              </svg>
             </div>
             <h3 class="text-lg font-semibold text-navy mb-2">Skills & Jobs</h3>
             <p class="text-darkgrey text-sm">Training people for work and enterprise.</p>
           </div>
 
           <div class="bg-white border border-lightgrey rounded-xl p-6 hover:shadow-lg transition group">
-            <div class="w-12 h-12 bg-darkgrey rounded-lg flex items-center justify-center mb-4 group-hover:scale-105 transition">
-              <span class="text-xl">⚫</span>
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-navy to-green text-white flex items-center justify-center mb-4 shadow-lg shadow-navy/20 ring-1 ring-white/20 group-hover:scale-105 transition">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 3.5v17"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 7.5h-6.5a2.5 2.5 0 0 0 0 5H14a2.5 2.5 0 0 1 0 5H7.5"/>
+              </svg>
             </div>
             <h3 class="text-lg font-semibold text-navy mb-2">Financial Wellbeing</h3>
             <p class="text-darkgrey text-sm">Funding readiness, literacy and systems.</p>
