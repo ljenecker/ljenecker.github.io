@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>News & Events - IEGF</title>
   <meta name="description" content="Stay updated with IEGF news, media releases, events, webinars, and partner announcements.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -15,6 +18,9 @@
             green: "#4ba755",
             lightgrey: "#d9d9d9",
             darkgrey: "#737373"
+          },
+          fontFamily: {
+            sans: ['Montserrat', 'ui-sans-serif', 'system-ui', 'sans-serif']
           }
         }
       }
@@ -231,8 +237,57 @@
       </div>
     </section>
 
+    <!-- Media & Press -->
+    <section id="media" class="py-16 md:py-24 bg-lightgrey">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-navy text-center tracking-tight mb-4">Media &amp; Press</h2>
+        <p class="text-darkgrey text-center max-w-2xl mx-auto mb-12">Resources for journalists, bloggers, and media professionals covering informal economy development in Africa.</p>
+
+        <div class="grid md:grid-cols-3 gap-6 mb-10">
+          <!-- Press Kit -->
+          <div class="bg-white rounded-2xl p-6 border border-lightgrey hover:shadow-lg transition">
+            <div class="w-12 h-12 bg-navy/10 rounded-xl flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+            </div>
+            <h3 class="text-lg font-bold text-navy mb-2">Press Kit</h3>
+            <p class="text-darkgrey text-sm mb-4">Download our logo, brand guidelines, fact sheet, and high-resolution images for editorial use.</p>
+            <a href="#" class="inline-flex items-center text-green font-semibold text-sm hover:underline">
+              Download Press Kit
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+            </a>
+          </div>
+
+          <!-- Story Angles -->
+          <div class="bg-white rounded-2xl p-6 border border-lightgrey hover:shadow-lg transition">
+            <div class="w-12 h-12 bg-green/10 rounded-xl flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+            </div>
+            <h3 class="text-lg font-bold text-navy mb-2">Story Angles</h3>
+            <p class="text-darkgrey text-sm mb-4">Explore compelling narratives around grassroots entrepreneurship, youth empowerment, and community-led economic development.</p>
+            <ul class="text-darkgrey text-sm space-y-1">
+              <li class="flex items-start"><span class="text-green mr-2">&#8226;</span>Informal-to-formal business transitions</li>
+              <li class="flex items-start"><span class="text-green mr-2">&#8226;</span>Women and youth economic participation</li>
+              <li class="flex items-start"><span class="text-green mr-2">&#8226;</span>Community-led development models</li>
+            </ul>
+          </div>
+
+          <!-- Spokesperson Contact -->
+          <div class="bg-white rounded-2xl p-6 border border-lightgrey hover:shadow-lg transition">
+            <div class="w-12 h-12 bg-navy/10 rounded-xl flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+            </div>
+            <h3 class="text-lg font-bold text-navy mb-2">Spokesperson Contact</h3>
+            <p class="text-darkgrey text-sm mb-4">For interviews, comments, or expert opinion on informal economy development:</p>
+            <p class="text-navy text-sm font-semibold">Media Enquiries</p>
+            <a href="mailto:info@ie-gf.org" class="text-green text-sm font-medium hover:underline">info@ie-gf.org</a>
+            <p class="text-darkgrey text-sm mt-1">+27 78 795 6077</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Newsletter CTA -->
-    <section class="py-16 md:py-24 bg-lightgrey">
+    <section class="py-16 md:py-24 bg-white">
       <div class="max-w-4xl mx-auto px-4 text-center">
         <h2 class="text-3xl md:text-4xl font-bold text-navy tracking-tight mb-6">Stay Connected</h2>
         <p class="text-darkgrey text-lg mb-8">Subscribe to receive the latest news, event invitations, and updates from IEGF.</p>
