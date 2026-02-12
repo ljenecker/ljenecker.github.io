@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="image" href="/assets/1.png">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/home.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -28,30 +29,28 @@
     }
   </script>
 </head>
-<body class="font-sans text-darkgrey antialiased">
+<body class="home-page font-sans text-darkgrey antialiased">
 
   <!-- Header -->
-  <header class="bg-white shadow-sm sticky top-0 z-50">
+  <header id="siteHeader" class="site-header sticky top-0 z-50">
     <nav class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-      <a href="index.html" class="text-2xl font-bold text-navy tracking-tight">IEGF</a>
+      <a href="index.html" class="site-logo text-2xl font-bold text-navy tracking-tight">IEGF</a>
 
       <!-- Desktop Nav -->
       <div class="hidden md:flex items-center space-x-6">
-        <a href="index.html" class="text-navy font-medium hover:text-green transition">Home</a>
-        <a href="who-we-are.html" class="text-darkgrey hover:text-green transition">Who We Are</a>
-        <a href="what-we-do.html" class="text-darkgrey hover:text-green transition">What We Do</a>
-        <a href="get-involved.html" class="text-darkgrey hover:text-green transition">Get Involved</a>
-        <a href="partners.html" class="text-darkgrey hover:text-green transition">Partners</a>
-        <a href="news-events.html" class="text-darkgrey hover:text-green transition">News & Events</a>
-        <a href="contact.html" class="text-darkgrey hover:text-green transition">Contact</a>
+        <a href="index.html" class="nav-link is-active text-navy font-medium hover:text-green transition">Home</a>
+        <a href="who-we-are.html" class="nav-link text-darkgrey hover:text-green transition">Who We Are</a>
+        <a href="what-we-do.html" class="nav-link text-darkgrey hover:text-green transition">What We Do</a>
+        <a href="get-involved.html" class="nav-link text-darkgrey hover:text-green transition">Get Involved</a>
+        <a href="partners.html" class="nav-link text-darkgrey hover:text-green transition">Partners</a>
+        <a href="news-events.html" class="nav-link text-darkgrey hover:text-green transition">News & Events</a>
+        <a href="contact.html" class="nav-link text-darkgrey hover:text-green transition">Contact</a>
         <a href="get-involved.html" class="bg-green text-white px-5 py-2 rounded-lg font-semibold hover:bg-opacity-90 transition focus:outline-none focus:ring-2 focus:ring-green focus:ring-offset-2">Join the Movement</a>
       </div>
 
       <!-- Mobile Menu Button -->
       <button id="menuBtn" class="md:hidden text-navy focus:outline-none" aria-label="Toggle menu">
-        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path id="menuIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><use href="assets/icons.svg#icon-009"></use></svg>
       </button>
     </nav>
 
@@ -70,92 +69,91 @@
     </div>
   </header>
 
-  <main>
+  <main id="smooth-content">
     <!-- Hero Section -->
-    <section class="relative isolate min-h-[calc(100vh-70px)] overflow-hidden text-white bg-center bg-cover bg-no-repeat bg-[url(/assets/1.png)]">
+    <section id="hero" class="hero-section relative isolate min-h-[calc(100vh-70px)] overflow-hidden text-white bg-center bg-cover bg-no-repeat bg-[url(/assets/1.png)]">
       <div class="absolute inset-0 bg-gradient-to-l from-black/50 to-[#052a64]/90"></div>
+      <div class="hero-light"></div>
       <div class="relative max-w-6xl mx-auto px-6 py-20 md:py-28 min-h-[calc(100vh-70px)] flex items-center">
-        <div class="text-left max-w-3xl">
-          <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight mb-6">Informal Economy Global Forum</h1>
-          <p class="text-lg md:text-2xl text-white/90 leading-relaxed mb-5">A people-centred global movement transforming communities, livelihoods and nations through skills, access, community empowerment and sustainable structured systems.</p>
-          <p class="text-lg md:text-2xl text-white/90 mb-10">Empowering People. Shaping Nations.</p>
+        <div class="text-left max-w-3xl" data-reveal-group>
+          <h1 class="split-headline text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight mb-6" data-reveal="up">Informal Economy Global Forum</h1>
+          <p class="text-lg md:text-2xl text-white/90 leading-relaxed mb-5" data-reveal="up">A people-centred global movement transforming communities, livelihoods and nations through skills, access, community empowerment and sustainable structured systems.</p>
+          <p class="text-lg md:text-2xl text-white/90 mb-10" data-reveal="up">Empowering People. Shaping Nations.</p>
           <div class="flex flex-col sm:flex-row gap-4">
-            <a href="get-involved.html" class="bg-green text-white px-8 py-3 rounded-lg font-semibold text-center hover:bg-opacity-90 transition focus:outline-none focus:ring-2 focus:ring-green focus:ring-offset-2 focus:ring-offset-black">Join the Movement</a>
-            <a href="get-involved.html#partner" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold text-center hover:bg-white hover:text-navy transition focus:outline-none focus:ring-2 focus:ring-white">Partner With Us</a>
+            <a href="get-involved.html" class="btn-premium bg-green text-white px-8 py-3 rounded-lg font-semibold text-center hover:bg-opacity-90 transition focus:outline-none focus:ring-2 focus:ring-green focus:ring-offset-2 focus:ring-offset-black" data-reveal="up">Join the Movement</a>
+            <a href="get-involved.html#partner" class="btn-premium border-2 border-white text-white px-8 py-3 rounded-lg font-semibold text-center hover:bg-white hover:text-navy transition focus:outline-none focus:ring-2 focus:ring-white" data-reveal="up">Partner With Us</a>
           </div>
         </div>
       </div>
     </section>
 
+    <section class="trust-strip">
+      <div class="max-w-6xl mx-auto px-4 py-6">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="trust-chip" data-reveal="up"><span class="trust-value" data-count="50" data-suffix="+">50+</span><span class="trust-label">Programs Launched</span></div>
+          <div class="trust-chip" data-reveal="up"><span class="trust-value" data-count="1200" data-suffix="+">1,200+</span><span class="trust-label">Communities Reached</span></div>
+          <div class="trust-chip" data-reveal="up"><span class="trust-value" data-count="30" data-suffix="+">30+</span><span class="trust-label">Strategic Partners</span></div>
+          <div class="trust-chip" data-reveal="up"><span class="trust-value" data-count="10">10</span><span class="trust-label">African Countries</span></div>
+        </div>
+      </div>
+    </section>
+
     <!-- Who You Are - 4-Door Routing -->
-    <section class="bg-lightgrey py-14 md:py-20">
+    <section id="who-we-serve" class="section-shell bg-lightgrey py-14 md:py-20">
       <div class="max-w-6xl mx-auto px-4">
-        <h2 class="text-2xl md:text-3xl font-bold text-navy text-center tracking-tight mb-3">How Can We Help You?</h2>
-        <p class="text-darkgrey text-center max-w-2xl mx-auto mb-10">Find the right path based on who you are and what you need.</p>
+        <h2 class="text-2xl md:text-3xl font-bold text-navy text-center tracking-tight mb-3" data-reveal="up">How Can We Help You?</h2>
+        <p class="text-darkgrey text-center max-w-2xl mx-auto mb-10" data-reveal="up">Find the right path based on who you are and what you need.</p>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <!-- Members -->
-          <a href="get-involved.html#register" class="bg-white rounded-2xl p-6 border border-lightgrey hover:shadow-lg hover:border-green transition group">
+          <a href="get-involved.html#register" class="ui-card bg-white rounded-2xl p-6 border border-lightgrey hover:shadow-lg hover:border-green transition group" data-reveal="up">
             <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-navy to-green text-white flex items-center justify-center mb-4 shadow-lg shadow-navy/20 ring-1 ring-white/20 group-hover:scale-105 transition">
-              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"/>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 19a8 8 0 0 1 16 0"/>
-              </svg>
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-010"></use></svg>
             </div>
             <h3 class="text-lg font-bold text-navy mb-2">I'm an Individual or Community</h3>
             <p class="text-darkgrey text-sm mb-4">Access training, support, and opportunities to grow your livelihood.</p>
             <span class="inline-flex items-center text-green font-semibold text-sm group-hover:translate-x-1 transition">
               Join the Movement
-              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><use href="assets/icons.svg#icon-011"></use></svg>
             </span>
           </a>
 
           <!-- Partners -->
-          <a href="partners.html" class="bg-white rounded-2xl p-6 border border-lightgrey hover:shadow-lg hover:border-green transition group">
+          <a href="partners.html" class="ui-card bg-white rounded-2xl p-6 border border-lightgrey hover:shadow-lg hover:border-green transition group" data-reveal="up">
             <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-navy to-green text-white flex items-center justify-center mb-4 shadow-lg shadow-navy/20 ring-1 ring-white/20 group-hover:scale-105 transition">
-              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 20h16"/>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M6.5 20V8.5a1 1 0 0 1 1-1H11a1 1 0 0 1 1 1V20"/>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12.5 20V5.5a1 1 0 0 1 1-1H17a1 1 0 0 1 1 1V20"/>
-              </svg>
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-012"></use></svg>
             </div>
             <h3 class="text-lg font-bold text-navy mb-2">I'm a Partner Organisation</h3>
             <p class="text-darkgrey text-sm mb-4">Collaborate through CSI alignment, supplier development, or co-programming.</p>
             <span class="inline-flex items-center text-green font-semibold text-sm group-hover:translate-x-1 transition">
               Explore Partnerships
-              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><use href="assets/icons.svg#icon-011"></use></svg>
             </span>
           </a>
 
           <!-- Donors/Funders -->
-          <a href="partners.html#funders" class="bg-white rounded-2xl p-6 border border-lightgrey hover:shadow-lg hover:border-green transition group">
+          <a href="partners.html#funders" class="ui-card bg-white rounded-2xl p-6 border border-lightgrey hover:shadow-lg hover:border-green transition group" data-reveal="up">
             <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-navy to-green text-white flex items-center justify-center mb-4 shadow-lg shadow-navy/20 ring-1 ring-white/20 group-hover:scale-105 transition">
-              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 3.5v17"/>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 7.5h-6.5a2.5 2.5 0 0 0 0 5H14a2.5 2.5 0 0 1 0 5H7.5"/>
-              </svg>
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-013"></use></svg>
             </div>
             <h3 class="text-lg font-bold text-navy mb-2">I'm a Funder or Sponsor</h3>
             <p class="text-darkgrey text-sm mb-4">See our impact metrics, sponsorship model, and how your investment drives change.</p>
             <span class="inline-flex items-center text-green font-semibold text-sm group-hover:translate-x-1 transition">
               View Funding Model
-              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><use href="assets/icons.svg#icon-011"></use></svg>
             </span>
           </a>
 
           <!-- Media -->
-          <a href="news-events.html#media" class="bg-white rounded-2xl p-6 border border-lightgrey hover:shadow-lg hover:border-green transition group">
+          <a href="news-events.html#media" class="ui-card bg-white rounded-2xl p-6 border border-lightgrey hover:shadow-lg hover:border-green transition group" data-reveal="up">
             <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-navy to-green text-white flex items-center justify-center mb-4 shadow-lg shadow-navy/20 ring-1 ring-white/20 group-hover:scale-105 transition">
-              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 6.5h14a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-9a1 1 0 0 1 1-1Z"/>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M8 10h8M8 13h5"/>
-              </svg>
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-014"></use></svg>
             </div>
             <h3 class="text-lg font-bold text-navy mb-2">I'm from the Media</h3>
             <p class="text-darkgrey text-sm mb-4">Access press releases, story angles, and spokesperson contacts.</p>
             <span class="inline-flex items-center text-green font-semibold text-sm group-hover:translate-x-1 transition">
               Media Resources
-              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><use href="assets/icons.svg#icon-011"></use></svg>
             </span>
           </a>
         </div>
@@ -163,53 +161,39 @@
     </section>
 
     <!-- What We Do Snapshot -->
-    <section class="py-16 md:py-24 bg-white">
+    <section id="what-we-do" class="section-shell section-divider py-16 md:py-24 bg-white">
       <div class="max-w-6xl mx-auto px-4">
-        <h2 class="text-3xl md:text-4xl font-bold text-navy text-center tracking-tight mb-4">What We Do</h2>
-        <p class="text-darkgrey text-center max-w-2xl mx-auto mb-12">Structured pathways for growth, access, and sustainable development.</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-navy text-center tracking-tight mb-4" data-reveal="up">What We Do</h2>
+        <p class="text-darkgrey text-center max-w-2xl mx-auto mb-12" data-reveal="up">Structured pathways for growth, access, and sustainable development.</p>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div class="bg-white border border-lightgrey rounded-xl p-6 hover:shadow-lg transition group">
+          <div class="ui-card bg-white border border-lightgrey rounded-xl p-6 hover:shadow-lg transition group" data-reveal="up">
             <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-navy to-green text-white flex items-center justify-center mb-4 shadow-lg shadow-navy/20 ring-1 ring-white/20 group-hover:scale-105 transition">
-              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4.5 18.5h15"/>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M7 18.5V9.5a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1v9"/>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12.5 18.5V6.5a1 1 0 0 1 1-1H17a1 1 0 0 1 1 1v12"/>
-              </svg>
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-015"></use></svg>
             </div>
             <h3 class="text-lg font-semibold text-navy mb-2">Market Access & Growth</h3>
             <p class="text-darkgrey text-sm">Preparing businesses to enter formal markets.</p>
           </div>
 
-          <div class="bg-white border border-lightgrey rounded-xl p-6 hover:shadow-lg transition group">
+          <div class="ui-card bg-white border border-lightgrey rounded-xl p-6 hover:shadow-lg transition group" data-reveal="up">
             <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-navy to-green text-white flex items-center justify-center mb-4 shadow-lg shadow-navy/20 ring-1 ring-white/20 group-hover:scale-105 transition">
-              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 20.5c4.4-3.2 7-6.1 7-9.2a4 4 0 0 0-7-2.6A4 4 0 0 0 5 11.3c0 3.1 2.6 6 7 9.2Z"/>
-              </svg>
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-016"></use></svg>
             </div>
             <h3 class="text-lg font-semibold text-navy mb-2">Grassroots Impact</h3>
             <p class="text-darkgrey text-sm">Local connect spaces driving opportunity and services.</p>
           </div>
 
-          <div class="bg-white border border-lightgrey rounded-xl p-6 hover:shadow-lg transition group">
+          <div class="ui-card bg-white border border-lightgrey rounded-xl p-6 hover:shadow-lg transition group" data-reveal="up">
             <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-navy to-green text-white flex items-center justify-center mb-4 shadow-lg shadow-navy/20 ring-1 ring-white/20 group-hover:scale-105 transition">
-              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4.5 19h15"/>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M7.5 19V8a1 1 0 0 1 1-1H11a1 1 0 0 1 1 1v11"/>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12.5 19v-8a1 1 0 0 1 1-1H16a1 1 0 0 1 1 1v8"/>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M6.5 4.5h3M5.5 6.5l1-2 1 2"/>
-              </svg>
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-017"></use></svg>
             </div>
             <h3 class="text-lg font-semibold text-navy mb-2">Skills & Jobs</h3>
             <p class="text-darkgrey text-sm">Training people for work and enterprise.</p>
           </div>
 
-          <div class="bg-white border border-lightgrey rounded-xl p-6 hover:shadow-lg transition group">
+          <div class="ui-card bg-white border border-lightgrey rounded-xl p-6 hover:shadow-lg transition group" data-reveal="up">
             <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-navy to-green text-white flex items-center justify-center mb-4 shadow-lg shadow-navy/20 ring-1 ring-white/20 group-hover:scale-105 transition">
-              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 3.5v17"/>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 7.5h-6.5a2.5 2.5 0 0 0 0 5H14a2.5 2.5 0 0 1 0 5H7.5"/>
-              </svg>
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-013"></use></svg>
             </div>
             <h3 class="text-lg font-semibold text-navy mb-2">Financial Wellbeing</h3>
             <p class="text-darkgrey text-sm">Funding readiness, literacy and systems.</p>
@@ -219,10 +203,10 @@
     </section>
 
     <!-- Impact Statement -->
-    <section class="bg-navy py-16 md:py-24">
-      <div class="max-w-4xl mx-auto px-4 text-center">
+    <section class="section-shell bg-navy py-16 md:py-24">
+      <div class="max-w-4xl mx-auto px-4 text-center" data-reveal-group>
         <div class="text-green text-5xl mb-6">"</div>
-        <blockquote class="text-2xl md:text-3xl lg:text-4xl font-semibold text-white tracking-tight leading-snug">
+        <blockquote class="text-2xl md:text-3xl lg:text-4xl font-semibold text-white tracking-tight leading-snug" data-reveal="up">
           When people are equipped, communities rise. When communities rise, nations are shaped.
         </blockquote>
         <div class="mt-8 w-16 h-1 bg-green mx-auto"></div>
@@ -230,28 +214,24 @@
     </section>
 
     <!-- Call to Action Split Panel -->
-    <section class="py-16 md:py-24 bg-white">
+    <section class="section-shell section-divider py-16 md:py-24 bg-white">
       <div class="max-w-6xl mx-auto px-4">
         <div class="grid md:grid-cols-2 gap-6">
-          <a href="get-involved.html" class="bg-green rounded-2xl p-8 md:p-12 text-white hover:bg-opacity-90 transition group">
+          <a href="get-involved.html" class="ui-card bg-green rounded-2xl p-8 md:p-12 text-white hover:bg-opacity-90 transition group" data-reveal="up">
             <h3 class="text-2xl md:text-3xl font-bold mb-4 tracking-tight">Get Involved</h3>
             <p class="text-white/90 mb-6">Join the movement and be part of real change in your community.</p>
             <span class="inline-flex items-center font-semibold">
               Learn More
-              <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-              </svg>
+              <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><use href="assets/icons.svg#icon-011"></use></svg>
             </span>
           </a>
 
-          <a href="what-we-do.html" class="bg-lightgrey rounded-2xl p-8 md:p-12 text-navy hover:bg-gray-200 transition group">
+          <a href="what-we-do.html" class="ui-card bg-lightgrey rounded-2xl p-8 md:p-12 text-navy hover:bg-gray-200 transition group" data-reveal="up">
             <h3 class="text-2xl md:text-3xl font-bold mb-4 tracking-tight">Explore Our Programs</h3>
             <p class="text-darkgrey mb-6">Discover how we drive sustainable development from the ground up.</p>
             <span class="inline-flex items-center font-semibold">
               View Programs
-              <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-              </svg>
+              <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><use href="assets/icons.svg#icon-011"></use></svg>
             </span>
           </a>
         </div>
@@ -289,13 +269,13 @@
           </ul>
           <div class="flex space-x-4 mt-4">
             <a href="#" aria-label="Facebook" class="text-white/60 hover:text-green transition">
-              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><use href="assets/icons.svg#icon-005"></use></svg>
             </a>
             <a href="#" aria-label="Twitter" class="text-white/60 hover:text-green transition">
-              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><use href="assets/icons.svg#icon-006"></use></svg>
             </a>
             <a href="#" aria-label="LinkedIn" class="text-white/60 hover:text-green transition">
-              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><use href="assets/icons.svg#icon-007"></use></svg>
             </a>
           </div>
         </div>
@@ -307,13 +287,9 @@
     </div>
   </footer>
 
-  <script>
-    const menuBtn = document.getElementById('menuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-
-    menuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="assets/home.js"></script>
 </body>
 </html>
