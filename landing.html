@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coming Soon - IEGF</title>
+  <meta name="description" content="The Informal Economy Global Forum is coming soon. A people-centred global movement transforming communities, livelihoods and nations.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: "#052a64",
+            green: "#4ba755",
+            lightgrey: "#d9d9d9",
+            darkgrey: "#737373"
+          },
+          fontFamily: {
+            sans: ['Montserrat', 'ui-sans-serif', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="font-sans antialiased">
+
+  <section class="relative isolate min-h-screen overflow-hidden text-white bg-center bg-cover bg-no-repeat bg-[url(/assets/1.png)] flex items-center justify-center">
+    <div class="absolute inset-0 bg-gradient-to-br from-navy/95 via-navy/85 to-black/60"></div>
+
+    <div class="relative max-w-2xl mx-auto px-6 py-20 text-center">
+      <img src="assets/media/logo/iegf-logo.jpg" alt="IEGF" class="h-16 mx-auto mb-10 rounded">
+
+      <p class="text-green font-semibold text-sm uppercase tracking-widest mb-5">Informal Economy Global Forum</p>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight mb-6">Be Part of Real Change in Africa</h1>
+      <p class="text-lg md:text-xl text-white/85 leading-relaxed mb-10">Join a people-centred movement that equips individuals, strengthens communities, and builds sustainable economies from the ground up.</p>
+
+      <p class="text-white/50 uppercase tracking-widest text-xs font-semibold mb-8">Coming Soon</p>
+
+      <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+        <label for="email" class="sr-only">Email address</label>
+        <input type="email" id="email" name="email" required placeholder="Enter your email" class="flex-1 px-5 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-green focus:border-transparent backdrop-blur-sm">
+        <button type="submit" class="bg-green text-white px-7 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition focus:outline-none focus:ring-2 focus:ring-green focus:ring-offset-2 focus:ring-offset-navy whitespace-nowrap">Notify Me</button>
+      </form>
+
+      <div class="flex items-center justify-center gap-6 mt-12 text-white/40">
+        <a href="mailto:info@ie-gf.org" class="hover:text-green transition text-sm">info@ie-gf.org</a>
+        <span class="text-white/20">|</span>
+        <a href="tel:+27787956077" class="hover:text-green transition text-sm">+27 78 795 6077</a>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
