@@ -99,7 +99,7 @@
             <p class="text-sm font-medium text-navy text-center">IMB</p>
           </div>
 
-          <div class="bg-white rounded-xl p-6 flex flex-col items-center justify-center aspect-[4/3] hover:shadow-lg transition">
+          <div class="partner-card bg-white rounded-xl p-6 flex flex-col items-center justify-center aspect-[4/3] hover:shadow-lg transition cursor-pointer" data-url="https://cloudsprint.co.za/">
             <img src="assets/media/partners/cloudsprint.png" alt="CloudSprint" class="h-16 object-contain object-top mb-4">
             <p class="text-sm font-medium text-navy text-center">CloudSprint</p>
           </div>
@@ -318,12 +318,100 @@
     </div>
   </footer>
 
+  <!-- Partner Preview Modal -->
+  <div id="partnerModal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 opacity-0 pointer-events-none transition-opacity duration-300" role="dialog" aria-label="Partner website preview">
+    <button id="partnerPrev" class="absolute left-4 top-1/2 -translate-y-1/2 text-white/60 hover:text-white transition z-10" aria-label="Previous partner">
+      <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+    </button>
+    <button id="partnerNext" class="absolute right-4 top-1/2 -translate-y-1/2 text-white/60 hover:text-white transition z-10" aria-label="Next partner">
+      <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+    </button>
+    <div class="relative w-[85vw] h-[88vh] max-w-6xl bg-white rounded-2xl shadow-2xl overflow-hidden scale-95 opacity-0 transition-all duration-300" id="partnerModalContent">
+      <div class="flex items-center justify-between bg-navy px-5 py-3">
+        <span id="partnerModalTitle" class="text-white font-semibold text-sm truncate"></span>
+        <div class="flex items-center gap-3">
+          <a id="partnerModalLink" href="#" target="_blank" rel="noopener noreferrer" class="text-white/80 hover:text-green text-sm flex items-center gap-1 transition">
+            Open in new tab
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          </a>
+          <button id="partnerModalClose" class="text-white/80 hover:text-white transition" aria-label="Close">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+      </div>
+      <iframe id="partnerIframe" class="w-full h-[calc(100%-52px)]" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+
   <script>
     const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
 
     menuBtn.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
+    });
+
+    // Partner preview modal
+    const partnerModal = document.getElementById('partnerModal');
+    const partnerModalContent = document.getElementById('partnerModalContent');
+    const partnerModalTitle = document.getElementById('partnerModalTitle');
+    const partnerModalLink = document.getElementById('partnerModalLink');
+    const partnerIframe = document.getElementById('partnerIframe');
+    const partnerModalClose = document.getElementById('partnerModalClose');
+    const partnerPrev = document.getElementById('partnerPrev');
+    const partnerNext = document.getElementById('partnerNext');
+
+    // Build partner list from cards with data-url
+    const partners = [];
+    document.querySelectorAll('.partner-card').forEach((card, i) => {
+      const name = card.querySelector('p').textContent;
+      const url = card.dataset.url;
+      partners.push({ name, url });
+      card.addEventListener('click', () => openPartnerPreview(i));
+    });
+
+    let currentPartner = 0;
+
+    function showPartner(index) {
+      currentPartner = (index + partners.length) % partners.length;
+      const p = partners[currentPartner];
+      partnerModalTitle.textContent = p.name;
+      partnerModalLink.href = p.url;
+      partnerIframe.src = p.url;
+    }
+
+    function openPartnerPreview(index) {
+      currentPartner = index;
+      const p = partners[currentPartner];
+      partnerModalTitle.textContent = p.name;
+      partnerModalLink.href = p.url;
+      partnerIframe.src = p.url;
+      partnerModal.classList.remove('pointer-events-none', 'opacity-0');
+      requestAnimationFrame(() => {
+        partnerModalContent.classList.remove('scale-95', 'opacity-0');
+        partnerModalContent.classList.add('scale-100', 'opacity-100');
+      });
+    }
+
+    function closePartnerPreview() {
+      partnerModalContent.classList.remove('scale-100', 'opacity-100');
+      partnerModalContent.classList.add('scale-95', 'opacity-0');
+      partnerModal.classList.add('opacity-0');
+      setTimeout(() => {
+        partnerModal.classList.add('pointer-events-none');
+        partnerIframe.src = '';
+      }, 300);
+    }
+
+    partnerPrev.addEventListener('click', (e) => { e.stopPropagation(); showPartner(currentPartner - 1); });
+    partnerNext.addEventListener('click', (e) => { e.stopPropagation(); showPartner(currentPartner + 1); });
+    partnerModalClose.addEventListener('click', closePartnerPreview);
+    partnerModal.addEventListener('click', (e) => { if (e.target === partnerModal) closePartnerPreview(); });
+    document.addEventListener('keydown', (e) => {
+      if (partnerModal.classList.contains('pointer-events-none')) return;
+      if (e.key === 'Escape') closePartnerPreview();
+      if (e.key === 'ArrowLeft') showPartner(currentPartner - 1);
+      if (e.key === 'ArrowRight') showPartner(currentPartner + 1);
     });
   </script>
 </body>
