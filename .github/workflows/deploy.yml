@@ -18,4 +18,4 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           port: ${{ secrets.FTP_PORT }}
           protocol: ftp
-          server-dir: /home2/iegf/public_html/
+          server-dir: /public_html/
