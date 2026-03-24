@@ -350,6 +350,12 @@
 
   <!-- Lightbox -->
   <div id="lightbox" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 opacity-0 pointer-events-none transition-opacity duration-300" role="dialog" aria-label="Image preview">
+    <button id="lightboxPrev" class="absolute left-4 top-1/2 -translate-y-1/2 text-white/60 hover:text-white transition" aria-label="Previous image">
+      <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+    </button>
+    <button id="lightboxNext" class="absolute right-16 top-1/2 -translate-y-1/2 text-white/60 hover:text-white transition" aria-label="Next image">
+      <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+    </button>
     <button id="lightboxClose" class="absolute top-4 right-4 text-white/80 hover:text-white transition" aria-label="Close">
       <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
     </button>
@@ -370,16 +376,45 @@
     const lightboxImg = document.getElementById('lightboxImg');
     const lightboxCaption = document.getElementById('lightboxCaption');
     const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxPrev = document.getElementById('lightboxPrev');
+    const lightboxNext = document.getElementById('lightboxNext');
 
+    // Build gallery items array
+    const galleryItems = [];
     document.querySelectorAll('.group').forEach(card => {
       const img = card.querySelector('img');
       const caption = card.querySelector('p');
       if (!img) return;
+      galleryItems.push({ src: img.src, alt: img.alt, caption: caption ? caption.textContent : '' });
+    });
+
+    let currentIndex = 0;
+
+    function showImage(index) {
+      currentIndex = (index + galleryItems.length) % galleryItems.length;
+      const item = galleryItems[currentIndex];
+      lightboxImg.classList.remove('scale-100', 'opacity-100');
+      lightboxImg.classList.add('scale-90', 'opacity-0');
+      setTimeout(() => {
+        lightboxImg.src = item.src;
+        lightboxImg.alt = item.alt;
+        lightboxCaption.textContent = item.caption;
+        requestAnimationFrame(() => {
+          lightboxImg.classList.remove('scale-90', 'opacity-0');
+          lightboxImg.classList.add('scale-100', 'opacity-100');
+        });
+      }, 150);
+    }
+
+    document.querySelectorAll('.group').forEach((card, i) => {
+      const img = card.querySelector('img');
+      if (!img) return;
       card.style.cursor = 'pointer';
       card.addEventListener('click', () => {
-        lightboxImg.src = img.src;
-        lightboxImg.alt = img.alt;
-        lightboxCaption.textContent = caption ? caption.textContent : '';
+        currentIndex = i;
+        lightboxImg.src = galleryItems[i].src;
+        lightboxImg.alt = galleryItems[i].alt;
+        lightboxCaption.textContent = galleryItems[i].caption;
         lightbox.classList.remove('pointer-events-none', 'opacity-0');
         requestAnimationFrame(() => {
           lightboxImg.classList.remove('scale-90', 'opacity-0');
@@ -399,9 +434,16 @@
       setTimeout(() => lightbox.classList.add('pointer-events-none'), 300);
     }
 
+    lightboxPrev.addEventListener('click', (e) => { e.stopPropagation(); showImage(currentIndex - 1); });
+    lightboxNext.addEventListener('click', (e) => { e.stopPropagation(); showImage(currentIndex + 1); });
     lightboxClose.addEventListener('click', closeLightbox);
     lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+    document.addEventListener('keydown', (e) => {
+      if (lightbox.classList.contains('pointer-events-none')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
+      if (e.key === 'ArrowRight') showImage(currentIndex + 1);
+    });
   </script>
 </body>
 </html>
