@@ -348,6 +348,15 @@
     </div>
   </footer>
 
+  <!-- Lightbox -->
+  <div id="lightbox" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 opacity-0 pointer-events-none transition-opacity duration-300" role="dialog" aria-label="Image preview">
+    <button id="lightboxClose" class="absolute top-4 right-4 text-white/80 hover:text-white transition" aria-label="Close">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+    <img id="lightboxImg" class="max-w-[90vw] max-h-[85vh] rounded-2xl shadow-2xl scale-90 opacity-0 transition-all duration-300 object-contain" alt="">
+    <p id="lightboxCaption" class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/90 text-sm bg-black/50 px-4 py-2 rounded-lg opacity-0 transition-opacity duration-300"></p>
+  </div>
+
   <script>
     const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
@@ -355,6 +364,44 @@
     menuBtn.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
     });
+
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const lightboxClose = document.getElementById('lightboxClose');
+
+    document.querySelectorAll('.group').forEach(card => {
+      const img = card.querySelector('img');
+      const caption = card.querySelector('p');
+      if (!img) return;
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightboxCaption.textContent = caption ? caption.textContent : '';
+        lightbox.classList.remove('pointer-events-none', 'opacity-0');
+        requestAnimationFrame(() => {
+          lightboxImg.classList.remove('scale-90', 'opacity-0');
+          lightboxImg.classList.add('scale-100', 'opacity-100');
+          lightboxCaption.classList.remove('opacity-0');
+          lightboxCaption.classList.add('opacity-100');
+        });
+      });
+    });
+
+    function closeLightbox() {
+      lightboxImg.classList.remove('scale-100', 'opacity-100');
+      lightboxImg.classList.add('scale-90', 'opacity-0');
+      lightboxCaption.classList.remove('opacity-100');
+      lightboxCaption.classList.add('opacity-0');
+      lightbox.classList.add('opacity-0');
+      setTimeout(() => lightbox.classList.add('pointer-events-none'), 300);
+    }
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
   </script>
 </body>
 </html>
