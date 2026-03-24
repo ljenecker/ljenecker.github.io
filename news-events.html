@@ -293,8 +293,8 @@
       <div class="max-w-4xl mx-auto px-4 text-center">
         <h2 class="text-3xl md:text-4xl font-bold text-navy tracking-tight mb-6">Stay Connected</h2>
         <p class="text-darkgrey text-lg mb-8">Subscribe to receive the latest news, event invitations, and updates from IEGF.</p>
-        <form class="max-w-md mx-auto flex flex-col sm:flex-row gap-3">
-          <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-3 rounded-lg border border-lightgrey focus:outline-none focus:ring-2 focus:ring-green focus:border-transparent">
+        <form data-form="subscribe" class="max-w-md mx-auto flex flex-col sm:flex-row gap-3">
+          <input type="email" name="email" required placeholder="Enter your email" class="flex-1 px-4 py-3 rounded-lg border border-lightgrey focus:outline-none focus:ring-2 focus:ring-green focus:border-transparent">
           <button type="submit" class="bg-green text-white px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition focus:outline-none focus:ring-2 focus:ring-green focus:ring-offset-2">Subscribe</button>
         </form>
       </div>
@@ -358,5 +358,6 @@
       mobileMenu.classList.toggle('hidden');
     });
   </script>
+  <script src="/js/forms.js"></script>
 </body>
 </html>
