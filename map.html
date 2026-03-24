@@ -1,0 +1,1661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <title>Market Access Program — IEGF Dashboard</title>
+  <meta name="description" content="IEGF Market Access Program — 18-Month Structured Growth Journey for enterprise development and sustainability.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: "#052a64",
+            green: "#4ba755",
+            lightgrey: "#d9d9d9",
+            darkgrey: "#737373",
+            amber: "#f59e0b",
+            red: "#ef4444"
+          },
+          fontFamily: {
+            sans: ['Montserrat', 'ui-sans-serif', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { overflow: hidden; height: 100vh; }
+    .sidebar-scrollbar::-webkit-scrollbar { width: 4px; }
+    .sidebar-scrollbar::-webkit-scrollbar-track { background: transparent; }
+    .sidebar-scrollbar::-webkit-scrollbar-thumb { background: #d9d9d9; border-radius: 4px; }
+    .sidebar-scrollbar::-webkit-scrollbar-thumb:hover { background: #737373; }
+    .content-scroll::-webkit-scrollbar { width: 6px; }
+    .content-scroll::-webkit-scrollbar-track { background: #f9fafb; }
+    .content-scroll::-webkit-scrollbar-thumb { background: #d9d9d9; border-radius: 6px; }
+    .content-scroll::-webkit-scrollbar-thumb:hover { background: #737373; }
+    .section-fade { animation: fadeIn 0.3s ease-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes pulse-ring { 0% { box-shadow: 0 0 0 0 rgba(75,167,85,0.4); } 70% { box-shadow: 0 0 0 10px rgba(75,167,85,0); } 100% { box-shadow: 0 0 0 0 rgba(75,167,85,0); } }
+    .pulse-ring { animation: pulse-ring 2s infinite; }
+    .accordion-body { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+    .accordion-body.open { max-height: 2000px; }
+    .drag-hover { border-color: #4ba755 !important; background: rgba(75,167,85,0.05) !important; }
+    .progress-ring-circle { transition: stroke-dashoffset 0.6s ease; transform: rotate(-90deg); transform-origin: 50% 50%; }
+    .tab-active { color: #4ba755; border-bottom: 2px solid #4ba755; font-weight: 600; }
+    @media print { .sidebar, .mobile-topbar { display: none !important; } .main-content { margin-left: 0 !important; } [data-panel] { display: block !important; page-break-inside: avoid; } }
+  </style>
+</head>
+<body class="font-sans text-darkgrey antialiased bg-gray-50">
+
+  <!-- Mobile Top Bar -->
+  <div class="mobile-topbar lg:hidden fixed top-0 left-0 right-0 z-40 bg-white border-b border-lightgrey px-4 py-3 flex items-center justify-between">
+    <button id="sidebarToggle" class="text-navy p-1" aria-label="Toggle sidebar">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+    <div class="flex items-center gap-2">
+      <img src="assets/media/logo/iegf-logo-1.png" alt="IEGF" class="h-8">
+      <span class="text-sm font-semibold text-navy">MAP Dashboard</span>
+    </div>
+    <div class="w-8 h-8 rounded-full bg-gradient-to-br from-navy to-green flex items-center justify-center text-white text-xs font-bold">MJ</div>
+  </div>
+
+  <!-- Sidebar Backdrop -->
+  <div id="sidebarBackdrop" class="fixed inset-0 bg-black/40 z-40 lg:hidden hidden" aria-hidden="true"></div>
+
+  <!-- Sidebar -->
+  <aside id="sidebar" class="sidebar fixed top-0 left-0 h-full w-[270px] bg-white border-r border-lightgrey z-50 flex flex-col transform -translate-x-full lg:translate-x-0 transition-transform duration-300 sidebar-scrollbar overflow-y-auto">
+    <!-- Logo -->
+    <div class="px-6 pt-6 pb-4 border-b border-gray-100">
+      <img src="assets/media/logo/iegf-logo-1.png" alt="IEGF" class="h-10 mb-1">
+      <p class="text-[11px] text-darkgrey tracking-wide uppercase font-medium">Market Access Program</p>
+    </div>
+
+    <!-- Member -->
+    <div class="px-6 py-5 border-b border-gray-100">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-navy to-green flex items-center justify-center text-white text-sm font-bold flex-shrink-0">MJ</div>
+        <div class="min-w-0">
+          <p class="text-sm font-semibold text-navy truncate">Maria Johnson</p>
+          <p class="text-xs text-darkgrey">MAP-2026-0847</p>
+        </div>
+      </div>
+      <div class="mt-3 flex items-center gap-2">
+        <div class="flex-1 bg-lightgrey rounded-full h-1.5">
+          <div class="bg-green rounded-full h-1.5" style="width:42%"></div>
+        </div>
+        <span class="text-[10px] text-darkgrey font-medium">Stage 3/6</span>
+      </div>
+    </div>
+
+    <!-- Nav -->
+    <nav class="flex-1 px-3 py-4 space-y-1">
+      <button data-nav="overview" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all text-left">
+        <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25a2.25 2.25 0 01-2.25-2.25v-2.25z"/></svg>
+        Overview
+      </button>
+      <button data-nav="journey" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all text-left">
+        <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z"/></svg>
+        My Journey
+      </button>
+      <button data-nav="training" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all text-left">
+        <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"/></svg>
+        Training
+      </button>
+      <button data-nav="documents" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all text-left">
+        <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z"/></svg>
+        Documents
+      </button>
+      <button data-nav="growth" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all text-left">
+        <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/></svg>
+        Growth Tracker
+      </button>
+      <button data-nav="marketplace" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all text-left">
+        <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 01.75-.75h3a.75.75 0 01.75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349m-16.5 11.65V9.35m0 0a3.001 3.001 0 003.75-.615A2.993 2.993 0 009.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 002.25 1.016c.896 0 1.7-.393 2.25-1.016a3.001 3.001 0 003.75.614m-16.5 0a3.004 3.004 0 01-.621-4.72L4.318 3.44A1.5 1.5 0 015.378 3h13.243a1.5 1.5 0 011.06.44l1.19 1.189a3 3 0 01-.621 4.72m-13.5 8.65h3.75a.75.75 0 00.75-.75V13.5a.75.75 0 00-.75-.75H6.75a.75.75 0 00-.75.75v3.75c0 .415.336.75.75.75z"/></svg>
+        Marketplace
+      </button>
+      <button data-nav="support" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all text-left">
+        <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.712 4.33a9.027 9.027 0 011.652 1.306c.51.51.944 1.064 1.306 1.652M16.712 4.33l-3.448 4.138m3.448-4.138a9.014 9.014 0 00-9.424 0M19.67 7.288l-4.138 3.448m4.138-3.448a9.014 9.014 0 010 9.424m-4.138-5.976a3.736 3.736 0 00-.88-1.388 3.737 3.737 0 00-1.388-.88m2.268 2.268a3.765 3.765 0 010 2.528m-2.268-4.796a3.765 3.765 0 00-2.528 0m4.796 4.796c-.181.506-.475.982-.88 1.388a3.736 3.736 0 01-1.388.88m2.268-2.268l4.138 3.448m0 0a9.027 9.027 0 01-1.306 1.652c-.51.51-1.064.944-1.652 1.306m0 0l-3.448-4.138m3.448 4.138a9.014 9.014 0 01-9.424 0m5.976-4.138a3.765 3.765 0 01-2.528 0m0 0a3.736 3.736 0 01-1.388-.88 3.737 3.737 0 01-.88-1.388m2.268 2.268L7.288 19.67m0 0a9.024 9.024 0 01-1.652-1.306 9.027 9.027 0 01-1.306-1.652m0 0l4.138-3.448M4.33 16.712a9.014 9.014 0 010-9.424m4.138 5.976a3.765 3.765 0 010-2.528m0 0c.181-.506.475-.982.88-1.388a3.736 3.736 0 011.388-.88m-2.268 2.268L4.33 7.288m6.406 1.18L7.288 4.33m0 0a9.024 9.024 0 00-1.652 1.306A9.025 9.025 0 004.33 7.288"/></svg>
+        Support
+      </button>
+      <button data-nav="awards" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all text-left">
+        <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 01-.982-3.172M9.497 14.25a7.454 7.454 0 00.981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 007.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M18.75 4.236c.982.143 1.954.317 2.916.52A6.003 6.003 0 0016.27 9.728M18.75 4.236V4.5c0 2.108-.966 3.99-2.48 5.228m0 0a6.003 6.003 0 01-3.77 1.522m0 0a6.003 6.003 0 01-3.77-1.522"/></svg>
+        Awards
+      </button>
+    </nav>
+
+    <!-- Footer -->
+    <div class="px-6 py-4 border-t border-gray-100">
+      <a href="index.html" class="flex items-center gap-2 text-xs text-darkgrey hover:text-green transition">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3"/></svg>
+        Back to IEGF Website
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main id="mainContent" class="lg:ml-[270px] h-screen pt-14 lg:pt-0 content-scroll overflow-y-auto">
+
+    <!-- ===================== OVERVIEW ===================== -->
+    <section data-panel="overview" class="section-fade">
+      <div class="p-6 lg:p-8 max-w-7xl mx-auto">
+        <!-- Header -->
+        <div class="mb-8">
+          <h1 class="text-2xl lg:text-3xl font-bold text-navy">Welcome back, Maria</h1>
+          <p class="text-darkgrey mt-1">Here's your Market Access Program progress at a glance.</p>
+        </div>
+
+        <!-- KPI Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 mb-8">
+          <!-- Stage Progress -->
+          <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+            <div class="flex items-center justify-between mb-3">
+              <div class="w-10 h-10 rounded-xl bg-navy/10 flex items-center justify-center">
+                <svg class="w-5 h-5 text-navy" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75z"/></svg>
+              </div>
+              <span class="text-xs font-medium text-green bg-green/10 px-2 py-0.5 rounded-full">On Track</span>
+            </div>
+            <p class="text-3xl font-bold text-navy">3 <span class="text-lg font-medium text-darkgrey">/ 6</span></p>
+            <p class="text-sm text-darkgrey mt-1">Current Stage</p>
+            <div class="flex gap-1 mt-3">
+              <div class="flex-1 h-1.5 rounded-full bg-green"></div>
+              <div class="flex-1 h-1.5 rounded-full bg-green"></div>
+              <div class="flex-1 h-1.5 rounded-full bg-green animate-pulse"></div>
+              <div class="flex-1 h-1.5 rounded-full bg-lightgrey"></div>
+              <div class="flex-1 h-1.5 rounded-full bg-lightgrey"></div>
+              <div class="flex-1 h-1.5 rounded-full bg-lightgrey"></div>
+            </div>
+          </div>
+
+          <!-- Compliance Score -->
+          <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+            <div class="flex items-center justify-between mb-3">
+              <div class="w-10 h-10 rounded-xl bg-green/10 flex items-center justify-center">
+                <svg class="w-5 h-5 text-green" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+              </div>
+              <span class="flex items-center gap-1 text-xs font-medium text-green"><svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M12 7a1 1 0 10-2 0v4a1 1 0 00.293.707l3 3a1 1 0 001.414-1.414L12 10.586V7z" clip-rule="evenodd"/></svg>+12%</span>
+            </div>
+            <div class="flex items-end gap-3">
+              <p class="text-3xl font-bold text-navy">78%</p>
+              <svg class="w-14 h-14 -mb-1" viewBox="0 0 64 64">
+                <circle cx="32" cy="32" r="26" fill="none" stroke="#d9d9d9" stroke-width="5"/>
+                <circle cx="32" cy="32" r="26" fill="none" stroke="#4ba755" stroke-width="5" stroke-dasharray="163.36" stroke-dashoffset="35.94" class="progress-ring-circle"/>
+              </svg>
+            </div>
+            <p class="text-sm text-darkgrey mt-1">Compliance Score</p>
+          </div>
+
+          <!-- Funding Readiness -->
+          <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+            <div class="flex items-center justify-between mb-3">
+              <div class="w-10 h-10 rounded-xl bg-amber/10 flex items-center justify-center">
+                <svg class="w-5 h-5 text-amber" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <span class="text-xs font-medium text-amber bg-amber/10 px-2 py-0.5 rounded-full">In Progress</span>
+            </div>
+            <p class="text-3xl font-bold text-navy">62%</p>
+            <p class="text-sm text-darkgrey mt-1">Funding Readiness</p>
+            <div class="mt-3 bg-lightgrey rounded-full h-1.5">
+              <div class="bg-amber rounded-full h-1.5" style="width:62%"></div>
+            </div>
+          </div>
+
+          <!-- Growth Index -->
+          <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+            <div class="flex items-center justify-between mb-3">
+              <div class="w-10 h-10 rounded-xl bg-navy/10 flex items-center justify-center">
+                <svg class="w-5 h-5 text-navy" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941"/></svg>
+              </div>
+              <span class="flex items-center gap-1 text-xs font-medium text-green"><svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>+8%</span>
+            </div>
+            <p class="text-3xl font-bold text-navy">B+</p>
+            <p class="text-sm text-darkgrey mt-1">Growth Index</p>
+            <div class="mt-3">
+              <svg class="w-full h-8" viewBox="0 0 200 32" preserveAspectRatio="none">
+                <polyline points="0,28 33,22 66,24 100,18 133,14 166,16 200,10" fill="none" stroke="#4ba755" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <polyline points="0,28 33,22 66,24 100,18 133,14 166,16 200,10 200,32 0,32" fill="url(#sparkGrad)" opacity="0.15"/>
+                <defs><linearGradient id="sparkGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4ba755"/><stop offset="100%" stop-color="#4ba755" stop-opacity="0"/></linearGradient></defs>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- 18-Month Timeline -->
+        <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm mb-8">
+          <h2 class="text-lg font-bold text-navy mb-4">18-Month Journey Timeline</h2>
+          <div class="overflow-x-auto pb-2">
+            <div class="flex gap-1 min-w-[600px]" id="timelineBar">
+              <!-- Rendered by JS -->
+            </div>
+            <div class="flex justify-between min-w-[600px] mt-3 text-[10px] text-darkgrey">
+              <span>Month 1</span><span>Month 3</span><span>Month 6</span><span>Month 9</span><span>Month 12</span><span>Month 15</span><span>Month 18</span>
+            </div>
+            <div class="flex justify-between min-w-[600px] mt-1">
+              <span class="text-[10px] font-medium text-navy">Compliance</span>
+              <span class="text-[10px] font-medium text-navy">Branding</span>
+              <span class="text-[10px] font-medium text-navy">Operations</span>
+              <span class="text-[10px] font-medium text-navy">Mentoring</span>
+              <span class="text-[10px] font-medium text-navy">Expansion</span>
+              <span class="text-[10px] font-medium text-navy">CSI</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Row -->
+        <div class="grid lg:grid-cols-2 gap-6">
+          <!-- Upcoming Tasks -->
+          <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+            <div class="flex items-center justify-between mb-4">
+              <h2 class="text-lg font-bold text-navy">Upcoming Tasks</h2>
+              <span class="text-xs text-darkgrey">5 pending</span>
+            </div>
+            <div class="space-y-3">
+              <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
+                <div class="w-5 h-5 rounded-full border-2 border-green flex-shrink-0"></div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-sm font-medium text-navy truncate">Complete financial literacy module</p>
+                  <p class="text-xs text-darkgrey">Stage 3 — Training</p>
+                </div>
+                <span class="text-[10px] font-medium bg-red/10 text-red px-2 py-0.5 rounded-full flex-shrink-0">Due Today</span>
+              </div>
+              <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
+                <div class="w-5 h-5 rounded-full border-2 border-lightgrey flex-shrink-0"></div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-sm font-medium text-navy truncate">Upload updated tax clearance certificate</p>
+                  <p class="text-xs text-darkgrey">Stage 3 — Compliance</p>
+                </div>
+                <span class="text-[10px] font-medium bg-amber/10 text-amber px-2 py-0.5 rounded-full flex-shrink-0">Mar 27</span>
+              </div>
+              <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
+                <div class="w-5 h-5 rounded-full border-2 border-lightgrey flex-shrink-0"></div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-sm font-medium text-navy truncate">Attend funding readiness webinar</p>
+                  <p class="text-xs text-darkgrey">Stage 3 — Workshop</p>
+                </div>
+                <span class="text-[10px] font-medium bg-navy/10 text-navy px-2 py-0.5 rounded-full flex-shrink-0">Mar 29</span>
+              </div>
+              <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
+                <div class="w-5 h-5 rounded-full border-2 border-lightgrey flex-shrink-0"></div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-sm font-medium text-navy truncate">Submit expense tracking setup</p>
+                  <p class="text-xs text-darkgrey">Stage 3 — Operations</p>
+                </div>
+                <span class="text-[10px] font-medium bg-navy/10 text-navy px-2 py-0.5 rounded-full flex-shrink-0">Apr 2</span>
+              </div>
+              <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
+                <div class="w-5 h-5 rounded-full border-2 border-lightgrey flex-shrink-0"></div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-sm font-medium text-navy truncate">Peer networking session</p>
+                  <p class="text-xs text-darkgrey">Stage 3 — Networking</p>
+                </div>
+                <span class="text-[10px] font-medium bg-navy/10 text-navy px-2 py-0.5 rounded-full flex-shrink-0">Apr 5</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Activity -->
+          <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+            <h2 class="text-lg font-bold text-navy mb-4">Recent Activity</h2>
+            <div class="space-y-0 border-l-2 border-lightgrey ml-2">
+              <div class="relative pl-6 pb-5">
+                <div class="absolute -left-[5px] top-1 w-2 h-2 rounded-full bg-green"></div>
+                <p class="text-sm font-medium text-navy">Credit worthiness training completed</p>
+                <p class="text-xs text-darkgrey mt-0.5">Today at 10:32 AM</p>
+              </div>
+              <div class="relative pl-6 pb-5">
+                <div class="absolute -left-[5px] top-1 w-2 h-2 rounded-full bg-green"></div>
+                <p class="text-sm font-medium text-navy">Tax clearance document approved</p>
+                <p class="text-xs text-darkgrey mt-0.5">Yesterday at 3:15 PM</p>
+              </div>
+              <div class="relative pl-6 pb-5">
+                <div class="absolute -left-[5px] top-1 w-2 h-2 rounded-full bg-navy"></div>
+                <p class="text-sm font-medium text-navy">Mentoring session scheduled with T. Ndlovu</p>
+                <p class="text-xs text-darkgrey mt-0.5">Mar 22 at 9:00 AM</p>
+              </div>
+              <div class="relative pl-6 pb-5">
+                <div class="absolute -left-[5px] top-1 w-2 h-2 rounded-full bg-amber"></div>
+                <p class="text-sm font-medium text-navy">Funding application under review</p>
+                <p class="text-xs text-darkgrey mt-0.5">Mar 21 at 11:47 AM</p>
+              </div>
+              <div class="relative pl-6 pb-5">
+                <div class="absolute -left-[5px] top-1 w-2 h-2 rounded-full bg-green"></div>
+                <p class="text-sm font-medium text-navy">Stage 2 completed — Branding & Infrastructure</p>
+                <p class="text-xs text-darkgrey mt-0.5">Mar 18 at 2:00 PM</p>
+              </div>
+              <div class="relative pl-6">
+                <div class="absolute -left-[5px] top-1 w-2 h-2 rounded-full bg-green"></div>
+                <p class="text-sm font-medium text-navy">Business bank account opened</p>
+                <p class="text-xs text-darkgrey mt-0.5">Mar 15 at 10:20 AM</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== MY JOURNEY ===================== -->
+    <section data-panel="journey" class="hidden section-fade">
+      <div class="p-6 lg:p-8 max-w-7xl mx-auto">
+        <div class="mb-8">
+          <h1 class="text-2xl lg:text-3xl font-bold text-navy">My Journey</h1>
+          <p class="text-darkgrey mt-1">Your 18-month structured growth path — track each stage of your enterprise development.</p>
+        </div>
+
+        <!-- Stage Progress Tracker - Horizontal -->
+        <div class="bg-white rounded-2xl p-6 lg:p-8 border border-gray-100 shadow-sm mb-8">
+          <div class="hidden md:flex items-center justify-between mb-2" id="stageTracker">
+            <!-- Rendered by JS -->
+          </div>
+          <!-- Mobile: vertical -->
+          <div class="md:hidden space-y-3" id="stageTrackerMobile">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+        <!-- Stage Accordions -->
+        <div class="space-y-4" id="stageAccordions">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== TRAINING ===================== -->
+    <section data-panel="training" class="hidden section-fade">
+      <div class="p-6 lg:p-8 max-w-7xl mx-auto">
+        <div class="mb-8">
+          <h1 class="text-2xl lg:text-3xl font-bold text-navy">Training Modules</h1>
+          <p class="text-darkgrey mt-1">Access your training content, webinars, and learning resources by stage.</p>
+        </div>
+
+        <!-- Filter Pills -->
+        <div class="flex flex-wrap gap-2 mb-8" id="trainingFilters">
+          <button data-filter="all" class="filter-pill px-4 py-2 rounded-full text-sm font-medium transition-all bg-navy text-white">All Stages</button>
+          <button data-filter="1" class="filter-pill px-4 py-2 rounded-full text-sm font-medium transition-all bg-white text-darkgrey border border-lightgrey hover:border-navy">Stage 1</button>
+          <button data-filter="2" class="filter-pill px-4 py-2 rounded-full text-sm font-medium transition-all bg-white text-darkgrey border border-lightgrey hover:border-navy">Stage 2</button>
+          <button data-filter="3" class="filter-pill px-4 py-2 rounded-full text-sm font-medium transition-all bg-white text-darkgrey border border-lightgrey hover:border-navy">Stage 3</button>
+          <button data-filter="4" class="filter-pill px-4 py-2 rounded-full text-sm font-medium transition-all bg-white text-darkgrey border border-lightgrey hover:border-navy">Stage 4</button>
+          <button data-filter="5" class="filter-pill px-4 py-2 rounded-full text-sm font-medium transition-all bg-white text-darkgrey border border-lightgrey hover:border-navy">Stage 5</button>
+          <button data-filter="6" class="filter-pill px-4 py-2 rounded-full text-sm font-medium transition-all bg-white text-darkgrey border border-lightgrey hover:border-navy">Stage 6</button>
+        </div>
+
+        <!-- Module Grid -->
+        <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6" id="trainingGrid">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== DOCUMENTS ===================== -->
+    <section data-panel="documents" class="hidden section-fade">
+      <div class="p-6 lg:p-8 max-w-7xl mx-auto">
+        <div class="mb-8">
+          <h1 class="text-2xl lg:text-3xl font-bold text-navy">Documents</h1>
+          <p class="text-darkgrey mt-1">Upload, download, and track your compliance documents and templates.</p>
+        </div>
+
+        <!-- Upload Zone -->
+        <div id="dropZone" class="border-2 border-dashed border-lightgrey rounded-2xl p-10 text-center mb-8 transition-all cursor-pointer hover:border-green/50 hover:bg-green/5">
+          <input type="file" id="fileInput" class="hidden" multiple>
+          <svg class="w-12 h-12 text-lightgrey mx-auto mb-3" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"/></svg>
+          <p class="text-sm font-medium text-navy mb-1">Drag files here or click to browse</p>
+          <p class="text-xs text-darkgrey">PDF, DOC, XLS, JPG, PNG — Max 10MB</p>
+        </div>
+
+        <!-- Compliance Templates -->
+        <h2 class="text-lg font-bold text-navy mb-4">Compliance Templates</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+          <div class="bg-white rounded-xl p-4 border border-gray-100 shadow-sm flex items-start gap-3">
+            <div class="w-10 h-10 rounded-lg bg-red/10 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-red" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-semibold text-navy">Business Plan Template</p>
+              <p class="text-xs text-darkgrey mt-0.5">Standard business plan framework</p>
+              <button class="text-xs text-green font-medium mt-2 hover:underline">Download PDF</button>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl p-4 border border-gray-100 shadow-sm flex items-start gap-3">
+            <div class="w-10 h-10 rounded-lg bg-green/10 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-green" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-semibold text-navy">Compliance Checklist</p>
+              <p class="text-xs text-darkgrey mt-0.5">Full registration & compliance requirements</p>
+              <button class="text-xs text-green font-medium mt-2 hover:underline">Download PDF</button>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl p-4 border border-gray-100 shadow-sm flex items-start gap-3">
+            <div class="w-10 h-10 rounded-lg bg-navy/10 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-navy" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-semibold text-navy">Financial Projections</p>
+              <p class="text-xs text-darkgrey mt-0.5">12-month financial projection spreadsheet</p>
+              <button class="text-xs text-green font-medium mt-2 hover:underline">Download XLS</button>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl p-4 border border-gray-100 shadow-sm flex items-start gap-3">
+            <div class="w-10 h-10 rounded-lg bg-amber/10 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-amber" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-semibold text-navy">CIPC Application Guide</p>
+              <p class="text-xs text-darkgrey mt-0.5">Step-by-step company registration guide</p>
+              <button class="text-xs text-green font-medium mt-2 hover:underline">Download PDF</button>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl p-4 border border-gray-100 shadow-sm flex items-start gap-3">
+            <div class="w-10 h-10 rounded-lg bg-red/10 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-red" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-semibold text-navy">Tax Clearance Template</p>
+              <p class="text-xs text-darkgrey mt-0.5">SARS tax clearance application guide</p>
+              <button class="text-xs text-green font-medium mt-2 hover:underline">Download PDF</button>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl p-4 border border-gray-100 shadow-sm flex items-start gap-3">
+            <div class="w-10 h-10 rounded-lg bg-green/10 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-green" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-semibold text-navy">CSI Impact Report</p>
+              <p class="text-xs text-darkgrey mt-0.5">Community impact reporting template</p>
+              <button class="text-xs text-green font-medium mt-2 hover:underline">Download DOC</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Document Status -->
+        <h2 class="text-lg font-bold text-navy mb-4">Document Status</h2>
+        <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-gray-100">
+                <th class="text-left p-4 font-semibold text-navy">Document</th>
+                <th class="text-left p-4 font-semibold text-navy">Type</th>
+                <th class="text-left p-4 font-semibold text-navy">Date</th>
+                <th class="text-left p-4 font-semibold text-navy">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-gray-50">
+                <td class="p-4 font-medium text-navy">CIPC Registration Certificate</td>
+                <td class="p-4 text-darkgrey">PDF</td>
+                <td class="p-4 text-darkgrey">Mar 2, 2026</td>
+                <td class="p-4"><span class="text-xs font-medium bg-green/10 text-green px-2.5 py-1 rounded-full">Approved</span></td>
+              </tr>
+              <tr class="border-b border-gray-50">
+                <td class="p-4 font-medium text-navy">SARS Tax Clearance</td>
+                <td class="p-4 text-darkgrey">PDF</td>
+                <td class="p-4 text-darkgrey">Mar 10, 2026</td>
+                <td class="p-4"><span class="text-xs font-medium bg-green/10 text-green px-2.5 py-1 rounded-full">Approved</span></td>
+              </tr>
+              <tr class="border-b border-gray-50">
+                <td class="p-4 font-medium text-navy">Business Plan v2</td>
+                <td class="p-4 text-darkgrey">DOC</td>
+                <td class="p-4 text-darkgrey">Mar 18, 2026</td>
+                <td class="p-4"><span class="text-xs font-medium bg-amber/10 text-amber px-2.5 py-1 rounded-full">Under Review</span></td>
+              </tr>
+              <tr class="border-b border-gray-50">
+                <td class="p-4 font-medium text-navy">Financial Projections Q2</td>
+                <td class="p-4 text-darkgrey">XLS</td>
+                <td class="p-4 text-darkgrey">Mar 22, 2026</td>
+                <td class="p-4"><span class="text-xs font-medium bg-navy/10 text-navy px-2.5 py-1 rounded-full">Pending</span></td>
+              </tr>
+              <tr>
+                <td class="p-4 font-medium text-navy">Branding Guidelines</td>
+                <td class="p-4 text-darkgrey">PDF</td>
+                <td class="p-4 text-darkgrey">Mar 12, 2026</td>
+                <td class="p-4"><span class="text-xs font-medium bg-green/10 text-green px-2.5 py-1 rounded-full">Approved</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== GROWTH TRACKER ===================== -->
+    <section data-panel="growth" class="hidden section-fade">
+      <div class="p-6 lg:p-8 max-w-7xl mx-auto">
+        <div class="mb-8">
+          <h1 class="text-2xl lg:text-3xl font-bold text-navy">Growth Tracker</h1>
+          <p class="text-darkgrey mt-1">Monitor your business performance across key growth dimensions.</p>
+        </div>
+
+        <!-- Metric Cards -->
+        <div class="grid sm:grid-cols-2 xl:grid-cols-4 gap-5 mb-8">
+          <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm text-center">
+            <svg class="w-16 h-16 mx-auto mb-2" viewBox="0 0 64 64">
+              <circle cx="32" cy="32" r="26" fill="none" stroke="#d9d9d9" stroke-width="5"/>
+              <circle cx="32" cy="32" r="26" fill="none" stroke="#4ba755" stroke-width="5" stroke-dasharray="163.36" stroke-dashoffset="48.99" class="progress-ring-circle"/>
+              <text x="32" y="36" text-anchor="middle" fill="#052a64" font-size="14" font-weight="700" font-family="Montserrat">70</text>
+            </svg>
+            <p class="text-sm font-semibold text-navy">Financial Health</p>
+            <p class="text-xs text-darkgrey">Score out of 100</p>
+          </div>
+          <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm text-center">
+            <svg class="w-16 h-16 mx-auto mb-2" viewBox="0 0 64 64">
+              <circle cx="32" cy="32" r="26" fill="none" stroke="#d9d9d9" stroke-width="5"/>
+              <circle cx="32" cy="32" r="26" fill="none" stroke="#052a64" stroke-width="5" stroke-dasharray="163.36" stroke-dashoffset="57.18" class="progress-ring-circle"/>
+              <text x="32" y="36" text-anchor="middle" fill="#052a64" font-size="14" font-weight="700" font-family="Montserrat">65</text>
+            </svg>
+            <p class="text-sm font-semibold text-navy">Operational Score</p>
+            <p class="text-xs text-darkgrey">Systems & processes</p>
+          </div>
+          <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm text-center">
+            <svg class="w-16 h-16 mx-auto mb-2" viewBox="0 0 64 64">
+              <circle cx="32" cy="32" r="26" fill="none" stroke="#d9d9d9" stroke-width="5"/>
+              <circle cx="32" cy="32" r="26" fill="none" stroke="#f59e0b" stroke-width="5" stroke-dasharray="163.36" stroke-dashoffset="81.68" class="progress-ring-circle"/>
+              <text x="32" y="36" text-anchor="middle" fill="#052a64" font-size="14" font-weight="700" font-family="Montserrat">50</text>
+            </svg>
+            <p class="text-sm font-semibold text-navy">Market Position</p>
+            <p class="text-xs text-darkgrey">Emerging tier</p>
+          </div>
+          <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm text-center">
+            <svg class="w-16 h-16 mx-auto mb-2" viewBox="0 0 64 64">
+              <circle cx="32" cy="32" r="26" fill="none" stroke="#d9d9d9" stroke-width="5"/>
+              <circle cx="32" cy="32" r="26" fill="none" stroke="#4ba755" stroke-width="5" stroke-dasharray="163.36" stroke-dashoffset="130.69" class="progress-ring-circle"/>
+              <text x="32" y="36" text-anchor="middle" fill="#052a64" font-size="14" font-weight="700" font-family="Montserrat">20</text>
+            </svg>
+            <p class="text-sm font-semibold text-navy">CSI Impact</p>
+            <p class="text-xs text-darkgrey">Starts in Stage 6</p>
+          </div>
+        </div>
+
+        <!-- Charts Row -->
+        <div class="grid lg:grid-cols-2 gap-6 mb-8">
+          <!-- Bar Chart - Monthly Revenue -->
+          <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+            <h3 class="text-base font-bold text-navy mb-4">Monthly Revenue Growth (ZAR)</h3>
+            <div class="flex items-end gap-3 h-48">
+              <div class="flex-1 flex flex-col items-center justify-end h-full">
+                <div class="w-full bg-navy/20 rounded-t-lg" style="height:30%"></div>
+                <span class="text-[10px] text-darkgrey mt-2">Oct</span>
+              </div>
+              <div class="flex-1 flex flex-col items-center justify-end h-full">
+                <div class="w-full bg-navy/30 rounded-t-lg" style="height:38%"></div>
+                <span class="text-[10px] text-darkgrey mt-2">Nov</span>
+              </div>
+              <div class="flex-1 flex flex-col items-center justify-end h-full">
+                <div class="w-full bg-navy/40 rounded-t-lg" style="height:35%"></div>
+                <span class="text-[10px] text-darkgrey mt-2">Dec</span>
+              </div>
+              <div class="flex-1 flex flex-col items-center justify-end h-full">
+                <div class="w-full bg-green/50 rounded-t-lg" style="height:50%"></div>
+                <span class="text-[10px] text-darkgrey mt-2">Jan</span>
+              </div>
+              <div class="flex-1 flex flex-col items-center justify-end h-full">
+                <div class="w-full bg-green/70 rounded-t-lg" style="height:62%"></div>
+                <span class="text-[10px] text-darkgrey mt-2">Feb</span>
+              </div>
+              <div class="flex-1 flex flex-col items-center justify-end h-full">
+                <div class="w-full bg-green rounded-t-lg" style="height:75%"></div>
+                <span class="text-[10px] text-darkgrey mt-2">Mar</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Radar Chart -->
+          <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+            <h3 class="text-base font-bold text-navy mb-4">Business Health Radar</h3>
+            <div class="flex justify-center">
+              <svg viewBox="0 0 300 300" class="w-full max-w-[280px]">
+                <!-- Grid -->
+                <polygon points="150,30 257,90 257,210 150,270 43,210 43,90" fill="none" stroke="#d9d9d9" stroke-width="1"/>
+                <polygon points="150,60 232,105 232,195 150,240 68,195 68,105" fill="none" stroke="#d9d9d9" stroke-width="0.5"/>
+                <polygon points="150,90 207,120 207,180 150,210 93,180 93,120" fill="none" stroke="#d9d9d9" stroke-width="0.5"/>
+                <polygon points="150,120 182,135 182,165 150,180 118,165 118,135" fill="none" stroke="#d9d9d9" stroke-width="0.5"/>
+                <!-- Axes -->
+                <line x1="150" y1="30" x2="150" y2="270" stroke="#d9d9d9" stroke-width="0.5"/>
+                <line x1="43" y1="90" x2="257" y2="210" stroke="#d9d9d9" stroke-width="0.5"/>
+                <line x1="43" y1="210" x2="257" y2="90" stroke="#d9d9d9" stroke-width="0.5"/>
+                <!-- Data -->
+                <polygon points="150,54 240,108 230,200 150,252 75,186 68,105" fill="rgba(75,167,85,0.15)" stroke="#4ba755" stroke-width="2"/>
+                <!-- Dots -->
+                <circle cx="150" cy="54" r="4" fill="#4ba755"/>
+                <circle cx="240" cy="108" r="4" fill="#4ba755"/>
+                <circle cx="230" cy="200" r="4" fill="#4ba755"/>
+                <circle cx="150" cy="252" r="4" fill="#4ba755"/>
+                <circle cx="75" cy="186" r="4" fill="#4ba755"/>
+                <circle cx="68" cy="105" r="4" fill="#4ba755"/>
+                <!-- Labels -->
+                <text x="150" y="20" text-anchor="middle" fill="#052a64" font-size="11" font-weight="600">Compliance</text>
+                <text x="270" y="93" text-anchor="start" fill="#052a64" font-size="11" font-weight="600">Financial</text>
+                <text x="270" y="215" text-anchor="start" fill="#052a64" font-size="11" font-weight="600">Operations</text>
+                <text x="150" y="292" text-anchor="middle" fill="#052a64" font-size="11" font-weight="600">Market</text>
+                <text x="30" y="215" text-anchor="end" fill="#052a64" font-size="11" font-weight="600">Social</text>
+                <text x="30" y="93" text-anchor="end" fill="#052a64" font-size="11" font-weight="600">Digital</text>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Monthly Snapshot -->
+        <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+          <h3 class="text-base font-bold text-navy mb-4">Monthly Performance Snapshot</h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="border-b border-gray-100">
+                  <th class="text-left p-3 font-semibold text-navy">Metric</th>
+                  <th class="text-center p-3 font-semibold text-navy">Oct</th>
+                  <th class="text-center p-3 font-semibold text-navy">Nov</th>
+                  <th class="text-center p-3 font-semibold text-navy">Dec</th>
+                  <th class="text-center p-3 font-semibold text-navy">Jan</th>
+                  <th class="text-center p-3 font-semibold text-navy">Feb</th>
+                  <th class="text-center p-3 font-semibold text-navy">Mar</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-gray-50">
+                  <td class="p-3 font-medium text-navy">Revenue (R)</td>
+                  <td class="p-3 text-center text-darkgrey">12,400</td>
+                  <td class="p-3 text-center text-darkgrey">15,200</td>
+                  <td class="p-3 text-center text-darkgrey">14,800</td>
+                  <td class="p-3 text-center text-darkgrey">19,500</td>
+                  <td class="p-3 text-center text-darkgrey">23,100</td>
+                  <td class="p-3 text-center font-semibold text-green">28,400</td>
+                </tr>
+                <tr class="border-b border-gray-50">
+                  <td class="p-3 font-medium text-navy">Customers</td>
+                  <td class="p-3 text-center text-darkgrey">18</td>
+                  <td class="p-3 text-center text-darkgrey">22</td>
+                  <td class="p-3 text-center text-darkgrey">25</td>
+                  <td class="p-3 text-center text-darkgrey">31</td>
+                  <td class="p-3 text-center text-darkgrey">38</td>
+                  <td class="p-3 text-center font-semibold text-green">44</td>
+                </tr>
+                <tr class="border-b border-gray-50">
+                  <td class="p-3 font-medium text-navy">Compliance %</td>
+                  <td class="p-3 text-center text-darkgrey">42%</td>
+                  <td class="p-3 text-center text-darkgrey">55%</td>
+                  <td class="p-3 text-center text-darkgrey">65%</td>
+                  <td class="p-3 text-center text-darkgrey">70%</td>
+                  <td class="p-3 text-center text-darkgrey">74%</td>
+                  <td class="p-3 text-center font-semibold text-green">78%</td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-medium text-navy">Training Modules</td>
+                  <td class="p-3 text-center text-darkgrey">1</td>
+                  <td class="p-3 text-center text-darkgrey">3</td>
+                  <td class="p-3 text-center text-darkgrey">5</td>
+                  <td class="p-3 text-center text-darkgrey">7</td>
+                  <td class="p-3 text-center text-darkgrey">8</td>
+                  <td class="p-3 text-center font-semibold text-green">10</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== MARKETPLACE ===================== -->
+    <section data-panel="marketplace" class="hidden section-fade">
+      <div class="p-6 lg:p-8 max-w-7xl mx-auto">
+        <div class="mb-8">
+          <h1 class="text-2xl lg:text-3xl font-bold text-navy">Marketplace</h1>
+          <p class="text-darkgrey mt-1">Connect with suppliers and buyers in your sector.</p>
+        </div>
+
+        <!-- Search & Filter -->
+        <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm mb-6">
+          <div class="flex flex-col md:flex-row gap-4">
+            <div class="relative flex-1">
+              <svg class="w-5 h-5 text-darkgrey absolute left-3 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
+              <input type="text" placeholder="Search suppliers or buyers..." class="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-green/30 focus:border-green">
+            </div>
+            <select class="px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-darkgrey focus:outline-none focus:ring-2 focus:ring-green/30">
+              <option>All Sectors</option>
+              <option>Construction</option>
+              <option>Personal Care</option>
+              <option>Food & Beverage</option>
+              <option>Retail</option>
+              <option>Technology</option>
+              <option>Agriculture</option>
+            </select>
+            <select class="px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-darkgrey focus:outline-none focus:ring-2 focus:ring-green/30">
+              <option>All Provinces</option>
+              <option>Western Cape</option>
+              <option>Gauteng</option>
+              <option>KwaZulu-Natal</option>
+              <option>Eastern Cape</option>
+              <option>Free State</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="flex gap-6 border-b border-gray-200 mb-6">
+          <button class="marketplace-tab tab-active pb-3 text-sm font-medium transition" data-mktab="suppliers">Supplier Directory</button>
+          <button class="marketplace-tab pb-3 text-sm font-medium text-darkgrey transition border-b-2 border-transparent" data-mktab="buyers">Buyer Connections</button>
+        </div>
+
+        <!-- Listings -->
+        <div id="supplierGrid" class="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
+          <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-11 h-11 rounded-full bg-gradient-to-br from-green to-navy flex items-center justify-center text-white text-sm font-bold flex-shrink-0">AM</div>
+              <div class="min-w-0">
+                <p class="text-sm font-bold text-navy truncate">Adonep Materials</p>
+                <p class="text-xs text-darkgrey">Construction Supplies</p>
+              </div>
+            </div>
+            <div class="flex gap-2 mb-3">
+              <span class="text-[10px] font-medium bg-green/10 text-green px-2 py-0.5 rounded-full">Verified</span>
+              <span class="text-[10px] font-medium bg-navy/10 text-navy px-2 py-0.5 rounded-full">Western Cape</span>
+            </div>
+            <p class="text-xs text-darkgrey mb-4 line-clamp-2">Bulk building materials, cement, sand, and aggregate supply for construction sector members.</p>
+            <div class="flex gap-2">
+              <button class="flex-1 bg-green text-white text-xs font-semibold py-2 rounded-lg hover:bg-green/90 transition">Connect</button>
+              <button class="flex-1 border border-navy text-navy text-xs font-semibold py-2 rounded-lg hover:bg-navy/5 transition">View Profile</button>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-11 h-11 rounded-full bg-gradient-to-br from-amber to-red flex items-center justify-center text-white text-sm font-bold flex-shrink-0">NP</div>
+              <div class="min-w-0">
+                <p class="text-sm font-bold text-navy truncate">Natural Products SA</p>
+                <p class="text-xs text-darkgrey">Personal Care</p>
+              </div>
+            </div>
+            <div class="flex gap-2 mb-3">
+              <span class="text-[10px] font-medium bg-green/10 text-green px-2 py-0.5 rounded-full">Verified</span>
+              <span class="text-[10px] font-medium bg-navy/10 text-navy px-2 py-0.5 rounded-full">Gauteng</span>
+            </div>
+            <p class="text-xs text-darkgrey mb-4 line-clamp-2">Organic ingredients and raw materials for personal care and beauty product manufacturers.</p>
+            <div class="flex gap-2">
+              <button class="flex-1 bg-green text-white text-xs font-semibold py-2 rounded-lg hover:bg-green/90 transition">Connect</button>
+              <button class="flex-1 border border-navy text-navy text-xs font-semibold py-2 rounded-lg hover:bg-navy/5 transition">View Profile</button>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-11 h-11 rounded-full bg-gradient-to-br from-navy to-green flex items-center justify-center text-white text-sm font-bold flex-shrink-0">FD</div>
+              <div class="min-w-0">
+                <p class="text-sm font-bold text-navy truncate">FreshDirect Distributors</p>
+                <p class="text-xs text-darkgrey">Food & Beverage</p>
+              </div>
+            </div>
+            <div class="flex gap-2 mb-3">
+              <span class="text-[10px] font-medium bg-green/10 text-green px-2 py-0.5 rounded-full">Verified</span>
+              <span class="text-[10px] font-medium bg-navy/10 text-navy px-2 py-0.5 rounded-full">KwaZulu-Natal</span>
+            </div>
+            <p class="text-xs text-darkgrey mb-4 line-clamp-2">Fresh produce distribution and cold chain logistics for food entrepreneurs and caterers.</p>
+            <div class="flex gap-2">
+              <button class="flex-1 bg-green text-white text-xs font-semibold py-2 rounded-lg hover:bg-green/90 transition">Connect</button>
+              <button class="flex-1 border border-navy text-navy text-xs font-semibold py-2 rounded-lg hover:bg-navy/5 transition">View Profile</button>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-11 h-11 rounded-full bg-gradient-to-br from-green to-amber flex items-center justify-center text-white text-sm font-bold flex-shrink-0">TS</div>
+              <div class="min-w-0">
+                <p class="text-sm font-bold text-navy truncate">TechStart Solutions</p>
+                <p class="text-xs text-darkgrey">Digital Services</p>
+              </div>
+            </div>
+            <div class="flex gap-2 mb-3">
+              <span class="text-[10px] font-medium bg-green/10 text-green px-2 py-0.5 rounded-full">Verified</span>
+              <span class="text-[10px] font-medium bg-navy/10 text-navy px-2 py-0.5 rounded-full">Western Cape</span>
+            </div>
+            <p class="text-xs text-darkgrey mb-4 line-clamp-2">Affordable website development, POS systems, and digital tools for small businesses.</p>
+            <div class="flex gap-2">
+              <button class="flex-1 bg-green text-white text-xs font-semibold py-2 rounded-lg hover:bg-green/90 transition">Connect</button>
+              <button class="flex-1 border border-navy text-navy text-xs font-semibold py-2 rounded-lg hover:bg-navy/5 transition">View Profile</button>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-11 h-11 rounded-full bg-gradient-to-br from-navy to-amber flex items-center justify-center text-white text-sm font-bold flex-shrink-0">PW</div>
+              <div class="min-w-0">
+                <p class="text-sm font-bold text-navy truncate">PackWise Packaging</p>
+                <p class="text-xs text-darkgrey">Packaging & Labels</p>
+              </div>
+            </div>
+            <div class="flex gap-2 mb-3">
+              <span class="text-[10px] font-medium bg-amber/10 text-amber px-2 py-0.5 rounded-full">Pending</span>
+              <span class="text-[10px] font-medium bg-navy/10 text-navy px-2 py-0.5 rounded-full">Gauteng</span>
+            </div>
+            <p class="text-xs text-darkgrey mb-4 line-clamp-2">Custom packaging, labelling, and branding materials for retail and food sector products.</p>
+            <div class="flex gap-2">
+              <button class="flex-1 bg-green text-white text-xs font-semibold py-2 rounded-lg hover:bg-green/90 transition">Connect</button>
+              <button class="flex-1 border border-navy text-navy text-xs font-semibold py-2 rounded-lg hover:bg-navy/5 transition">View Profile</button>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-11 h-11 rounded-full bg-gradient-to-br from-red to-navy flex items-center justify-center text-white text-sm font-bold flex-shrink-0">AG</div>
+              <div class="min-w-0">
+                <p class="text-sm font-bold text-navy truncate">AgriGrow Farms</p>
+                <p class="text-xs text-darkgrey">Agriculture</p>
+              </div>
+            </div>
+            <div class="flex gap-2 mb-3">
+              <span class="text-[10px] font-medium bg-green/10 text-green px-2 py-0.5 rounded-full">Verified</span>
+              <span class="text-[10px] font-medium bg-navy/10 text-navy px-2 py-0.5 rounded-full">Free State</span>
+            </div>
+            <p class="text-xs text-darkgrey mb-4 line-clamp-2">Agricultural inputs, seeds, fertilisers, and farming equipment for smallholder farmers.</p>
+            <div class="flex gap-2">
+              <button class="flex-1 bg-green text-white text-xs font-semibold py-2 rounded-lg hover:bg-green/90 transition">Connect</button>
+              <button class="flex-1 border border-navy text-navy text-xs font-semibold py-2 rounded-lg hover:bg-navy/5 transition">View Profile</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="buyerGrid" class="hidden grid md:grid-cols-2 xl:grid-cols-3 gap-5">
+          <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-11 h-11 rounded-full bg-gradient-to-br from-navy to-green flex items-center justify-center text-white text-sm font-bold flex-shrink-0">WC</div>
+              <div class="min-w-0">
+                <p class="text-sm font-bold text-navy truncate">WC Provincial Government</p>
+                <p class="text-xs text-darkgrey">Public Sector Procurement</p>
+              </div>
+            </div>
+            <div class="flex gap-2 mb-3">
+              <span class="text-[10px] font-medium bg-green/10 text-green px-2 py-0.5 rounded-full">Active Buyer</span>
+              <span class="text-[10px] font-medium bg-navy/10 text-navy px-2 py-0.5 rounded-full">Western Cape</span>
+            </div>
+            <p class="text-xs text-darkgrey mb-4 line-clamp-2">Procurement opportunities for compliant small businesses in construction and maintenance services.</p>
+            <div class="flex gap-2">
+              <button class="flex-1 bg-green text-white text-xs font-semibold py-2 rounded-lg hover:bg-green/90 transition">Apply</button>
+              <button class="flex-1 border border-navy text-navy text-xs font-semibold py-2 rounded-lg hover:bg-navy/5 transition">View Details</button>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-11 h-11 rounded-full bg-gradient-to-br from-amber to-green flex items-center justify-center text-white text-sm font-bold flex-shrink-0">SR</div>
+              <div class="min-w-0">
+                <p class="text-sm font-bold text-navy truncate">Shoprite Group</p>
+                <p class="text-xs text-darkgrey">Retail Chain</p>
+              </div>
+            </div>
+            <div class="flex gap-2 mb-3">
+              <span class="text-[10px] font-medium bg-green/10 text-green px-2 py-0.5 rounded-full">Active Buyer</span>
+              <span class="text-[10px] font-medium bg-navy/10 text-navy px-2 py-0.5 rounded-full">National</span>
+            </div>
+            <p class="text-xs text-darkgrey mb-4 line-clamp-2">Seeking local food producers and personal care product suppliers for store-level procurement.</p>
+            <div class="flex gap-2">
+              <button class="flex-1 bg-green text-white text-xs font-semibold py-2 rounded-lg hover:bg-green/90 transition">Apply</button>
+              <button class="flex-1 border border-navy text-navy text-xs font-semibold py-2 rounded-lg hover:bg-navy/5 transition">View Details</button>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-11 h-11 rounded-full bg-gradient-to-br from-green to-navy flex items-center justify-center text-white text-sm font-bold flex-shrink-0">CC</div>
+              <div class="min-w-0">
+                <p class="text-sm font-bold text-navy truncate">Cape Construction Co.</p>
+                <p class="text-xs text-darkgrey">Main Contractor</p>
+              </div>
+            </div>
+            <div class="flex gap-2 mb-3">
+              <span class="text-[10px] font-medium bg-green/10 text-green px-2 py-0.5 rounded-full">Active Buyer</span>
+              <span class="text-[10px] font-medium bg-navy/10 text-navy px-2 py-0.5 rounded-full">Western Cape</span>
+            </div>
+            <p class="text-xs text-darkgrey mb-4 line-clamp-2">Sub-contracting opportunities for painting, electrical, and plumbing services on government projects.</p>
+            <div class="flex gap-2">
+              <button class="flex-1 bg-green text-white text-xs font-semibold py-2 rounded-lg hover:bg-green/90 transition">Apply</button>
+              <button class="flex-1 border border-navy text-navy text-xs font-semibold py-2 rounded-lg hover:bg-navy/5 transition">View Details</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SUPPORT ===================== -->
+    <section data-panel="support" class="hidden section-fade">
+      <div class="p-6 lg:p-8 max-w-7xl mx-auto">
+        <div class="mb-8">
+          <h1 class="text-2xl lg:text-3xl font-bold text-navy">Support</h1>
+          <p class="text-darkgrey mt-1">Get help, schedule mentoring sessions, and connect with your support network.</p>
+        </div>
+
+        <!-- Support Tabs -->
+        <div class="flex gap-6 border-b border-gray-200 mb-8 overflow-x-auto">
+          <button class="support-tab tab-active pb-3 text-sm font-medium transition whitespace-nowrap" data-suptab="faq">FAQ</button>
+          <button class="support-tab pb-3 text-sm font-medium text-darkgrey transition border-b-2 border-transparent whitespace-nowrap" data-suptab="mentorship">Mentorship</button>
+          <button class="support-tab pb-3 text-sm font-medium text-darkgrey transition border-b-2 border-transparent whitespace-nowrap" data-suptab="tickets">Support Tickets</button>
+          <button class="support-tab pb-3 text-sm font-medium text-darkgrey transition border-b-2 border-transparent whitespace-nowrap" data-suptab="whatsapp">WhatsApp Groups</button>
+        </div>
+
+        <!-- FAQ -->
+        <div id="faqPanel" class="space-y-0">
+          <div class="border-b border-gray-100">
+            <button class="faq-toggle w-full flex items-center justify-between py-4 text-left">
+              <span class="text-sm font-semibold text-navy">What is the Market Access Program?</span>
+              <svg class="w-5 h-5 text-darkgrey transition-transform flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="accordion-body">
+              <p class="text-sm text-darkgrey pb-4">The IEGF Market Access Program is a structured 18-month business development and sustainability program designed to build compliant, financially stable, operationally sound, and socially responsible businesses across multiple sectors. It covers compliance, branding, operations, mentoring, expansion, and community impact.</p>
+            </div>
+          </div>
+          <div class="border-b border-gray-100">
+            <button class="faq-toggle w-full flex items-center justify-between py-4 text-left">
+              <span class="text-sm font-semibold text-navy">How long does each stage last?</span>
+              <svg class="w-5 h-5 text-darkgrey transition-transform flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="accordion-body">
+              <p class="text-sm text-darkgrey pb-4">Each stage spans 3 months, making the full program 18 months. Stage 1 (Months 1-3) covers Compliance & Financial Wellbeing, Stage 2 (Months 4-6) covers Branding & Infrastructure, and so on through all 6 stages.</p>
+            </div>
+          </div>
+          <div class="border-b border-gray-100">
+            <button class="faq-toggle w-full flex items-center justify-between py-4 text-left">
+              <span class="text-sm font-semibold text-navy">What costs am I responsible for?</span>
+              <svg class="w-5 h-5 text-darkgrey transition-transform flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="accordion-body">
+              <p class="text-sm text-darkgrey pb-4">Each stage has specific member costs. Stage 1 includes company registration fees, tax clearance, and accounting setup. Stage 2 covers branding and digital setup. Later stages include operational tools, expansion capital, and CSI contributions. Sponsors may subsidise some costs.</p>
+            </div>
+          </div>
+          <div class="border-b border-gray-100">
+            <button class="faq-toggle w-full flex items-center justify-between py-4 text-left">
+              <span class="text-sm font-semibold text-navy">How do I access funding assistance?</span>
+              <svg class="w-5 h-5 text-darkgrey transition-transform flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="accordion-body">
+              <p class="text-sm text-darkgrey pb-4">Funding readiness training is provided in Stage 1, along with assistance submitting grant applications. Additional funding guidance is available in Stage 5 for members preparing to scale their operations.</p>
+            </div>
+          </div>
+          <div class="border-b border-gray-100">
+            <button class="faq-toggle w-full flex items-center justify-between py-4 text-left">
+              <span class="text-sm font-semibold text-navy">What happens when I complete the program?</span>
+              <svg class="w-5 h-5 text-darkgrey transition-transform flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="accordion-body">
+              <p class="text-sm text-darkgrey pb-4">All participants who complete the 18-month program automatically qualify for entry into the IEGF Awards & Recognition Program. The Awards Gala recognises top performers, celebrates compliance excellence, highlights growth milestones, and connects members with investors and partners.</p>
+            </div>
+          </div>
+          <div class="border-b border-gray-100">
+            <button class="faq-toggle w-full flex items-center justify-between py-4 text-left">
+              <span class="text-sm font-semibold text-navy">Is the program delivered online or in person?</span>
+              <svg class="w-5 h-5 text-darkgrey transition-transform flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="accordion-body">
+              <p class="text-sm text-darkgrey pb-4">The program uses a hybrid delivery model combining online and face-to-face sessions. Communication happens through WhatsApp sector groups, and all training modules and resources are available through this dedicated membership portal.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mentorship -->
+        <div id="mentorshipPanel" class="hidden">
+          <div class="grid lg:grid-cols-2 gap-6">
+            <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+              <h3 class="text-base font-bold text-navy mb-4">Your Mentor</h3>
+              <div class="flex items-center gap-4 mb-4">
+                <div class="w-14 h-14 rounded-full bg-gradient-to-br from-navy to-green flex items-center justify-center text-white text-lg font-bold">TN</div>
+                <div>
+                  <p class="font-semibold text-navy">Thabo Ndlovu</p>
+                  <p class="text-sm text-darkgrey">Senior Business Mentor</p>
+                  <p class="text-xs text-green">Available</p>
+                </div>
+              </div>
+              <p class="text-sm text-darkgrey mb-4">15 years experience in SMME development across construction and services sectors. IEGF certified mentor since 2024.</p>
+              <button class="w-full bg-green text-white text-sm font-semibold py-2.5 rounded-xl hover:bg-green/90 transition">Schedule Session</button>
+            </div>
+            <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+              <h3 class="text-base font-bold text-navy mb-4">Upcoming Sessions</h3>
+              <div class="space-y-3">
+                <div class="flex items-center gap-3 p-3 bg-green/5 rounded-xl border border-green/20">
+                  <div class="w-10 h-10 rounded-lg bg-green/10 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-5 h-5 text-green" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <p class="text-sm font-medium text-navy">Growth Review Session</p>
+                    <p class="text-xs text-darkgrey">Mar 28, 2026 — 10:00 AM</p>
+                  </div>
+                  <span class="text-[10px] font-medium bg-green/10 text-green px-2 py-0.5 rounded-full flex-shrink-0">Confirmed</span>
+                </div>
+                <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
+                  <div class="w-10 h-10 rounded-lg bg-navy/10 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-5 h-5 text-navy" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <p class="text-sm font-medium text-navy">Operations Systems Check-in</p>
+                    <p class="text-xs text-darkgrey">Apr 11, 2026 — 2:00 PM</p>
+                  </div>
+                  <span class="text-[10px] font-medium bg-navy/10 text-navy px-2 py-0.5 rounded-full flex-shrink-0">Scheduled</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tickets -->
+        <div id="ticketsPanel" class="hidden">
+          <div class="grid lg:grid-cols-5 gap-6">
+            <div class="lg:col-span-2 bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+              <h3 class="text-base font-bold text-navy mb-4">New Support Ticket</h3>
+              <form class="space-y-4" onsubmit="return false;">
+                <div>
+                  <label class="text-xs font-medium text-navy block mb-1">Subject</label>
+                  <input type="text" class="w-full px-3 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-green/30 focus:border-green" placeholder="Brief description of your issue">
+                </div>
+                <div>
+                  <label class="text-xs font-medium text-navy block mb-1">Category</label>
+                  <select class="w-full px-3 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-darkgrey focus:outline-none focus:ring-2 focus:ring-green/30">
+                    <option>Compliance</option>
+                    <option>Training</option>
+                    <option>Funding</option>
+                    <option>Technical</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="text-xs font-medium text-navy block mb-1">Description</label>
+                  <textarea rows="4" class="w-full px-3 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-green/30 focus:border-green resize-none" placeholder="Describe your issue in detail..."></textarea>
+                </div>
+                <button type="submit" class="w-full bg-green text-white text-sm font-semibold py-2.5 rounded-xl hover:bg-green/90 transition">Submit Ticket</button>
+              </form>
+            </div>
+            <div class="lg:col-span-3 bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+              <h3 class="text-base font-bold text-navy mb-4">Your Tickets</h3>
+              <div class="space-y-3">
+                <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
+                  <div class="flex-1 min-w-0">
+                    <p class="text-sm font-medium text-navy">Unable to access training module 7</p>
+                    <p class="text-xs text-darkgrey">Ticket #1042 — Technical</p>
+                  </div>
+                  <span class="text-[10px] font-medium bg-green/10 text-green px-2 py-0.5 rounded-full flex-shrink-0">Resolved</span>
+                </div>
+                <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
+                  <div class="flex-1 min-w-0">
+                    <p class="text-sm font-medium text-navy">Funding application status query</p>
+                    <p class="text-xs text-darkgrey">Ticket #1087 — Funding</p>
+                  </div>
+                  <span class="text-[10px] font-medium bg-amber/10 text-amber px-2 py-0.5 rounded-full flex-shrink-0">In Progress</span>
+                </div>
+                <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
+                  <div class="flex-1 min-w-0">
+                    <p class="text-sm font-medium text-navy">Request for additional compliance documents</p>
+                    <p class="text-xs text-darkgrey">Ticket #1103 — Compliance</p>
+                  </div>
+                  <span class="text-[10px] font-medium bg-navy/10 text-navy px-2 py-0.5 rounded-full flex-shrink-0">Open</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- WhatsApp -->
+        <div id="whatsappPanel" class="hidden">
+          <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
+            <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 rounded-xl bg-green/10 flex items-center justify-center">
+                  <svg class="w-6 h-6 text-green" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                </div>
+                <div>
+                  <p class="text-sm font-bold text-navy">MAP General</p>
+                  <p class="text-xs text-darkgrey">234 members</p>
+                </div>
+              </div>
+              <p class="text-xs text-darkgrey mb-4">General communication group for all MAP participants. Updates, announcements, and community discussions.</p>
+              <button class="w-full bg-green text-white text-xs font-semibold py-2.5 rounded-lg hover:bg-green/90 transition">Join Group</button>
+            </div>
+            <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 rounded-xl bg-green/10 flex items-center justify-center">
+                  <svg class="w-6 h-6 text-green" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                </div>
+                <div>
+                  <p class="text-sm font-bold text-navy">Construction Sector</p>
+                  <p class="text-xs text-darkgrey">87 members</p>
+                </div>
+              </div>
+              <p class="text-xs text-darkgrey mb-4">Sector-specific group for construction industry members. Share opportunities, advice, and connect with peers.</p>
+              <button class="w-full bg-green text-white text-xs font-semibold py-2.5 rounded-lg hover:bg-green/90 transition">Join Group</button>
+            </div>
+            <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 rounded-xl bg-green/10 flex items-center justify-center">
+                  <svg class="w-6 h-6 text-green" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                </div>
+                <div>
+                  <p class="text-sm font-bold text-navy">Stage 3 Cohort</p>
+                  <p class="text-xs text-darkgrey">42 members</p>
+                </div>
+              </div>
+              <p class="text-xs text-darkgrey mb-4">Connect with fellow members currently in Stage 3 — Operations, Systems & Risk Management.</p>
+              <button class="w-full bg-green text-white text-xs font-semibold py-2.5 rounded-lg hover:bg-green/90 transition">Join Group</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== AWARDS ===================== -->
+    <section data-panel="awards" class="hidden section-fade">
+      <div class="p-6 lg:p-8 max-w-7xl mx-auto">
+        <div class="mb-8">
+          <h1 class="text-2xl lg:text-3xl font-bold text-navy">Awards & Recognition</h1>
+          <p class="text-darkgrey mt-1">Track your path to the IEGF Awards Gala and celebrate your milestones.</p>
+        </div>
+
+        <!-- Gala Hero -->
+        <div class="bg-gradient-to-br from-navy to-navy/80 rounded-2xl p-8 lg:p-10 text-white mb-8 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-64 h-64 bg-green/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+          <div class="absolute bottom-0 left-0 w-48 h-48 bg-green/5 rounded-full translate-y-1/2 -translate-x-1/3"></div>
+          <div class="relative">
+            <span class="text-xs font-medium bg-green/20 text-green px-3 py-1 rounded-full">Upcoming Event</span>
+            <h2 class="text-2xl lg:text-3xl font-bold mt-4 mb-2">IEGF Awards & Recognition Gala 2027</h2>
+            <p class="text-white/80 mb-4">Celebrating compliance excellence, growth milestones, and community impact across all MAP sectors.</p>
+            <div class="flex flex-wrap gap-6 text-sm text-white/70 mb-6">
+              <span class="flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>
+                September 2027
+              </span>
+              <span class="flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+                Cape Town, South Africa
+              </span>
+            </div>
+            <button class="bg-green text-white font-semibold px-6 py-2.5 rounded-xl hover:bg-green/90 transition">RSVP Now</button>
+          </div>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-6">
+          <!-- Qualification Criteria -->
+          <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+            <div class="flex items-center justify-between mb-5">
+              <h3 class="text-base font-bold text-navy">Award Qualification</h3>
+              <div class="flex items-center gap-2">
+                <svg class="w-12 h-12" viewBox="0 0 48 48">
+                  <circle cx="24" cy="24" r="20" fill="none" stroke="#d9d9d9" stroke-width="3"/>
+                  <circle cx="24" cy="24" r="20" fill="none" stroke="#4ba755" stroke-width="3" stroke-dasharray="125.66" stroke-dashoffset="75.4" class="progress-ring-circle"/>
+                  <text x="24" y="28" text-anchor="middle" fill="#052a64" font-size="11" font-weight="700" font-family="Montserrat">40%</text>
+                </svg>
+              </div>
+            </div>
+            <div class="space-y-3">
+              <div class="flex items-center gap-3">
+                <div class="w-6 h-6 rounded-full bg-green flex items-center justify-center flex-shrink-0">
+                  <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                </div>
+                <span class="text-sm text-navy">Complete Stage 1 — Compliance & Financial Wellbeing</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-6 h-6 rounded-full bg-green flex items-center justify-center flex-shrink-0">
+                  <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                </div>
+                <span class="text-sm text-navy">Complete Stage 2 — Branding & Infrastructure</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-6 h-6 rounded-full bg-lightgrey flex items-center justify-center flex-shrink-0">
+                  <span class="text-[10px] font-bold text-darkgrey">3</span>
+                </div>
+                <span class="text-sm text-darkgrey">Compliance score above 85%</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-6 h-6 rounded-full bg-lightgrey flex items-center justify-center flex-shrink-0">
+                  <span class="text-[10px] font-bold text-darkgrey">4</span>
+                </div>
+                <span class="text-sm text-darkgrey">Submit 3 quarterly progress reports</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-6 h-6 rounded-full bg-lightgrey flex items-center justify-center flex-shrink-0">
+                  <span class="text-[10px] font-bold text-darkgrey">5</span>
+                </div>
+                <span class="text-sm text-darkgrey">Complete CSI community impact project</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Milestones -->
+          <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+            <h3 class="text-base font-bold text-navy mb-5">Recognition Milestones</h3>
+            <div class="space-y-0 border-l-2 border-lightgrey ml-3">
+              <div class="relative pl-6 pb-5">
+                <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-green flex items-center justify-center">
+                  <svg class="w-2.5 h-2.5 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                </div>
+                <p class="text-sm font-semibold text-navy">First Document Approved</p>
+                <p class="text-xs text-darkgrey">Earned Oct 15, 2025</p>
+              </div>
+              <div class="relative pl-6 pb-5">
+                <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-green flex items-center justify-center">
+                  <svg class="w-2.5 h-2.5 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                </div>
+                <p class="text-sm font-semibold text-navy">Stage 1 Complete</p>
+                <p class="text-xs text-darkgrey">Earned Dec 20, 2025</p>
+              </div>
+              <div class="relative pl-6 pb-5">
+                <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-green flex items-center justify-center">
+                  <svg class="w-2.5 h-2.5 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                </div>
+                <p class="text-sm font-semibold text-navy">Financial Readiness Certified</p>
+                <p class="text-xs text-darkgrey">Earned Jan 28, 2026</p>
+              </div>
+              <div class="relative pl-6 pb-5">
+                <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-green flex items-center justify-center">
+                  <svg class="w-2.5 h-2.5 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                </div>
+                <p class="text-sm font-semibold text-navy">Stage 2 Complete</p>
+                <p class="text-xs text-darkgrey">Earned Mar 18, 2026</p>
+              </div>
+              <div class="relative pl-6 pb-5">
+                <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-lightgrey flex items-center justify-center">
+                  <svg class="w-2.5 h-2.5 text-darkgrey" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg>
+                </div>
+                <p class="text-sm font-medium text-darkgrey">First Marketplace Connection</p>
+                <p class="text-xs text-darkgrey">Locked — Complete Stage 3</p>
+              </div>
+              <div class="relative pl-6">
+                <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-lightgrey flex items-center justify-center">
+                  <svg class="w-2.5 h-2.5 text-darkgrey" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg>
+                </div>
+                <p class="text-sm font-medium text-darkgrey">Community Impact Champion</p>
+                <p class="text-xs text-darkgrey">Locked — Complete Stage 6</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // ==================== DATA ====================
+    const STAGES = [
+      {
+        id: 1, name: 'Compliance & Financial Wellbeing', months: '1–3', status: 'complete',
+        objective: 'To formalise businesses, stabilise financial behaviour, and prepare members for funding.',
+        deliverables: [
+          { text: 'Business compliance assessment', done: true },
+          { text: 'Company registration support', done: true },
+          { text: 'Tax registration assistance', done: true },
+          { text: 'Basic compliance document setup', done: true },
+          { text: 'Financial literacy training', done: true },
+          { text: 'Credit worthiness training', done: true },
+          { text: 'Funding readiness training', done: true },
+          { text: 'Assistance with funding applications', done: true },
+          { text: 'Personal financial wellbeing training', done: true },
+          { text: 'Bank account guidance and setup', done: true }
+        ],
+        mindset: ['From hustle to enterprise', 'Financial discipline', 'Separation of personal and business finances'],
+        costs: ['Company registration fees', 'Tax clearance / compliance fees', 'Accounting setup', 'Bank charges', 'Documentation certification']
+      },
+      {
+        id: 2, name: 'Branding & Infrastructure', months: '4–6', status: 'complete',
+        objective: 'To position the business professionally in the market and upgrade infrastructure using approved funding.',
+        deliverables: [
+          { text: 'Digital presence setup guidance', done: true },
+          { text: 'Branding development support', done: true },
+          { text: 'Product/service positioning training', done: true },
+          { text: 'Digital marketing training', done: true },
+          { text: 'Digital risk awareness training', done: true },
+          { text: 'Infrastructure upgrade assistance', done: true },
+          { text: 'Supplier and partner introductions', done: true },
+          { text: 'Market access integration', done: true }
+        ],
+        mindset: ['Professional identity', 'Market positioning', 'Value creation vs price competition'],
+        costs: ['Logo and branding development', 'Website or digital setup', 'Social media marketing', 'Infrastructure upgrades', 'Equipment purchases']
+      },
+      {
+        id: 3, name: 'Operations, Systems & Risk Management', months: '7–9', status: 'current',
+        objective: 'To build structured daily operations and install measurable business systems.',
+        deliverables: [
+          { text: 'Operations management training', done: true },
+          { text: 'Productivity systems setup', done: false },
+          { text: 'Expense tracking systems', done: false },
+          { text: 'Profit management training', done: false },
+          { text: 'Risk management framework', done: false },
+          { text: 'Customer management systems', done: false },
+          { text: 'Stock and supplier management', done: false },
+          { text: 'Business monitoring tools via portal', done: false }
+        ],
+        mindset: ['Discipline and consistency', 'Data-driven decision making', 'Accountability'],
+        costs: ['Accounting software', 'Inventory systems', 'POS systems', 'Operational templates', 'Staff training']
+      },
+      {
+        id: 4, name: 'Mentoring & Monitoring', months: '10–12', status: 'locked',
+        objective: 'To ensure business sustainability through guided support.',
+        deliverables: [
+          { text: 'Structured mentoring sessions', done: false },
+          { text: 'Monthly performance check-ins', done: false },
+          { text: 'Growth analysis', done: false },
+          { text: 'Problem-solving support', done: false },
+          { text: 'Peer networking sessions', done: false },
+          { text: 'Access to supplier & buyer marketplace', done: false },
+          { text: 'Growth milestone tracking via portal', done: false }
+        ],
+        mindset: ['Leadership maturity', 'Sustainability planning', 'Growth mindset'],
+        costs: ['Staff hires', 'Operational scaling', 'Marketing campaigns', 'Professional service upgrades']
+      },
+      {
+        id: 5, name: 'Expansion Support & Growth Consolidation', months: '13–15', status: 'locked',
+        objective: 'To strengthen stability and prepare for long-term sustainability.',
+        deliverables: [
+          { text: 'Advanced growth training', done: false },
+          { text: 'Access to larger supplier networks', done: false },
+          { text: 'Expansion planning assistance', done: false },
+          { text: 'Business model refinement', done: false },
+          { text: 'Risk re-evaluation', done: false },
+          { text: 'Additional funding guidance', done: false }
+        ],
+        mindset: ['Scaling with stability', 'Strategic thinking', 'Long-term planning'],
+        costs: ['Expansion capital', 'Additional infrastructure', 'Staff development', 'Market expansion']
+      },
+      {
+        id: 6, name: 'Community Impact (CSI)', months: '16–18', status: 'locked',
+        objective: 'To develop socially responsible businesses that contribute to economic growth.',
+        deliverables: [
+          { text: 'CSI planning guidance', done: false },
+          { text: 'Impact reporting support', done: false },
+          { text: 'Community partnership introductions', done: false },
+          { text: 'Impact documentation assistance', done: false },
+          { text: 'Employ additional person OR invest in community initiative', done: false }
+        ],
+        mindset: ['Purpose-driven entrepreneurship', 'Social responsibility', 'Legacy building'],
+        costs: ['Employment costs', 'Community project contributions', 'Donation allocations', 'CSI activity funding']
+      }
+    ];
+
+    const TRAINING_MODULES = [
+      { id: 1, stage: 1, title: 'Business Registration & CIPC', desc: 'Step-by-step guide to formalising your business entity.', progress: 100, type: 'video' },
+      { id: 2, stage: 1, title: 'Financial Literacy Fundamentals', desc: 'Understanding income, expenses, and building financial discipline.', progress: 100, type: 'course' },
+      { id: 3, stage: 1, title: 'Credit Worthiness & Funding Readiness', desc: 'Improving your credit profile and preparing for grant applications.', progress: 85, type: 'webinar' },
+      { id: 4, stage: 2, title: 'Building Your Brand Identity', desc: 'Create a professional brand that resonates with your market.', progress: 100, type: 'course' },
+      { id: 5, stage: 2, title: 'Digital Marketing Essentials', desc: 'Social media, online presence, and digital risk awareness.', progress: 100, type: 'video' },
+      { id: 6, stage: 2, title: 'Product & Service Positioning', desc: 'Position your offering for maximum market impact.', progress: 100, type: 'course' },
+      { id: 7, stage: 3, title: 'Operations Management', desc: 'Building structured daily operations and productivity systems.', progress: 45, type: 'course' },
+      { id: 8, stage: 3, title: 'Expense Tracking & Profit Management', desc: 'Install expense tracking and understand profit margins.', progress: 20, type: 'video' },
+      { id: 9, stage: 3, title: 'Risk Management Framework', desc: 'Identify, assess, and mitigate business risks.', progress: 0, type: 'webinar' },
+      { id: 10, stage: 4, title: 'Mentoring Best Practices', desc: 'Making the most of your mentoring relationship.', progress: 0, type: 'course' },
+      { id: 11, stage: 5, title: 'Scaling Your Business', desc: 'Growth strategies, expansion planning, and risk re-evaluation.', progress: 0, type: 'course' },
+      { id: 12, stage: 6, title: 'CSI Planning & Impact Reporting', desc: 'Design and document your community impact project.', progress: 0, type: 'webinar' }
+    ];
+
+    // ==================== NAVIGATION ====================
+    const navBtns = document.querySelectorAll('.nav-btn');
+    const panels = document.querySelectorAll('[data-panel]');
+    const mainContent = document.getElementById('mainContent');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarBackdrop = document.getElementById('sidebarBackdrop');
+    const sidebarToggle = document.getElementById('sidebarToggle');
+
+    function navigateTo(section) {
+      panels.forEach(p => p.classList.add('hidden'));
+      const target = document.querySelector(`[data-panel="${section}"]`);
+      if (target) {
+        target.classList.remove('hidden');
+        target.classList.remove('section-fade');
+        void target.offsetWidth;
+        target.classList.add('section-fade');
+      }
+      navBtns.forEach(btn => {
+        if (btn.dataset.nav === section) {
+          btn.classList.add('bg-green/10', 'text-green');
+          btn.classList.remove('text-darkgrey', 'hover:bg-gray-100');
+        } else {
+          btn.classList.remove('bg-green/10', 'text-green');
+          btn.classList.add('text-darkgrey', 'hover:bg-gray-100');
+        }
+      });
+      mainContent.scrollTop = 0;
+      closeSidebar();
+      history.replaceState(null, '', '#' + section);
+    }
+
+    navBtns.forEach(btn => btn.addEventListener('click', () => navigateTo(btn.dataset.nav)));
+
+    // Mobile sidebar
+    function openSidebar() {
+      sidebar.classList.remove('-translate-x-full');
+      sidebarBackdrop.classList.remove('hidden');
+      document.body.classList.add('overflow-hidden', 'lg:overflow-auto');
+    }
+    function closeSidebar() {
+      sidebar.classList.add('-translate-x-full');
+      sidebar.classList.remove('lg:-translate-x-full');
+      sidebarBackdrop.classList.add('hidden');
+      document.body.classList.remove('overflow-hidden');
+    }
+    sidebarToggle.addEventListener('click', openSidebar);
+    sidebarBackdrop.addEventListener('click', closeSidebar);
+
+    // ==================== TIMELINE ====================
+    function renderTimeline() {
+      const bar = document.getElementById('timelineBar');
+      const currentMonth = 7; // Stage 3, month 7
+      let html = '';
+      for (let i = 1; i <= 18; i++) {
+        let cls = 'bg-lightgrey';
+        if (i < currentMonth) cls = 'bg-green';
+        else if (i === currentMonth) cls = 'bg-green animate-pulse';
+        html += `<div class="flex-1 h-3 rounded-full ${cls}" title="Month ${i}"></div>`;
+      }
+      bar.innerHTML = html;
+    }
+
+    // ==================== STAGE TRACKER ====================
+    function renderStageTracker() {
+      const desktop = document.getElementById('stageTracker');
+      const mobile = document.getElementById('stageTrackerMobile');
+      let dHtml = '';
+      let mHtml = '';
+      STAGES.forEach((s, i) => {
+        const isComplete = s.status === 'complete';
+        const isCurrent = s.status === 'current';
+        const circleClass = isComplete ? 'bg-green text-white' : isCurrent ? 'bg-green text-white pulse-ring' : 'bg-lightgrey text-darkgrey';
+        const lineClass = isComplete ? 'bg-green' : 'bg-lightgrey';
+        const icon = isComplete
+          ? '<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>'
+          : `<span class="text-sm font-bold">${s.id}</span>`;
+
+        dHtml += `<div class="flex flex-col items-center flex-1">
+          <div class="w-11 h-11 rounded-full ${circleClass} flex items-center justify-center">${icon}</div>
+          <p class="text-[11px] font-medium text-center mt-2 ${isCurrent ? 'text-green' : isComplete ? 'text-navy' : 'text-darkgrey'}">${s.name}</p>
+          <p class="text-[10px] text-darkgrey">Month ${s.months}</p>
+        </div>`;
+        if (i < STAGES.length - 1) dHtml += `<div class="flex-1 h-0.5 ${lineClass} mt-5 max-w-[60px]"></div>`;
+
+        mHtml += `<div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full ${circleClass} flex items-center justify-center flex-shrink-0">${icon}</div>
+          <div>
+            <p class="text-sm font-medium ${isCurrent ? 'text-green' : isComplete ? 'text-navy' : 'text-darkgrey'}">${s.name}</p>
+            <p class="text-xs text-darkgrey">Month ${s.months}</p>
+          </div>
+        </div>`;
+      });
+      desktop.innerHTML = dHtml;
+      mobile.innerHTML = mHtml;
+    }
+
+    // ==================== STAGE ACCORDIONS ====================
+    function renderAccordions() {
+      const container = document.getElementById('stageAccordions');
+      let html = '';
+      STAGES.forEach(s => {
+        const statusBadge = s.status === 'complete'
+          ? '<span class="text-xs font-medium bg-green/10 text-green px-2.5 py-1 rounded-full">Completed</span>'
+          : s.status === 'current'
+          ? '<span class="text-xs font-medium bg-amber/10 text-amber px-2.5 py-1 rounded-full">In Progress</span>'
+          : '<span class="text-xs font-medium bg-gray-100 text-darkgrey px-2.5 py-1 rounded-full">Locked</span>';
+
+        const doneCount = s.deliverables.filter(d => d.done).length;
+        const totalCount = s.deliverables.length;
+
+        html += `<div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+          <button class="accordion-toggle w-full flex items-center justify-between p-5 text-left" data-stage="${s.id}">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-xl bg-navy/10 flex items-center justify-center flex-shrink-0">
+                <span class="text-sm font-bold text-navy">${s.id}</span>
+              </div>
+              <div>
+                <p class="text-sm font-bold text-navy">${s.name}</p>
+                <p class="text-xs text-darkgrey">Month ${s.months} — ${doneCount}/${totalCount} tasks</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              ${statusBadge}
+              <svg class="w-5 h-5 text-darkgrey transition-transform accordion-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </div>
+          </button>
+          <div class="accordion-body">
+            <div class="px-5 pb-5">
+              <div class="grid md:grid-cols-2 gap-4">
+                <div class="bg-gray-50 rounded-xl p-4">
+                  <h4 class="text-xs font-bold text-navy uppercase tracking-wide mb-3">Objective</h4>
+                  <p class="text-sm text-darkgrey">${s.objective}</p>
+                </div>
+                <div class="bg-gray-50 rounded-xl p-4">
+                  <h4 class="text-xs font-bold text-navy uppercase tracking-wide mb-3">Mindset Focus</h4>
+                  <ul class="space-y-1.5">${s.mindset.map(m => `<li class="text-sm text-darkgrey flex items-start gap-2"><svg class="w-4 h-4 text-green flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"/></svg>${m}</li>`).join('')}</ul>
+                </div>
+                <div class="bg-gray-50 rounded-xl p-4">
+                  <h4 class="text-xs font-bold text-navy uppercase tracking-wide mb-3">Deliverables</h4>
+                  <ul class="space-y-1.5">${s.deliverables.map(d => `<li class="text-sm flex items-start gap-2"><span class="w-4 h-4 rounded flex items-center justify-center flex-shrink-0 mt-0.5 ${d.done ? 'bg-green' : 'border border-lightgrey'}">${d.done ? '<svg class="w-2.5 h-2.5 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>' : ''}</span><span class="${d.done ? 'text-navy' : 'text-darkgrey'}">${d.text}</span></li>`).join('')}</ul>
+                </div>
+                <div class="bg-gray-50 rounded-xl p-4">
+                  <h4 class="text-xs font-bold text-navy uppercase tracking-wide mb-3">Member Costs</h4>
+                  <ul class="space-y-1.5">${s.costs.map(c => `<li class="text-sm text-darkgrey flex items-start gap-2"><span class="text-darkgrey mt-1">•</span>${c}</li>`).join('')}</ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>`;
+      });
+      container.innerHTML = html;
+
+      // Bind accordion toggles
+      container.querySelectorAll('.accordion-toggle').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const body = btn.nextElementSibling;
+          const chevron = btn.querySelector('.accordion-chevron');
+          body.classList.toggle('open');
+          chevron.style.transform = body.classList.contains('open') ? 'rotate(180deg)' : '';
+        });
+      });
+    }
+
+    // ==================== TRAINING MODULES ====================
+    function renderTraining(filter) {
+      const grid = document.getElementById('trainingGrid');
+      const filtered = filter === 'all' ? TRAINING_MODULES : TRAINING_MODULES.filter(m => m.stage === parseInt(filter));
+      const typeColors = { video: 'bg-red/10 text-red', course: 'bg-navy/10 text-navy', webinar: 'bg-green/10 text-green' };
+      const typeLabels = { video: 'Video', course: 'Course', webinar: 'Webinar' };
+      const gradients = [
+        'from-navy to-navy/70', 'from-green to-green/70', 'from-navy to-green',
+        'from-green to-navy', 'from-navy/80 to-green/80', 'from-green/80 to-navy/80'
+      ];
+
+      grid.innerHTML = filtered.map((m, i) => `
+        <div class="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm">
+          <div class="h-36 bg-gradient-to-br ${gradients[i % gradients.length]} flex items-center justify-center relative">
+            ${m.type === 'video' ? '<svg class="w-14 h-14 text-white/80" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>' : m.type === 'webinar' ? '<svg class="w-14 h-14 text-white/80" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25"/></svg>' : '<svg class="w-14 h-14 text-white/80" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg>'}
+            <span class="absolute top-3 right-3 text-[10px] font-medium ${typeColors[m.type]} px-2 py-0.5 rounded-full bg-white/90">${typeLabels[m.type]}</span>
+          </div>
+          <div class="p-4">
+            <span class="text-[10px] font-medium bg-navy/10 text-navy px-2 py-0.5 rounded-full">Stage ${m.stage}</span>
+            <h3 class="text-sm font-bold text-navy mt-2 mb-1">${m.title}</h3>
+            <p class="text-xs text-darkgrey mb-3">${m.desc}</p>
+            <div class="flex items-center gap-2 mb-3">
+              <div class="flex-1 bg-lightgrey rounded-full h-1.5">
+                <div class="bg-green rounded-full h-1.5 transition-all" style="width:${m.progress}%"></div>
+              </div>
+              <span class="text-[10px] font-medium text-darkgrey">${m.progress}%</span>
+            </div>
+            <button class="w-full ${m.progress > 0 && m.progress < 100 ? 'bg-green' : m.progress === 100 ? 'bg-navy' : 'bg-green'} text-white text-xs font-semibold py-2 rounded-lg hover:opacity-90 transition">${m.progress === 100 ? 'Review' : m.progress > 0 ? 'Continue' : 'Start'}</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Training filter pills
+    document.getElementById('trainingFilters').addEventListener('click', e => {
+      const pill = e.target.closest('.filter-pill');
+      if (!pill) return;
+      document.querySelectorAll('.filter-pill').forEach(p => {
+        p.classList.remove('bg-navy', 'text-white');
+        p.classList.add('bg-white', 'text-darkgrey', 'border', 'border-lightgrey');
+      });
+      pill.classList.add('bg-navy', 'text-white');
+      pill.classList.remove('bg-white', 'text-darkgrey', 'border', 'border-lightgrey');
+      renderTraining(pill.dataset.filter);
+    });
+
+    // ==================== DOCUMENTS ====================
+    const dropZone = document.getElementById('dropZone');
+    const fileInput = document.getElementById('fileInput');
+    dropZone.addEventListener('click', () => fileInput.click());
+    dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-hover'); });
+    dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-hover'));
+    dropZone.addEventListener('drop', e => { e.preventDefault(); dropZone.classList.remove('drag-hover'); });
+
+    // ==================== MARKETPLACE TABS ====================
+    document.querySelectorAll('.marketplace-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.marketplace-tab').forEach(t => {
+          t.classList.remove('tab-active');
+          t.classList.add('text-darkgrey', 'border-transparent');
+        });
+        tab.classList.add('tab-active');
+        tab.classList.remove('text-darkgrey', 'border-transparent');
+        document.getElementById('supplierGrid').classList.toggle('hidden', tab.dataset.mktab !== 'suppliers');
+        document.getElementById('buyerGrid').classList.toggle('hidden', tab.dataset.mktab !== 'buyers');
+      });
+    });
+
+    // ==================== SUPPORT TABS ====================
+    const supportPanels = { faq: 'faqPanel', mentorship: 'mentorshipPanel', tickets: 'ticketsPanel', whatsapp: 'whatsappPanel' };
+    document.querySelectorAll('.support-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.support-tab').forEach(t => {
+          t.classList.remove('tab-active');
+          t.classList.add('text-darkgrey', 'border-transparent');
+        });
+        tab.classList.add('tab-active');
+        tab.classList.remove('text-darkgrey', 'border-transparent');
+        Object.values(supportPanels).forEach(id => document.getElementById(id).classList.add('hidden'));
+        document.getElementById(supportPanels[tab.dataset.suptab]).classList.remove('hidden');
+      });
+    });
+
+    // ==================== FAQ TOGGLES ====================
+    document.querySelectorAll('.faq-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const body = btn.nextElementSibling;
+        const chevron = btn.querySelector('svg');
+        body.classList.toggle('open');
+        chevron.style.transform = body.classList.contains('open') ? 'rotate(180deg)' : '';
+      });
+    });
+
+    // ==================== INIT ====================
+    function init() {
+      renderTimeline();
+      renderStageTracker();
+      renderAccordions();
+      renderTraining('all');
+      // Hash routing
+      const hash = window.location.hash.replace('#', '') || 'overview';
+      navigateTo(hash);
+    }
+
+    window.addEventListener('hashchange', () => {
+      const hash = window.location.hash.replace('#', '');
+      if (hash) navigateTo(hash);
+    });
+
+    init();
+  </script>
+</body>
+</html>
