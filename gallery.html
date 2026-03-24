@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery - IEGF</title>
+  <meta name="description" content="Browse photos from IEGF events, programs, and community initiatives across South Africa and beyond.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: "#052a64",
+            green: "#4ba755",
+            lightgrey: "#d9d9d9",
+            darkgrey: "#737373"
+          },
+          fontFamily: {
+            sans: ['Montserrat', 'ui-sans-serif', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="font-sans text-darkgrey antialiased">
+
+  <!-- Header -->
+  <header class="bg-white shadow-sm sticky top-0 z-50">
+    <nav class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="index.html"><img src="assets/media/logo/iegf-logo-1.png" alt="IEGF" class="h-12"></a>
+
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center space-x-6">
+        <a href="index.html" class="text-darkgrey hover:text-green transition">Home</a>
+        <a href="who-we-are.html" class="text-darkgrey hover:text-green transition">Who We Are</a>
+        <a href="what-we-do.html" class="text-darkgrey hover:text-green transition">What We Do</a>
+        <a href="get-involved.html" class="text-darkgrey hover:text-green transition">Get Involved</a>
+        <a href="partners.html" class="text-darkgrey hover:text-green transition">Partners</a>
+        <a href="gallery.html" class="text-navy font-medium hover:text-green transition">Gallery</a>
+        <a href="contact.html" class="text-darkgrey hover:text-green transition">Contact</a>
+        <a href="get-involved.html" class="bg-green text-white px-5 py-2 rounded-lg font-semibold hover:bg-opacity-90 transition focus:outline-none focus:ring-2 focus:ring-green focus:ring-offset-2">Join the Movement</a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="menuBtn" class="md:hidden text-navy focus:outline-none" aria-label="Toggle menu">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><use href="assets/icons.svg#icon-009"></use></svg>
+      </button>
+    </nav>
+
+    <!-- Mobile Nav -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
+      <div class="px-4 py-4 space-y-3">
+        <a href="index.html" class="block text-darkgrey hover:text-green">Home</a>
+        <a href="who-we-are.html" class="block text-darkgrey hover:text-green">Who We Are</a>
+        <a href="what-we-do.html" class="block text-darkgrey hover:text-green">What We Do</a>
+        <a href="get-involved.html" class="block text-darkgrey hover:text-green">Get Involved</a>
+        <a href="partners.html" class="block text-darkgrey hover:text-green">Partners</a>
+        <a href="gallery.html" class="block text-navy font-medium">Gallery</a>
+        <a href="contact.html" class="block text-darkgrey hover:text-green">Contact</a>
+        <a href="get-involved.html" class="inline-block bg-green text-white px-5 py-2 rounded-lg font-semibold mt-2">Join the Movement</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-navy to-navy/90 text-white py-16 md:py-24">
+      <div class="max-w-6xl mx-auto px-4 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-6">Gallery</h1>
+        <p class="text-xl text-white/90 max-w-3xl mx-auto">Moments from the ground — capturing the people, events, and impact that drive the IEGF movement forward.</p>
+      </div>
+    </section>
+
+    <!-- Gallery Grid -->
+    <section class="py-16 md:py-24 bg-white">
+      <div class="max-w-6xl mx-auto px-4">
+
+        <!-- Events & Partnerships -->
+        <h2 class="text-2xl font-bold text-navy mb-8">Events &amp; Partnerships</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+
+          <div class="group rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition">
+            <div class="aspect-[4/3] overflow-hidden">
+              <img src="assets/media/images/global-head-partnerships-expo.jpg" alt="Global Head of Strategic Partnerships at Entrepreneurship Expo" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+            </div>
+            <div class="p-4">
+              <p class="text-sm text-darkgrey">Strategic Partnerships at Entrepreneurship Expo</p>
+            </div>
+          </div>
+
+          <div class="group rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition">
+            <div class="aspect-[4/3] overflow-hidden">
+              <img src="assets/media/images/global-head-partnerships-expo-1.jpg" alt="Business networking event" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+            </div>
+            <div class="p-4">
+              <p class="text-sm text-darkgrey">Business Networking Event</p>
+            </div>
+          </div>
+
+          <div class="group rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition">
+            <div class="aspect-[4/3] overflow-hidden">
+              <img src="assets/media/images/global-president-interview-ccfm.jpg" alt="Global President interview at CCFM" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+            </div>
+            <div class="p-4">
+              <p class="text-sm text-darkgrey">Global President Interview at CCFM</p>
+            </div>
+          </div>
+
+          <div class="group rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition">
+            <div class="aspect-[4/3] overflow-hidden">
+              <img src="assets/media/images/gsg-attends-su20-2025.jpg" alt="GSG attends SU20 2025" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+            </div>
+            <div class="p-4">
+              <p class="text-sm text-darkgrey">Global Secretary General at SU20 2025</p>
+            </div>
+          </div>
+
+          <div class="group rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition">
+            <div class="aspect-[4/3] overflow-hidden">
+              <img src="assets/media/images/img-20260312-wa0012.jpg" alt="Women empowerment event" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+            </div>
+            <div class="p-4">
+              <p class="text-sm text-darkgrey">Women Empowerment Event</p>
+            </div>
+          </div>
+
+          <div class="group rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition">
+            <div class="aspect-[4/3] overflow-hidden">
+              <img src="assets/media/images/img-20260312-wa0013.jpg" alt="Outdoor community engagement" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+            </div>
+            <div class="p-4">
+              <p class="text-sm text-darkgrey">Community Engagement</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Programs & Capacity Building -->
+        <h2 class="text-2xl font-bold text-navy mb-8">Programs &amp; Capacity Building</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+
+          <div class="group rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition">
+            <div class="aspect-[4/3] overflow-hidden">
+              <img src="assets/media/images/iegf-business-map.jpg" alt="IEGF Business MAP session" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+            </div>
+            <div class="p-4">
+              <p class="text-sm text-darkgrey">Business MAP Session</p>
+            </div>
+          </div>
+
+          <div class="group rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition">
+            <div class="aspect-[4/3] overflow-hidden">
+              <img src="assets/media/images/iegf-business-map-1.jpg" alt="IEGF Business MAP workshop" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+            </div>
+            <div class="p-4">
+              <p class="text-sm text-darkgrey">Business MAP Workshop</p>
+            </div>
+          </div>
+
+          <div class="group rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition">
+            <div class="aspect-[4/3] overflow-hidden">
+              <img src="assets/media/images/iegf-business-map-2.jpg" alt="IEGF Business MAP community engagement" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+            </div>
+            <div class="p-4">
+              <p class="text-sm text-darkgrey">Business MAP Community Engagement</p>
+            </div>
+          </div>
+
+          <div class="group rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition">
+            <div class="aspect-[4/3] overflow-hidden">
+              <img src="assets/media/images/iegf-business-map-financial-literacy.jpg" alt="IEGF Financial Literacy program" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+            </div>
+            <div class="p-4">
+              <p class="text-sm text-darkgrey">Financial Literacy Program</p>
+            </div>
+          </div>
+
+          <div class="group rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition">
+            <div class="aspect-[4/3] overflow-hidden">
+              <img src="assets/media/images/img-20260312-wa0006.jpg" alt="Skills development group photo" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+            </div>
+            <div class="p-4">
+              <p class="text-sm text-darkgrey">Skills Development Program</p>
+            </div>
+          </div>
+
+          <div class="group rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition">
+            <div class="aspect-[4/3] overflow-hidden">
+              <img src="assets/media/images/img-20260312-wa0007.jpg" alt="Team collaboration session" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+            </div>
+            <div class="p-4">
+              <p class="text-sm text-darkgrey">Team Collaboration Session</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Sector Task Forces & Community -->
+        <h2 class="text-2xl font-bold text-navy mb-8">Sector Task Forces &amp; Community</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          <div class="group rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition">
+            <div class="aspect-[4/3] overflow-hidden">
+              <img src="assets/media/images/personal-care-sector-map.jpg" alt="Personal Care Sector MAP session" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+            </div>
+            <div class="p-4">
+              <p class="text-sm text-darkgrey">Personal Care Sector MAP</p>
+            </div>
+          </div>
+
+          <div class="group rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition">
+            <div class="aspect-[4/3] overflow-hidden">
+              <img src="assets/media/images/personal-care-sector-map-1.jpg" alt="Personal Care Sector task force workshop" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+            </div>
+            <div class="p-4">
+              <p class="text-sm text-darkgrey">Personal Care Sector Task Force Workshop</p>
+            </div>
+          </div>
+
+          <div class="group rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition">
+            <div class="aspect-[4/3] overflow-hidden">
+              <img src="assets/media/images/img-20260312-wa0008.jpg" alt="IEGF planning session" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+            </div>
+            <div class="p-4">
+              <p class="text-sm text-darkgrey">IEGF Planning Session</p>
+            </div>
+          </div>
+
+          <div class="group rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition">
+            <div class="aspect-[4/3] overflow-hidden">
+              <img src="assets/media/images/img-20260312-wa0009.jpg" alt="IEGF strategy meeting" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+            </div>
+            <div class="p-4">
+              <p class="text-sm text-darkgrey">Strategy Meeting</p>
+            </div>
+          </div>
+
+          <div class="group rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition">
+            <div class="aspect-[4/3] overflow-hidden">
+              <img src="assets/media/images/img-20260312-wa0010.jpg" alt="Grassroots community gathering" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+            </div>
+            <div class="p-4">
+              <p class="text-sm text-darkgrey">Grassroots Community Gathering</p>
+            </div>
+          </div>
+
+          <div class="group rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition">
+            <div class="aspect-[4/3] overflow-hidden">
+              <img src="assets/media/images/img-20260312-wa0011.jpg" alt="Community engagement session" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+            </div>
+            <div class="p-4">
+              <p class="text-sm text-darkgrey">Community Engagement Session</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-navy text-white">
+    <div class="max-w-6xl mx-auto px-4 py-12 md:py-16">
+      <div class="grid md:grid-cols-4 gap-8 mb-12">
+        <div class="md:col-span-2">
+          <img src="assets/media/logo/iegf-logo-1.png" alt="IEGF" class="h-14 mb-2">
+          <p class="text-white/80 text-lg mb-4">Empowering People. Shaping Nations.</p>
+          <p class="text-white/60 text-sm">A people-centred global forum transforming communities, livelihoods and nations through structured development.</p>
+        </div>
+
+        <div>
+          <h5 class="font-semibold mb-4">Quick Links</h5>
+          <ul class="space-y-2 text-white/80">
+            <li><a href="who-we-are.html" class="hover:text-green transition">Who We Are</a></li>
+            <li><a href="what-we-do.html" class="hover:text-green transition">What We Do</a></li>
+            <li><a href="get-involved.html" class="hover:text-green transition">Get Involved</a></li>
+            <li><a href="partners.html" class="hover:text-green transition">Partners</a></li>
+            <li><a href="gallery.html" class="hover:text-green transition">Gallery</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="font-semibold mb-4">Contact</h5>
+          <ul class="space-y-2 text-white/80 text-sm">
+            <li>Head Quarters, South Africa</li>
+            <li>063 367 8220</li>
+            <li><a href="mailto:info@ie-gf.org" class="hover:text-green transition">info@ie-gf.org</a></li>
+          </ul>
+          <div class="flex space-x-4 mt-4">
+            <a href="#" aria-label="Facebook" class="text-white/60 hover:text-green transition">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><use href="assets/icons.svg#icon-005"></use></svg>
+            </a>
+            <a href="#" aria-label="Twitter" class="text-white/60 hover:text-green transition">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><use href="assets/icons.svg#icon-006"></use></svg>
+            </a>
+            <a href="#" aria-label="LinkedIn" class="text-white/60 hover:text-green transition">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><use href="assets/icons.svg#icon-007"></use></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-white/20 pt-8 text-center text-white/60 text-sm">
+        <p>&copy; 2026 Informal Economy Global Forum. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
