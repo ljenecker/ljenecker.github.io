@@ -52,6 +52,37 @@
     .progress-ring-circle { transition: stroke-dashoffset 0.6s ease; transform: rotate(-90deg); transform-origin: 50% 50%; }
     .tab-active { color: #4ba755; border-bottom: 2px solid #4ba755; font-weight: 600; }
     @media print { .sidebar, .mobile-topbar { display: none !important; } .main-content { margin-left: 0 !important; } [data-panel] { display: block !important; page-break-inside: avoid; } }
+    /* Dark mode */
+    .dark body, body.dark { background: #0f172a; color: #94a3b8; }
+    .dark .bg-white { background: #1e293b !important; }
+    .dark .bg-gray-50, .dark .bg-gray-100 { background: #1e293b !important; }
+    .dark .border-gray-100, .dark .border-gray-200, .dark .border-lightgrey { border-color: #334155 !important; }
+    .dark .text-navy { color: #93c5fd !important; }
+    .dark .text-darkgrey { color: #94a3b8 !important; }
+    .dark .bg-lightgrey { background: #334155 !important; }
+    .dark .shadow-sm { box-shadow: 0 1px 3px rgba(0,0,0,0.3) !important; }
+    .dark input, .dark select, .dark textarea { background: #334155 !important; border-color: #475569 !important; color: #e2e8f0 !important; }
+    .dark input::placeholder, .dark textarea::placeholder { color: #64748b !important; }
+    .dark .bg-navy\/10 { background: rgba(147,197,253,0.1) !important; }
+    .dark .bg-green\/10 { background: rgba(75,167,85,0.1) !important; }
+    .dark .bg-amber\/10 { background: rgba(245,158,11,0.1) !important; }
+    .dark .bg-red\/10 { background: rgba(239,68,68,0.1) !important; }
+    .dark .bg-green\/5 { background: rgba(75,167,85,0.05) !important; }
+    .dark table th { color: #93c5fd !important; }
+    .dark table td { color: #94a3b8 !important; }
+    .dark .border-b.border-gray-50 { border-color: #1e293b !important; }
+    /* Onboarding tour */
+    .tour-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 200; }
+    .tour-tooltip { position: fixed; z-index: 201; background: white; border-radius: 16px; padding: 20px; max-width: 320px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+    .tour-tooltip::before { content: ''; position: absolute; width: 12px; height: 12px; background: white; transform: rotate(45deg); }
+    .tour-tooltip.arrow-left::before { left: -6px; top: 24px; }
+    .tour-tooltip.arrow-top::before { top: -6px; left: 24px; }
+    .dark .tour-tooltip { background: #1e293b; }
+    .dark .tour-tooltip::before { background: #1e293b; }
+    /* Notification dropdown */
+    .notif-dropdown { max-height: 400px; overflow-y: auto; }
+    .notif-dropdown::-webkit-scrollbar { width: 4px; }
+    .notif-dropdown::-webkit-scrollbar-thumb { background: #d9d9d9; border-radius: 4px; }
   </style>
 </head>
 <body class="font-sans text-darkgrey antialiased bg-gray-50">
@@ -65,7 +96,13 @@
       <img src="assets/media/logo/iegf-logo-1.png" alt="IEGF" class="h-8">
       <span class="text-sm font-semibold text-navy">MAP Dashboard</span>
     </div>
-    <div class="w-8 h-8 rounded-full bg-gradient-to-br from-navy to-green flex items-center justify-center text-white text-xs font-bold">MJ</div>
+    <div class="flex items-center gap-2">
+      <button id="notifToggleMobile" class="relative text-navy p-1" aria-label="Notifications">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"/></svg>
+        <span class="notif-badge absolute -top-0.5 -right-0.5 w-4 h-4 bg-red text-white text-[9px] font-bold rounded-full flex items-center justify-center">4</span>
+      </button>
+      <div class="w-8 h-8 rounded-full bg-gradient-to-br from-navy to-green flex items-center justify-center text-white text-xs font-bold">MJ</div>
+    </div>
   </div>
 
   <!-- Sidebar Backdrop -->
@@ -97,7 +134,7 @@
     </div>
 
     <!-- Nav -->
-    <nav class="flex-1 px-3 py-4 space-y-1">
+    <nav class="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
       <button data-nav="overview" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all text-left">
         <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25a2.25 2.25 0 01-2.25-2.25v-2.25z"/></svg>
         Overview
@@ -130,16 +167,132 @@
         <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 01-.982-3.172M9.497 14.25a7.454 7.454 0 00.981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 007.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M18.75 4.236c.982.143 1.954.317 2.916.52A6.003 6.003 0 0016.27 9.728M18.75 4.236V4.5c0 2.108-.966 3.99-2.48 5.228m0 0a6.003 6.003 0 01-3.77 1.522m0 0a6.003 6.003 0 01-3.77-1.522"/></svg>
         Awards
       </button>
+
+      <div class="my-2 border-t border-gray-100"></div>
+
+      <button data-nav="announcements" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all text-left">
+        <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.34 15.84c-.688-.06-1.386-.09-2.09-.09H7.5a4.5 4.5 0 110-9h.75c.704 0 1.402-.03 2.09-.09m0 9.18c.253.962.584 1.892.985 2.783.247.55.06 1.21-.463 1.511l-.657.38c-.551.318-1.26.117-1.527-.461a20.845 20.845 0 01-1.44-4.282m3.102.069a18.03 18.03 0 01-.59-4.59c0-1.586.205-3.124.59-4.59m0 9.18a23.848 23.848 0 018.835 2.535M10.34 6.66a23.847 23.847 0 008.835-2.535m0 0A23.74 23.74 0 0018.795 3m.38 1.125a23.91 23.91 0 011.014 5.395m-1.014 8.855c-.118.38-.245.754-.38 1.125m.38-1.125a23.91 23.91 0 001.014-5.395m0-3.46c.495.413.811 1.035.811 1.73 0 .695-.316 1.317-.811 1.73m0-3.46a24.347 24.347 0 010 3.46"/></svg>
+        Announcements
+        <span class="ml-auto w-5 h-5 bg-red text-white text-[10px] font-bold rounded-full flex items-center justify-center">2</span>
+      </button>
+      <button data-nav="payments" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all text-left">
+        <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z"/></svg>
+        Payments
+      </button>
+      <button data-nav="profile" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all text-left">
+        <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        Profile & Settings
+      </button>
     </nav>
 
     <!-- Footer -->
-    <div class="px-6 py-4 border-t border-gray-100">
+    <div class="px-6 py-4 border-t border-gray-100 space-y-3">
+      <!-- Dark Mode Toggle -->
+      <button id="darkModeToggle" class="flex items-center gap-2 text-xs text-darkgrey hover:text-green transition w-full">
+        <svg id="darkModeIcon" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"/></svg>
+        <span id="darkModeLabel">Dark Mode</span>
+      </button>
+      <!-- Notification Bell (Desktop) -->
+      <button id="notifToggleDesktop" class="flex items-center gap-2 text-xs text-darkgrey hover:text-green transition w-full relative">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"/></svg>
+        Notifications
+        <span class="notif-badge ml-auto w-5 h-5 bg-red text-white text-[10px] font-bold rounded-full flex items-center justify-center">4</span>
+      </button>
       <a href="index.html" class="flex items-center gap-2 text-xs text-darkgrey hover:text-green transition">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3"/></svg>
         Back to IEGF Website
       </a>
     </div>
   </aside>
+
+  <!-- Notifications Dropdown -->
+  <div id="notifDropdown" class="hidden fixed z-[60] bg-white rounded-2xl border border-gray-100 shadow-xl w-[340px] sm:w-[380px]" style="top:60px;right:16px;">
+    <div class="p-4 border-b border-gray-100 flex items-center justify-between">
+      <h3 class="text-sm font-bold text-navy">Notifications</h3>
+      <button id="notifMarkAll" class="text-[10px] font-medium text-green hover:underline">Mark all read</button>
+    </div>
+    <div class="notif-dropdown">
+      <div class="p-3 border-b border-gray-50 bg-green/5">
+        <div class="flex items-start gap-3">
+          <div class="w-8 h-8 rounded-full bg-green/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+            <svg class="w-4 h-4 text-green" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-xs font-medium text-navy">Tax clearance document approved</p>
+            <p class="text-[10px] text-darkgrey mt-0.5">Your SARS tax clearance has been verified and approved.</p>
+            <p class="text-[10px] text-darkgrey/60 mt-1">2 hours ago</p>
+          </div>
+          <div class="w-2 h-2 rounded-full bg-green flex-shrink-0 mt-2"></div>
+        </div>
+      </div>
+      <div class="p-3 border-b border-gray-50 bg-amber/5">
+        <div class="flex items-start gap-3">
+          <div class="w-8 h-8 rounded-full bg-amber/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+            <svg class="w-4 h-4 text-amber" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-xs font-medium text-navy">Mentoring session reminder</p>
+            <p class="text-[10px] text-darkgrey mt-0.5">Growth Review with T. Ndlovu — Mar 28 at 10:00 AM</p>
+            <p class="text-[10px] text-darkgrey/60 mt-1">5 hours ago</p>
+          </div>
+          <div class="w-2 h-2 rounded-full bg-amber flex-shrink-0 mt-2"></div>
+        </div>
+      </div>
+      <div class="p-3 border-b border-gray-50 bg-navy/5">
+        <div class="flex items-start gap-3">
+          <div class="w-8 h-8 rounded-full bg-navy/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+            <svg class="w-4 h-4 text-navy" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 01.75-.75h3a.75.75 0 01.75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349m-16.5 11.65V9.35"/></svg>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-xs font-medium text-navy">New marketplace connection</p>
+            <p class="text-[10px] text-darkgrey mt-0.5">TechStart Solutions wants to connect with you.</p>
+            <p class="text-[10px] text-darkgrey/60 mt-1">Yesterday</p>
+          </div>
+          <div class="w-2 h-2 rounded-full bg-navy flex-shrink-0 mt-2"></div>
+        </div>
+      </div>
+      <div class="p-3 border-b border-gray-50">
+        <div class="flex items-start gap-3">
+          <div class="w-8 h-8 rounded-full bg-green/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+            <svg class="w-4 h-4 text-green" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.34 15.84c-.688-.06-1.386-.09-2.09-.09H7.5a4.5 4.5 0 110-9h.75c.704 0 1.402-.03 2.09-.09"/></svg>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-xs font-medium text-navy">Program announcement</p>
+            <p class="text-[10px] text-darkgrey mt-0.5">New funding partner announced — read the details.</p>
+            <p class="text-[10px] text-darkgrey/60 mt-1">2 days ago</p>
+          </div>
+          <div class="w-2 h-2 rounded-full bg-green flex-shrink-0 mt-2"></div>
+        </div>
+      </div>
+      <div class="p-3">
+        <div class="flex items-start gap-3">
+          <div class="w-8 h-8 rounded-full bg-green/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+            <svg class="w-4 h-4 text-green" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904"/></svg>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-xs font-medium text-navy">Training module available</p>
+            <p class="text-[10px] text-darkgrey mt-0.5">Risk Management Framework module is now unlocked.</p>
+            <p class="text-[10px] text-darkgrey/60 mt-1">3 days ago</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Onboarding Tour -->
+  <div id="tourOverlay" class="tour-overlay hidden"></div>
+  <div id="tourTooltip" class="tour-tooltip hidden arrow-left">
+    <p id="tourStep" class="text-xs text-darkgrey mb-1">Step 1 of 6</p>
+    <h4 id="tourTitle" class="text-sm font-bold text-navy mb-2"></h4>
+    <p id="tourDesc" class="text-xs text-darkgrey mb-4"></p>
+    <div class="flex items-center justify-between">
+      <button id="tourSkip" class="text-xs text-darkgrey hover:text-navy transition">Skip tour</button>
+      <div class="flex gap-2">
+        <button id="tourPrev" class="text-xs font-medium text-navy px-3 py-1.5 rounded-lg border border-gray-200 hover:bg-gray-50 transition hidden">Back</button>
+        <button id="tourNext" class="text-xs font-medium text-white bg-green px-4 py-1.5 rounded-lg hover:bg-green/90 transition">Next</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Main Content -->
   <main id="mainContent" class="lg:ml-[270px] h-screen pt-14 lg:pt-0 content-scroll overflow-y-auto">
@@ -148,9 +301,15 @@
     <section data-panel="overview" class="section-fade">
       <div class="p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto">
         <!-- Header -->
-        <div class="mb-6 lg:mb-8">
-          <h1 class="text-xl sm:text-2xl lg:text-3xl font-bold text-navy">Welcome back, Maria</h1>
-          <p class="text-sm sm:text-base text-darkgrey mt-1">Here's your Market Access Program progress at a glance.</p>
+        <div class="mb-6 lg:mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <div>
+            <h1 class="text-xl sm:text-2xl lg:text-3xl font-bold text-navy">Welcome back, Maria</h1>
+            <p class="text-sm sm:text-base text-darkgrey mt-1">Here's your Market Access Program progress at a glance.</p>
+          </div>
+          <button id="exportReportBtn" class="flex items-center gap-2 bg-navy text-white text-xs font-semibold px-4 py-2.5 rounded-xl hover:bg-navy/90 transition self-start sm:self-auto flex-shrink-0">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+            Export Report
+          </button>
         </div>
 
         <!-- KPI Cards -->
@@ -1002,43 +1161,54 @@
 
         <!-- Mentorship -->
         <div id="mentorshipPanel" class="hidden">
-          <div class="grid lg:grid-cols-2 gap-6">
+          <div class="grid lg:grid-cols-3 gap-6">
+            <!-- Mentor Card -->
             <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
               <h3 class="text-base font-bold text-navy mb-4">Your Mentor</h3>
               <div class="flex items-center gap-4 mb-4">
-                <div class="w-14 h-14 rounded-full bg-gradient-to-br from-navy to-green flex items-center justify-center text-white text-lg font-bold">TN</div>
+                <div class="w-14 h-14 rounded-full bg-gradient-to-br from-navy to-green flex items-center justify-center text-white text-lg font-bold flex-shrink-0">TN</div>
                 <div>
                   <p class="font-semibold text-navy">Thabo Ndlovu</p>
                   <p class="text-sm text-darkgrey">Senior Business Mentor</p>
                   <p class="text-xs text-green">Available</p>
                 </div>
               </div>
-              <p class="text-sm text-darkgrey mb-4">15 years experience in SMME development across construction and services sectors. IEGF certified mentor since 2024.</p>
+              <p class="text-sm text-darkgrey mb-4">15 years experience in SMME development across construction and services sectors.</p>
               <button class="w-full bg-green text-white text-sm font-semibold py-2.5 rounded-xl hover:bg-green/90 transition">Schedule Session</button>
+              <div class="mt-4 space-y-2">
+                <h4 class="text-xs font-bold text-navy uppercase tracking-wide">Upcoming</h4>
+                <div class="p-2.5 bg-green/5 rounded-lg border border-green/20">
+                  <p class="text-xs font-medium text-navy">Growth Review</p>
+                  <p class="text-[10px] text-darkgrey">Mar 28 — 10:00 AM</p>
+                </div>
+                <div class="p-2.5 bg-gray-50 rounded-lg">
+                  <p class="text-xs font-medium text-navy">Operations Check-in</p>
+                  <p class="text-[10px] text-darkgrey">Apr 11 — 2:00 PM</p>
+                </div>
+              </div>
             </div>
-            <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
-              <h3 class="text-base font-bold text-navy mb-4">Upcoming Sessions</h3>
-              <div class="space-y-3">
-                <div class="flex items-center gap-3 p-3 bg-green/5 rounded-xl border border-green/20">
-                  <div class="w-10 h-10 rounded-lg bg-green/10 flex items-center justify-center flex-shrink-0">
-                    <svg class="w-5 h-5 text-green" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>
-                  </div>
-                  <div class="flex-1 min-w-0">
-                    <p class="text-sm font-medium text-navy">Growth Review Session</p>
-                    <p class="text-xs text-darkgrey">Mar 28, 2026 — 10:00 AM</p>
-                  </div>
-                  <span class="text-[10px] font-medium bg-green/10 text-green px-2 py-0.5 rounded-full flex-shrink-0">Confirmed</span>
+
+            <!-- Calendar -->
+            <div class="lg:col-span-2 bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="text-base font-bold text-navy">March 2026</h3>
+                <div class="flex gap-1">
+                  <button id="calPrev" class="w-8 h-8 rounded-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition">
+                    <svg class="w-4 h-4 text-darkgrey" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+                  </button>
+                  <button id="calNext" class="w-8 h-8 rounded-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition">
+                    <svg class="w-4 h-4 text-darkgrey" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                  </button>
                 </div>
-                <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
-                  <div class="w-10 h-10 rounded-lg bg-navy/10 flex items-center justify-center flex-shrink-0">
-                    <svg class="w-5 h-5 text-navy" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>
-                  </div>
-                  <div class="flex-1 min-w-0">
-                    <p class="text-sm font-medium text-navy">Operations Systems Check-in</p>
-                    <p class="text-xs text-darkgrey">Apr 11, 2026 — 2:00 PM</p>
-                  </div>
-                  <span class="text-[10px] font-medium bg-navy/10 text-navy px-2 py-0.5 rounded-full flex-shrink-0">Scheduled</span>
-                </div>
+              </div>
+              <div id="calendarGrid" class="grid grid-cols-7 gap-0">
+                <!-- Rendered by JS -->
+              </div>
+              <div class="mt-4 flex flex-wrap gap-4 text-[10px]">
+                <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green"></span> Mentoring</span>
+                <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-amber"></span> Webinar</span>
+                <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-navy"></span> Deadline</span>
+                <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-red"></span> Today</span>
               </div>
             </div>
           </div>
@@ -1269,6 +1439,368 @@
                 </div>
                 <p class="text-sm font-medium text-darkgrey">Community Impact Champion</p>
                 <p class="text-xs text-darkgrey">Locked — Complete Stage 6</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== ANNOUNCEMENTS ===================== -->
+    <section data-panel="announcements" class="hidden section-fade">
+      <div class="p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto">
+        <div class="mb-8">
+          <h1 class="text-2xl lg:text-3xl font-bold text-navy">Announcements</h1>
+          <p class="text-darkgrey mt-1">Latest program updates, partner news, and important deadlines.</p>
+        </div>
+
+        <div class="space-y-5">
+          <!-- Pinned -->
+          <div class="bg-gradient-to-br from-navy to-navy/90 rounded-2xl p-6 text-white relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-40 h-40 bg-green/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+            <span class="text-[10px] font-medium bg-white/20 px-2 py-0.5 rounded-full">Pinned</span>
+            <h3 class="text-lg font-bold mt-3 mb-2">New Funding Partner: National Empowerment Fund</h3>
+            <p class="text-white/80 text-sm mb-3">We are excited to announce that NEF has partnered with IEGF to provide dedicated funding streams for MAP members who achieve Stage 3 compliance. Applications open April 1.</p>
+            <div class="flex items-center gap-4 text-xs text-white/60">
+              <span>Mar 22, 2026</span>
+              <span>Posted by IEGF Admin</span>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-green/10 flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-green" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>
+              </div>
+              <div class="flex-1">
+                <span class="text-[10px] font-medium bg-amber/10 text-amber px-2 py-0.5 rounded-full">Deadline</span>
+                <h3 class="text-sm font-bold text-navy mt-2">Quarterly Progress Reports Due — April 15</h3>
+                <p class="text-xs text-darkgrey mt-1">All Stage 1-3 members must submit their quarterly progress reports by April 15. Upload via the Documents section.</p>
+                <p class="text-[10px] text-darkgrey/60 mt-2">Mar 20, 2026</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-navy/10 flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-navy" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg>
+              </div>
+              <div class="flex-1">
+                <span class="text-[10px] font-medium bg-navy/10 text-navy px-2 py-0.5 rounded-full">Partner Update</span>
+                <h3 class="text-sm font-bold text-navy mt-2">SAWIC Partnership — Construction Sector Boost</h3>
+                <p class="text-xs text-darkgrey mt-1">South African Women in Construction (SAWIC) Western Cape joins as a sector partner. Construction sector members get priority access to skills training workshops.</p>
+                <p class="text-[10px] text-darkgrey/60 mt-2">Mar 15, 2026</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-green/10 flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-green" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12"/></svg>
+              </div>
+              <div class="flex-1">
+                <span class="text-[10px] font-medium bg-green/10 text-green px-2 py-0.5 rounded-full">Webinar</span>
+                <h3 class="text-sm font-bold text-navy mt-2">Funding Readiness Masterclass — Live Webinar</h3>
+                <p class="text-xs text-darkgrey mt-1">Join our live webinar on preparing winning funding applications. Featuring guest speaker from the Small Enterprise Finance Agency (SEFA).</p>
+                <p class="text-[10px] text-darkgrey/60 mt-2">Mar 10, 2026</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-amber/10 flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-amber" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/></svg>
+              </div>
+              <div class="flex-1">
+                <span class="text-[10px] font-medium bg-amber/10 text-amber px-2 py-0.5 rounded-full">System</span>
+                <h3 class="text-sm font-bold text-navy mt-2">Portal Maintenance — March 30</h3>
+                <p class="text-xs text-darkgrey mt-1">The membership portal will be undergoing scheduled maintenance on March 30 from 22:00–02:00 SAST. Please save your work beforehand.</p>
+                <p class="text-[10px] text-darkgrey/60 mt-2">Mar 8, 2026</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PAYMENTS ===================== -->
+    <section data-panel="payments" class="hidden section-fade">
+      <div class="p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto">
+        <div class="mb-8">
+          <h1 class="text-2xl lg:text-3xl font-bold text-navy">Payments & Invoicing</h1>
+          <p class="text-darkgrey mt-1">Track your program costs, payments, and billing history.</p>
+        </div>
+
+        <!-- Balance Summary -->
+        <div class="grid sm:grid-cols-3 gap-5 mb-8">
+          <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+            <p class="text-xs text-darkgrey mb-1">Total Program Cost</p>
+            <p class="text-2xl font-bold text-navy">R 18,500</p>
+            <p class="text-[10px] text-darkgrey mt-1">Across all 6 stages</p>
+          </div>
+          <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+            <p class="text-xs text-darkgrey mb-1">Amount Paid</p>
+            <p class="text-2xl font-bold text-green">R 11,200</p>
+            <div class="mt-2 bg-lightgrey rounded-full h-1.5">
+              <div class="bg-green rounded-full h-1.5" style="width:60%"></div>
+            </div>
+          </div>
+          <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+            <p class="text-xs text-darkgrey mb-1">Outstanding Balance</p>
+            <p class="text-2xl font-bold text-amber">R 7,300</p>
+            <p class="text-[10px] text-darkgrey mt-1">Next payment due Apr 1</p>
+          </div>
+        </div>
+
+        <!-- Stage Cost Breakdown -->
+        <h2 class="text-lg font-bold text-navy mb-4">Stage Cost Breakdown</h2>
+        <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-x-auto mb-8">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-gray-100">
+                <th class="text-left p-4 font-semibold text-navy">Stage</th>
+                <th class="text-left p-4 font-semibold text-navy">Description</th>
+                <th class="text-right p-4 font-semibold text-navy">Amount</th>
+                <th class="text-left p-4 font-semibold text-navy">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-gray-50">
+                <td class="p-4 font-medium text-navy">Stage 1</td>
+                <td class="p-4 text-darkgrey">Registration, tax, accounting setup</td>
+                <td class="p-4 text-right text-darkgrey">R 3,200</td>
+                <td class="p-4"><span class="text-xs font-medium bg-green/10 text-green px-2.5 py-1 rounded-full">Paid</span></td>
+              </tr>
+              <tr class="border-b border-gray-50">
+                <td class="p-4 font-medium text-navy">Stage 2</td>
+                <td class="p-4 text-darkgrey">Branding, website, digital setup</td>
+                <td class="p-4 text-right text-darkgrey">R 4,500</td>
+                <td class="p-4"><span class="text-xs font-medium bg-green/10 text-green px-2.5 py-1 rounded-full">Paid</span></td>
+              </tr>
+              <tr class="border-b border-gray-50">
+                <td class="p-4 font-medium text-navy">Stage 3</td>
+                <td class="p-4 text-darkgrey">Software, POS, inventory systems</td>
+                <td class="p-4 text-right text-darkgrey">R 3,500</td>
+                <td class="p-4"><span class="text-xs font-medium bg-amber/10 text-amber px-2.5 py-1 rounded-full">Partial — R 2,000 remaining</span></td>
+              </tr>
+              <tr class="border-b border-gray-50">
+                <td class="p-4 font-medium text-navy">Stage 4</td>
+                <td class="p-4 text-darkgrey">Scaling, marketing, professional services</td>
+                <td class="p-4 text-right text-darkgrey">R 2,800</td>
+                <td class="p-4"><span class="text-xs font-medium bg-navy/10 text-navy px-2.5 py-1 rounded-full">Upcoming</span></td>
+              </tr>
+              <tr class="border-b border-gray-50">
+                <td class="p-4 font-medium text-navy">Stage 5</td>
+                <td class="p-4 text-darkgrey">Expansion capital, infrastructure</td>
+                <td class="p-4 text-right text-darkgrey">R 2,500</td>
+                <td class="p-4"><span class="text-xs font-medium bg-navy/10 text-navy px-2.5 py-1 rounded-full">Upcoming</span></td>
+              </tr>
+              <tr>
+                <td class="p-4 font-medium text-navy">Stage 6</td>
+                <td class="p-4 text-darkgrey">CSI contributions, employment costs</td>
+                <td class="p-4 text-right text-darkgrey">R 2,000</td>
+                <td class="p-4"><span class="text-xs font-medium bg-navy/10 text-navy px-2.5 py-1 rounded-full">Upcoming</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Payment History -->
+        <h2 class="text-lg font-bold text-navy mb-4">Payment History</h2>
+        <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-gray-100">
+                <th class="text-left p-4 font-semibold text-navy">Date</th>
+                <th class="text-left p-4 font-semibold text-navy">Description</th>
+                <th class="text-left p-4 font-semibold text-navy">Method</th>
+                <th class="text-right p-4 font-semibold text-navy">Amount</th>
+                <th class="text-left p-4 font-semibold text-navy">Receipt</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-gray-50">
+                <td class="p-4 text-darkgrey">Mar 15, 2026</td>
+                <td class="p-4 font-medium text-navy">Stage 3 — Partial payment</td>
+                <td class="p-4 text-darkgrey">EFT</td>
+                <td class="p-4 text-right text-darkgrey">R 1,500</td>
+                <td class="p-4"><button class="text-xs text-green font-medium hover:underline">Download</button></td>
+              </tr>
+              <tr class="border-b border-gray-50">
+                <td class="p-4 text-darkgrey">Jan 5, 2026</td>
+                <td class="p-4 font-medium text-navy">Stage 2 — Full payment</td>
+                <td class="p-4 text-darkgrey">EFT</td>
+                <td class="p-4 text-right text-darkgrey">R 4,500</td>
+                <td class="p-4"><button class="text-xs text-green font-medium hover:underline">Download</button></td>
+              </tr>
+              <tr class="border-b border-gray-50">
+                <td class="p-4 text-darkgrey">Oct 10, 2025</td>
+                <td class="p-4 font-medium text-navy">Stage 1 — Full payment</td>
+                <td class="p-4 text-darkgrey">Card</td>
+                <td class="p-4 text-right text-darkgrey">R 3,200</td>
+                <td class="p-4"><button class="text-xs text-green font-medium hover:underline">Download</button></td>
+              </tr>
+              <tr>
+                <td class="p-4 text-darkgrey">Sep 28, 2025</td>
+                <td class="p-4 font-medium text-navy">Program enrollment fee</td>
+                <td class="p-4 text-darkgrey">Card</td>
+                <td class="p-4 text-right text-darkgrey">R 2,000</td>
+                <td class="p-4"><button class="text-xs text-green font-medium hover:underline">Download</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PROFILE ===================== -->
+    <section data-panel="profile" class="hidden section-fade">
+      <div class="p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto">
+        <div class="mb-8">
+          <h1 class="text-2xl lg:text-3xl font-bold text-navy">Profile & Settings</h1>
+          <p class="text-darkgrey mt-1">Manage your personal details, business information, and preferences.</p>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-6">
+          <!-- Personal Info -->
+          <div class="lg:col-span-2 space-y-6">
+            <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+              <h3 class="text-base font-bold text-navy mb-5">Personal Information</h3>
+              <form class="grid sm:grid-cols-2 gap-4" onsubmit="return false;">
+                <div>
+                  <label class="text-xs font-medium text-navy block mb-1">First Name</label>
+                  <input type="text" value="Maria" class="w-full px-3 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-green/30 focus:border-green">
+                </div>
+                <div>
+                  <label class="text-xs font-medium text-navy block mb-1">Last Name</label>
+                  <input type="text" value="Johnson" class="w-full px-3 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-green/30 focus:border-green">
+                </div>
+                <div>
+                  <label class="text-xs font-medium text-navy block mb-1">Email</label>
+                  <input type="email" value="maria@example.co.za" class="w-full px-3 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-green/30 focus:border-green">
+                </div>
+                <div>
+                  <label class="text-xs font-medium text-navy block mb-1">Phone</label>
+                  <input type="tel" value="072 345 6789" class="w-full px-3 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-green/30 focus:border-green">
+                </div>
+                <div>
+                  <label class="text-xs font-medium text-navy block mb-1">ID Number</label>
+                  <input type="text" value="●●●●●●7890●●●" class="w-full px-3 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-darkgrey" disabled>
+                </div>
+                <div>
+                  <label class="text-xs font-medium text-navy block mb-1">Province</label>
+                  <select class="w-full px-3 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-darkgrey focus:outline-none focus:ring-2 focus:ring-green/30">
+                    <option selected>Western Cape</option>
+                    <option>Gauteng</option>
+                    <option>KwaZulu-Natal</option>
+                    <option>Eastern Cape</option>
+                    <option>Free State</option>
+                    <option>Limpopo</option>
+                    <option>Mpumalanga</option>
+                    <option>North West</option>
+                    <option>Northern Cape</option>
+                  </select>
+                </div>
+                <div class="sm:col-span-2">
+                  <button class="bg-green text-white text-sm font-semibold px-6 py-2.5 rounded-xl hover:bg-green/90 transition">Save Changes</button>
+                </div>
+              </form>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+              <h3 class="text-base font-bold text-navy mb-5">Business Information</h3>
+              <form class="grid sm:grid-cols-2 gap-4" onsubmit="return false;">
+                <div>
+                  <label class="text-xs font-medium text-navy block mb-1">Business Name</label>
+                  <input type="text" value="MJ Cleaning Services" class="w-full px-3 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-green/30 focus:border-green">
+                </div>
+                <div>
+                  <label class="text-xs font-medium text-navy block mb-1">Registration Number</label>
+                  <input type="text" value="2025/123456/07" class="w-full px-3 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-green/30 focus:border-green">
+                </div>
+                <div>
+                  <label class="text-xs font-medium text-navy block mb-1">Sector</label>
+                  <select class="w-full px-3 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-darkgrey focus:outline-none focus:ring-2 focus:ring-green/30">
+                    <option>Construction</option>
+                    <option selected>Services</option>
+                    <option>Personal Care</option>
+                    <option>Food & Beverage</option>
+                    <option>Retail</option>
+                    <option>Technology</option>
+                    <option>Agriculture</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="text-xs font-medium text-navy block mb-1">Tax Number</label>
+                  <input type="text" value="9012345678" class="w-full px-3 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-green/30 focus:border-green">
+                </div>
+                <div class="sm:col-span-2">
+                  <label class="text-xs font-medium text-navy block mb-1">Business Address</label>
+                  <input type="text" value="14 Main Road, Woodstock, Cape Town, 7925" class="w-full px-3 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-green/30 focus:border-green">
+                </div>
+                <div class="sm:col-span-2">
+                  <button class="bg-green text-white text-sm font-semibold px-6 py-2.5 rounded-xl hover:bg-green/90 transition">Save Changes</button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- Sidebar: Avatar, Membership Info, Notification Prefs -->
+          <div class="space-y-6">
+            <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm text-center">
+              <div class="w-20 h-20 rounded-full bg-gradient-to-br from-navy to-green flex items-center justify-center text-white text-2xl font-bold mx-auto mb-3">MJ</div>
+              <h3 class="text-sm font-bold text-navy">Maria Johnson</h3>
+              <p class="text-xs text-darkgrey">MAP-2026-0847</p>
+              <div class="mt-3 flex items-center justify-center gap-2">
+                <span class="text-[10px] font-medium bg-green/10 text-green px-2 py-0.5 rounded-full">Active Member</span>
+                <span class="text-[10px] font-medium bg-navy/10 text-navy px-2 py-0.5 rounded-full">Stage 3</span>
+              </div>
+              <div class="mt-4 text-left space-y-2">
+                <div class="flex justify-between text-xs">
+                  <span class="text-darkgrey">Joined</span>
+                  <span class="font-medium text-navy">Sep 28, 2025</span>
+                </div>
+                <div class="flex justify-between text-xs">
+                  <span class="text-darkgrey">Cohort</span>
+                  <span class="font-medium text-navy">2025-Q4</span>
+                </div>
+                <div class="flex justify-between text-xs">
+                  <span class="text-darkgrey">Sector</span>
+                  <span class="font-medium text-navy">Services</span>
+                </div>
+                <div class="flex justify-between text-xs">
+                  <span class="text-darkgrey">Mentor</span>
+                  <span class="font-medium text-navy">T. Ndlovu</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+              <h3 class="text-sm font-bold text-navy mb-4">Notification Preferences</h3>
+              <div class="space-y-3">
+                <label class="flex items-center justify-between">
+                  <span class="text-xs text-darkgrey">Email notifications</span>
+                  <div class="relative"><input type="checkbox" checked class="sr-only peer"><div class="w-9 h-5 bg-lightgrey rounded-full peer-checked:bg-green transition cursor-pointer"></div><div class="absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full transition peer-checked:translate-x-4 cursor-pointer"></div></div>
+                </label>
+                <label class="flex items-center justify-between">
+                  <span class="text-xs text-darkgrey">WhatsApp alerts</span>
+                  <div class="relative"><input type="checkbox" checked class="sr-only peer"><div class="w-9 h-5 bg-lightgrey rounded-full peer-checked:bg-green transition cursor-pointer"></div><div class="absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full transition peer-checked:translate-x-4 cursor-pointer"></div></div>
+                </label>
+                <label class="flex items-center justify-between">
+                  <span class="text-xs text-darkgrey">Session reminders</span>
+                  <div class="relative"><input type="checkbox" checked class="sr-only peer"><div class="w-9 h-5 bg-lightgrey rounded-full peer-checked:bg-green transition cursor-pointer"></div><div class="absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full transition peer-checked:translate-x-4 cursor-pointer"></div></div>
+                </label>
+                <label class="flex items-center justify-between">
+                  <span class="text-xs text-darkgrey">Marketplace connections</span>
+                  <div class="relative"><input type="checkbox" class="sr-only peer"><div class="w-9 h-5 bg-lightgrey rounded-full peer-checked:bg-green transition cursor-pointer"></div><div class="absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full transition peer-checked:translate-x-4 cursor-pointer"></div></div>
+                </label>
+                <label class="flex items-center justify-between">
+                  <span class="text-xs text-darkgrey">Program announcements</span>
+                  <div class="relative"><input type="checkbox" checked class="sr-only peer"><div class="w-9 h-5 bg-lightgrey rounded-full peer-checked:bg-green transition cursor-pointer"></div><div class="absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full transition peer-checked:translate-x-4 cursor-pointer"></div></div>
+                </label>
               </div>
             </div>
           </div>
@@ -1678,15 +2210,213 @@
       });
     });
 
+    // ==================== NOTIFICATIONS ====================
+    const notifDropdown = document.getElementById('notifDropdown');
+    const notifToggles = [document.getElementById('notifToggleMobile'), document.getElementById('notifToggleDesktop')];
+    let notifOpen = false;
+
+    function toggleNotifications(e) {
+      e.stopPropagation();
+      notifOpen = !notifOpen;
+      notifDropdown.classList.toggle('hidden', !notifOpen);
+      if (notifOpen) {
+        // Position near the bell on desktop
+        const isMobile = window.innerWidth < 1024;
+        if (isMobile) {
+          notifDropdown.style.top = '56px';
+          notifDropdown.style.right = '16px';
+          notifDropdown.style.left = 'auto';
+        } else {
+          notifDropdown.style.top = 'auto';
+          notifDropdown.style.bottom = '80px';
+          notifDropdown.style.left = '16px';
+          notifDropdown.style.right = 'auto';
+        }
+      }
+    }
+    notifToggles.forEach(btn => { if (btn) btn.addEventListener('click', toggleNotifications); });
+    document.addEventListener('click', () => { notifDropdown.classList.add('hidden'); notifOpen = false; });
+    notifDropdown.addEventListener('click', e => e.stopPropagation());
+
+    document.getElementById('notifMarkAll').addEventListener('click', () => {
+      document.querySelectorAll('.notif-badge').forEach(b => b.classList.add('hidden'));
+      notifDropdown.querySelectorAll('.bg-green\\/5, .bg-amber\\/5, .bg-navy\\/5').forEach(el => {
+        el.classList.remove('bg-green/5', 'bg-amber/5', 'bg-navy/5');
+      });
+      notifDropdown.querySelectorAll('.w-2.h-2.rounded-full').forEach(dot => dot.remove());
+    });
+
+    // ==================== DARK MODE ====================
+    const darkToggle = document.getElementById('darkModeToggle');
+    const darkIcon = document.getElementById('darkModeIcon');
+    const darkLabel = document.getElementById('darkModeLabel');
+    let darkMode = localStorage.getItem('mapDarkMode') === 'true';
+
+    function applyDarkMode() {
+      document.documentElement.classList.toggle('dark', darkMode);
+      document.body.classList.toggle('dark', darkMode);
+      darkLabel.textContent = darkMode ? 'Light Mode' : 'Dark Mode';
+      darkIcon.innerHTML = darkMode
+        ? '<path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/>'
+        : '<path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"/>';
+      localStorage.setItem('mapDarkMode', darkMode);
+    }
+    darkToggle.addEventListener('click', () => { darkMode = !darkMode; applyDarkMode(); });
+    applyDarkMode();
+
+    // ==================== CALENDAR ====================
+    function renderCalendar() {
+      const grid = document.getElementById('calendarGrid');
+      if (!grid) return;
+      const events = {
+        3: { type: 'navy', label: 'Tax deadline' },
+        10: { type: 'amber', label: 'Webinar' },
+        15: { type: 'navy', label: 'Report due' },
+        18: { type: 'green', label: 'Stage 2 complete' },
+        22: { type: 'green', label: 'Mentor session' },
+        24: { type: 'red', label: 'Today' },
+        28: { type: 'green', label: 'Growth review' },
+        29: { type: 'amber', label: 'Funding webinar' }
+      };
+      const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+      let html = days.map(d => `<div class="text-center text-[10px] font-semibold text-navy py-2">${d}</div>`).join('');
+
+      // March 2026 starts on Sunday (col 7), so 6 blank cells
+      const startDay = 6; // 0=Mon, 6=Sun for March 1, 2026
+      for (let i = 0; i < startDay; i++) html += '<div class="p-1"></div>';
+      for (let d = 1; d <= 31; d++) {
+        const ev = events[d];
+        const isToday = d === 24;
+        const dotColor = ev ? (ev.type === 'red' ? 'bg-red' : ev.type === 'green' ? 'bg-green' : ev.type === 'amber' ? 'bg-amber' : 'bg-navy') : '';
+        html += `<div class="p-1 text-center">
+          <div class="w-8 h-8 sm:w-9 sm:h-9 mx-auto rounded-lg flex flex-col items-center justify-center ${isToday ? 'bg-red text-white font-bold' : 'hover:bg-gray-50'} transition cursor-pointer text-xs ${ev && !isToday ? 'font-medium' : ''}">
+            ${d}
+          </div>
+          ${ev ? `<div class="w-1.5 h-1.5 ${dotColor} rounded-full mx-auto mt-0.5"></div>` : '<div class="h-2"></div>'}
+        </div>`;
+      }
+      grid.innerHTML = html;
+    }
+
+    // ==================== EXPORT REPORT ====================
+    document.getElementById('exportReportBtn').addEventListener('click', () => {
+      // Create a simple printable summary
+      const w = window.open('', '_blank');
+      w.document.write(`<!DOCTYPE html><html><head><title>MAP Progress Report — Maria Johnson</title>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+        <style>body{font-family:Montserrat,sans-serif;max-width:800px;margin:40px auto;padding:0 20px;color:#333;}
+        h1{color:#052a64;font-size:24px;margin-bottom:4px;}h2{color:#052a64;font-size:16px;margin-top:24px;border-bottom:2px solid #4ba755;padding-bottom:4px;}
+        .kpi{display:inline-block;background:#f0f9f0;padding:12px 20px;border-radius:8px;margin:4px 8px 4px 0;text-align:center;}
+        .kpi strong{display:block;font-size:22px;color:#052a64;}.kpi span{font-size:11px;color:#737373;}
+        table{width:100%;border-collapse:collapse;margin-top:8px;}th,td{text-align:left;padding:8px;border-bottom:1px solid #d9d9d9;font-size:12px;}
+        th{color:#052a64;font-weight:600;}.badge{display:inline-block;padding:2px 8px;border-radius:20px;font-size:10px;font-weight:600;}
+        .green{background:#e6f4ea;color:#4ba755;}.amber{background:#fef3cd;color:#d97706;}.grey{background:#f0f0f0;color:#737373;}
+        .footer{margin-top:32px;text-align:center;color:#737373;font-size:10px;}</style></head><body>
+        <img src="assets/media/logo/iegf-logo-1.png" height="40" style="margin-bottom:16px;">
+        <h1>Market Access Program — Progress Report</h1>
+        <p style="color:#737373;font-size:12px;">Member: Maria Johnson (MAP-2026-0847) | Generated: ${new Date().toLocaleDateString('en-ZA')}</p>
+        <h2>Key Metrics</h2>
+        <div class="kpi"><strong>Stage 3/6</strong><span>Current Stage</span></div>
+        <div class="kpi"><strong>78%</strong><span>Compliance</span></div>
+        <div class="kpi"><strong>62%</strong><span>Funding Ready</span></div>
+        <div class="kpi"><strong>B+</strong><span>Growth Index</span></div>
+        <h2>Stage Progress</h2>
+        <table><tr><th>Stage</th><th>Name</th><th>Status</th></tr>
+        <tr><td>1</td><td>Compliance & Financial Wellbeing</td><td><span class="badge green">Complete</span></td></tr>
+        <tr><td>2</td><td>Branding & Infrastructure</td><td><span class="badge green">Complete</span></td></tr>
+        <tr><td>3</td><td>Operations, Systems & Risk Management</td><td><span class="badge amber">In Progress</span></td></tr>
+        <tr><td>4</td><td>Mentoring & Monitoring</td><td><span class="badge grey">Upcoming</span></td></tr>
+        <tr><td>5</td><td>Expansion Support & Growth</td><td><span class="badge grey">Upcoming</span></td></tr>
+        <tr><td>6</td><td>Community Impact (CSI)</td><td><span class="badge grey">Upcoming</span></td></tr></table>
+        <h2>Financial Summary</h2>
+        <table><tr><th>Total Cost</th><th>Paid</th><th>Outstanding</th></tr>
+        <tr><td>R 18,500</td><td style="color:#4ba755;font-weight:600;">R 11,200</td><td style="color:#d97706;font-weight:600;">R 7,300</td></tr></table>
+        <h2>Training Progress</h2>
+        <p style="font-size:12px;">10 of 12 modules started — 6 completed, 4 in progress.</p>
+        <div class="footer"><p>IEGF Market Access Program &copy; 2026 | ie-gf.org</p></div>
+        <script>window.print();<\/script></body></html>`);
+      w.document.close();
+    });
+
+    // ==================== ONBOARDING TOUR ====================
+    const tourSteps = [
+      { nav: 'overview', title: 'Dashboard Overview', desc: 'See your KPIs, timeline progress, upcoming tasks and recent activity all in one place.', pos: 'right' },
+      { nav: 'journey', title: 'My Journey', desc: 'Track your progress through all 6 stages of the 18-month program. Expand each stage to see deliverables and costs.', pos: 'right' },
+      { nav: 'training', title: 'Training Modules', desc: 'Access video courses, webinars, and learning materials. Filter by stage to find what you need.', pos: 'right' },
+      { nav: 'documents', title: 'Documents', desc: 'Upload your compliance documents, download templates, and track approval status.', pos: 'right' },
+      { nav: 'marketplace', title: 'Marketplace', desc: 'Connect with verified suppliers and buyers in your sector. Build your business network.', pos: 'right' },
+      { nav: 'awards', title: 'Awards & Recognition', desc: 'Complete the program to qualify for the IEGF Awards Gala. Track your milestones here.', pos: 'right' }
+    ];
+    let tourIndex = 0;
+    const tourOverlay = document.getElementById('tourOverlay');
+    const tourTooltip = document.getElementById('tourTooltip');
+    const tourTitle = document.getElementById('tourTitle');
+    const tourDesc = document.getElementById('tourDesc');
+    const tourStep = document.getElementById('tourStep');
+    const tourNext = document.getElementById('tourNext');
+    const tourPrev = document.getElementById('tourPrev');
+    const tourSkip = document.getElementById('tourSkip');
+
+    function showTourStep() {
+      const step = tourSteps[tourIndex];
+      tourStep.textContent = `Step ${tourIndex + 1} of ${tourSteps.length}`;
+      tourTitle.textContent = step.title;
+      tourDesc.textContent = step.desc;
+      tourNext.textContent = tourIndex === tourSteps.length - 1 ? 'Finish' : 'Next';
+      tourPrev.classList.toggle('hidden', tourIndex === 0);
+      navigateTo(step.nav);
+      // Position tooltip
+      const navBtn = document.querySelector(`[data-nav="${step.nav}"]`);
+      if (navBtn && window.innerWidth >= 1024) {
+        const rect = navBtn.getBoundingClientRect();
+        tourTooltip.style.left = '286px';
+        tourTooltip.style.top = Math.max(rect.top - 10, 60) + 'px';
+        tourTooltip.className = 'tour-tooltip arrow-left';
+      } else {
+        tourTooltip.style.left = '50%';
+        tourTooltip.style.top = '80px';
+        tourTooltip.style.transform = 'translateX(-50%)';
+        tourTooltip.className = 'tour-tooltip arrow-top';
+      }
+    }
+
+    function startTour() {
+      tourIndex = 0;
+      tourOverlay.classList.remove('hidden');
+      tourTooltip.classList.remove('hidden');
+      showTourStep();
+    }
+    function endTour() {
+      tourOverlay.classList.add('hidden');
+      tourTooltip.classList.add('hidden');
+      localStorage.setItem('mapTourDone', 'true');
+    }
+
+    tourNext.addEventListener('click', () => {
+      if (tourIndex >= tourSteps.length - 1) { endTour(); return; }
+      tourIndex++;
+      showTourStep();
+    });
+    tourPrev.addEventListener('click', () => {
+      if (tourIndex > 0) { tourIndex--; showTourStep(); }
+    });
+    tourSkip.addEventListener('click', endTour);
+    tourOverlay.addEventListener('click', endTour);
+
     // ==================== INIT ====================
     function init() {
       renderTimeline();
       renderStageTracker();
       renderAccordions();
       renderTraining('all');
+      renderCalendar();
       // Hash routing
       const hash = window.location.hash.replace('#', '') || 'overview';
       navigateTo(hash);
+      // Show tour on first visit
+      if (!localStorage.getItem('mapTourDone')) {
+        setTimeout(startTour, 800);
+      }
     }
 
     window.addEventListener('hashchange', () => {
