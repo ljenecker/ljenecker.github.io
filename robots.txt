@@ -1,7 +1,5 @@
-# Robots.txt for ie-gf.org
-# Allow all crawlers full access — search engines need CSS/JS/images to render pages correctly.
+# Robots.txt — blocking version (served on GitHub Pages dev/staging site)
+# Production (ie-gf.org) gets a permissive version via the deploy workflow.
 
 User-agent: *
-Allow: /
-
-Sitemap: https://ie-gf.org/sitemap.xml
+Disallow: /

@@ -39,6 +39,18 @@ jobs:
           fi
 
       # --- Deploy (always uses the freshly built CSS) ---
+      - name: Write production robots.txt
+        run: |
+          cat > robots.txt <<'ROBOTS'
+          # Robots.txt for ie-gf.org
+          # Allow all crawlers full access.
+
+          User-agent: *
+          Allow: /
+
+          Sitemap: https://ie-gf.org/sitemap.xml
+          ROBOTS
+
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
