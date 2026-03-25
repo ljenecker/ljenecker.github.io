@@ -52,13 +52,14 @@
 <body class="font-sans text-darkgrey antialiased">
 
   <!-- Header -->
-  <header class="bg-white shadow-sm sticky top-0 z-50">
     <!-- Google Translate Bar -->
-    <div class="border-b border-gray-100">
-      <div class="max-w-6xl mx-auto px-4 py-1 flex justify-end">
-        <div id="google_translate_element"></div>
-      </div>
+  <div id="translateBar" class="bg-white border-b border-gray-100 z-50">
+    <div class="max-w-6xl mx-auto px-4 py-1 flex justify-end">
+      <div id="google_translate_element"></div>
     </div>
+  </div>
+
+  <header class="bg-white shadow-sm sticky top-0 z-50">
     <nav class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
       <a href="/"><img src="assets/media/logo/iegf-logo-1-sm.webp" alt="IEGF" width="48" height="48" class="h-12"></a>
 
@@ -386,5 +387,6 @@
   <!-- Google Translate -->
   <script>function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:"en",autoDisplay:false},"google_translate_element")}</script>
   <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 </body>
 </html>
