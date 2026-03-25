@@ -1,0 +1,7 @@
+# Robots.txt for ie-gf.org
+# Allow all crawlers full access — search engines need CSS/JS/images to render pages correctly.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://ie-gf.org/sitemap.xml
