@@ -19,7 +19,8 @@
   <meta name="description" content="Meet the partners supporting IEGF's mission to transform communities and shape nations through sustainable development.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -44,7 +45,7 @@
   <!-- Header -->
   <header class="bg-white shadow-sm sticky top-0 z-50">
     <nav class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-      <a href="/"><img src="assets/media/logo/iegf-logo-1.png" alt="IEGF" class="h-12"></a>
+      <a href="/"><img src="assets/media/logo/iegf-logo-1-sm.webp" alt="IEGF" width="48" height="48" class="h-12"></a>
 
       <!-- Desktop Nav -->
       <div class="hidden md:flex items-center space-x-6">
@@ -285,7 +286,7 @@
     <div class="max-w-6xl mx-auto px-4 py-12 md:py-16">
       <div class="grid md:grid-cols-4 gap-8 mb-12">
         <div class="md:col-span-2">
-          <img src="assets/media/logo/iegf-logo-1.png" alt="IEGF" class="h-14 mb-2">
+          <img src="assets/media/logo/iegf-logo-1-sm.webp" alt="IEGF" width="56" height="56" class="h-14 mb-2">
           <p class="text-white/80 text-lg mb-4">Empowering People. Shaping Nations.</p>
           <p class="text-white/60 text-sm">A people-centred global forum transforming communities, livelihoods and nations through structured development.</p>
         </div>

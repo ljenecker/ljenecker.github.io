@@ -19,8 +19,11 @@
   <meta name="description" content="A people-centred global forum transforming communities, livelihoods and nations through structured development.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="image" href="/assets/1.png">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+  <link rel="preload" as="image" href="/assets/1.webp" fetchpriority="high" type="image/webp">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="assets/home.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -46,7 +49,7 @@
   <!-- Header -->
   <header id="siteHeader" class="site-header sticky top-0 z-50">
     <nav class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-      <a href="/" class="site-logo"><img src="assets/media/logo/iegf-logo-1.png" alt="IEGF" class="h-12"></a>
+      <a href="/" class="site-logo"><img src="assets/media/logo/iegf-logo-1-sm.webp" alt="IEGF" width="48" height="48" class="h-12"></a>
 
       <!-- Desktop Nav -->
       <div class="hidden md:flex items-center space-x-6">
@@ -85,7 +88,7 @@
 
   <main id="smooth-content">
     <!-- Hero Section -->
-    <section id="hero" class="hero-section relative isolate min-h-[calc(100vh-70px)] overflow-hidden text-white bg-center bg-cover bg-no-repeat bg-[url(/assets/1.png)]">
+    <section id="hero" class="hero-section relative isolate min-h-[calc(100vh-70px)] overflow-hidden text-white bg-center bg-cover bg-no-repeat bg-[url(/assets/1.webp)]">
       <div class="absolute inset-0 bg-gradient-to-l from-black/50 to-[#052a64]/90"></div>
       <div class="hero-light"></div>
       <div class="relative max-w-6xl mx-auto px-6 py-20 md:py-28 min-h-[calc(100vh-70px)] flex items-center">
@@ -258,7 +261,7 @@
     <div class="max-w-6xl mx-auto px-4 py-12 md:py-16">
       <div class="grid md:grid-cols-4 gap-8 mb-12">
         <div class="md:col-span-2">
-          <img src="assets/media/logo/iegf-logo-1.png" alt="IEGF" class="h-14 mb-2">
+          <img src="assets/media/logo/iegf-logo-1-sm.webp" alt="IEGF" width="56" height="56" class="h-14 mb-2">
           <p class="text-white/80 text-lg mb-4">Empowering People. Shaping Nations.</p>
           <p class="text-white/60 text-sm">A people-centred global forum transforming communities, livelihoods and nations through structured development.</p>
         </div>
