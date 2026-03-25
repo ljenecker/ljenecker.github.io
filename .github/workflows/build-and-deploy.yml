@@ -48,3 +48,9 @@ jobs:
           port: ${{ secrets.FTP_PORT }}
           protocol: ftp
           server-dir: /public_html/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            landing.html
+            map.html

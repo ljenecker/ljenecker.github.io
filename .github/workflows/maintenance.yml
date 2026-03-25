@@ -1,0 +1,56 @@
+name: Maintenance Mode
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'Enable or disable maintenance mode'
+        required: true
+        type: choice
+        options:
+          - enable
+          - disable
+
+jobs:
+  toggle-maintenance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Enable: copy landing.html → index.html and upload just that file
+      - name: Prepare maintenance page
+        if: inputs.action == 'enable'
+        run: |
+          mkdir -p staging
+          cp landing.html staging/index.html
+
+      - name: Upload maintenance page
+        if: inputs.action == 'enable'
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: ${{ secrets.FTP_PORT }}
+          protocol: ftp
+          server-dir: /public_html/
+          local-dir: staging/
+
+      # Disable: upload the real index.html to restore the site
+      - name: Prepare real homepage
+        if: inputs.action == 'disable'
+        run: |
+          mkdir -p staging
+          cp index.html staging/index.html
+
+      - name: Restore real homepage
+        if: inputs.action == 'disable'
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: ${{ secrets.FTP_PORT }}
+          protocol: ftp
+          server-dir: /public_html/
+          local-dir: staging/
