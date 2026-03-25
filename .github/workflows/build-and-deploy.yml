@@ -64,5 +64,6 @@ jobs:
             **/.git*
             **/.git*/**
             **/node_modules/**
+            docs/**
             landing.html
             map.html
