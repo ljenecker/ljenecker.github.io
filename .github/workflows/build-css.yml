@@ -9,6 +9,9 @@ on:
       - 'assets/tailwind-input.css'
       - '.github/workflows/build-css.yml'
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
