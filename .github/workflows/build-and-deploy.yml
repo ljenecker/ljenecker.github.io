@@ -66,4 +66,6 @@ jobs:
             **/node_modules/**
             docs/**
             landing.html
-            map.html
+            map-app.html
+            map-landing.html
+            map-program.html

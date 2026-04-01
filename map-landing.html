@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <title>IEGF Market Access Program (MAP) — Integrated Economic Development</title>
+  <meta name="description" content="The IEGF Market Access Program is an 18-month development ecosystem supporting Individuals, Businesses, Civil Society and Communities toward economic stability and growth.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="assets/tailwind.css">
+  <style>
+    :root {
+      --navy: #052a64;
+      --green: #4ba755;
+      --lightgrey: #d9d9d9;
+      --darkgrey: #737373;
+      --dur-base: 320ms;
+      --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* Tab styles */
+    .tab-btn { position: relative; transition: color var(--dur-base) var(--ease-premium), background var(--dur-base) var(--ease-premium); }
+    .tab-btn[aria-selected="true"] { color: #fff; background: var(--navy); }
+    .tab-btn[aria-selected="false"] { color: var(--navy); background: #fff; }
+    .tab-btn[aria-selected="false"]:hover { background: #eef1f6; }
+    .tab-panel { display: none; animation: fadeIn 0.35s ease; }
+    .tab-panel.is-active { display: block; }
+
+    /* Accordion styles */
+    .accordion-trigger { transition: background var(--dur-base) var(--ease-premium); }
+    .accordion-trigger:hover { background: #f0f4f8; }
+    .accordion-trigger[aria-expanded="true"] { background: #eef3f9; }
+    .accordion-trigger[aria-expanded="true"] .accordion-chevron { transform: rotate(180deg); }
+    .accordion-chevron { transition: transform var(--dur-base) var(--ease-premium); }
+    .accordion-body { overflow: hidden; max-height: 0; transition: max-height 0.4s var(--ease-premium), padding 0.3s var(--ease-premium); }
+    .accordion-body.is-open { max-height: 600px; }
+
+    /* Flow diagram */
+    .flow-node { transition: transform 0.3s var(--ease-premium), box-shadow 0.3s var(--ease-premium); }
+    .flow-node:hover { transform: scale(1.08); box-shadow: 0 8px 24px rgba(5,42,100,0.18); }
+
+    /* Checkmark list */
+    .check-list li { position: relative; padding-left: 1.75rem; }
+    .check-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.3em;
+      width: 1rem;
+      height: 1rem;
+      background: var(--green);
+      border-radius: 50%;
+    }
+    .check-list li::after {
+      content: "";
+      position: absolute;
+      left: 0.25rem;
+      top: 0.45em;
+      width: 0.5rem;
+      height: 0.3rem;
+      border-left: 2px solid #fff;
+      border-bottom: 2px solid #fff;
+      transform: rotate(-45deg);
+    }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  </style>
+</head>
+<body class="font-sans antialiased text-darkgrey bg-white">
+
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden text-white">
+    <div class="absolute inset-0 bg-gradient-to-br from-navy via-[#0a3a7a] to-[#0e141f]"></div>
+    <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 20% 50%, rgba(75,167,85,0.4) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255,255,255,0.08) 0%, transparent 40%);"></div>
+    <div class="relative max-w-5xl mx-auto px-4 py-20 md:py-32 text-center">
+      <p class="text-green font-semibold text-sm uppercase tracking-widest mb-4">Informal Economy Global Forum</p>
+      <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight mb-4">IEGF MARKET ACCESS PROGRAM (MAP)</h1>
+      <p class="text-lg md:text-xl font-semibold text-white/90 mb-2">Integrated Economic Development Framework</p>
+      <p class="text-base md:text-lg text-green font-semibold italic mb-8">A Structured Pathway to Economic Stability, Business Growth &amp; Community Transformation</p>
+      <p class="max-w-3xl mx-auto text-base md:text-lg text-white/80 leading-relaxed mb-10">
+        The Market Access Program (MAP) is an 18-month development ecosystem designed to support
+        <strong class="text-white">Individuals</strong>, <strong class="text-white">Businesses</strong>,
+        <strong class="text-white">Civil Society</strong> &amp; <strong class="text-white">Communities</strong>
+        through structured, measurable pathways toward economic participation and sustainability.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#programs" class="inline-flex items-center justify-center gap-2 px-8 py-3 bg-green text-white font-semibold rounded-lg hover:bg-green/90 transition-colors focus:outline-none focus:ring-2 focus:ring-green focus:ring-offset-2 focus:ring-offset-navy">
+          Explore Programs
+          <svg class="w-5 h-5 fill-none stroke-current" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-019"/></svg>
+        </a>
+        <a href="map-app.html" class="inline-flex items-center justify-center gap-2 px-8 py-3 border-2 border-white/80 text-white font-semibold rounded-lg hover:bg-white/10 transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-navy">
+          Access MAP Portal
+          <svg class="w-5 h-5 fill-none stroke-current" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-011"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Three Pillars Overview -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-bold text-navy text-center mb-4">Three Pillars of Development</h2>
+      <p class="text-center text-darkgrey max-w-2xl mx-auto mb-12">MAP addresses economic development holistically through three interconnected participant streams.</p>
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Individuals -->
+        <div class="bg-white border border-lightgrey rounded-xl p-8 text-center hover:shadow-lg transition-shadow">
+          <div class="w-14 h-14 mx-auto mb-4 bg-navy/10 rounded-full flex items-center justify-center">
+            <svg class="w-7 h-7 fill-none stroke-navy" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-010"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-navy mb-2">Individuals</h3>
+          <p class="text-sm text-darkgrey">Employment readiness, personal development, and economic participation.</p>
+        </div>
+        <!-- Businesses -->
+        <div class="bg-white border border-lightgrey rounded-xl p-8 text-center hover:shadow-lg transition-shadow">
+          <div class="w-14 h-14 mx-auto mb-4 bg-green/10 rounded-full flex items-center justify-center">
+            <svg class="w-7 h-7 fill-none stroke-green" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-012"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-navy mb-2">Businesses</h3>
+          <p class="text-sm text-darkgrey">Enterprise growth, sustainability, and sector-aligned development.</p>
+        </div>
+        <!-- Civil Society & Communities -->
+        <div class="bg-white border border-lightgrey rounded-xl p-8 text-center hover:shadow-lg transition-shadow">
+          <div class="w-14 h-14 mx-auto mb-4 bg-navy/10 rounded-full flex items-center justify-center">
+            <svg class="w-7 h-7 fill-none stroke-navy" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-026"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-navy mb-2">Civil Society &amp; Communities</h3>
+          <p class="text-sm text-darkgrey">Social impact, governance, and grassroots community development.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tabbed Programs Section -->
+  <section id="programs" class="py-16 md:py-20 bg-[#f7f8fb]">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-bold text-navy text-center mb-4">MAP Programs</h2>
+      <p class="text-center text-darkgrey max-w-2xl mx-auto mb-10">Choose a program stream to explore its structure, outcomes, and sector coverage.</p>
+
+      <!-- Tab Buttons -->
+      <div role="tablist" aria-label="MAP Programs" class="flex flex-col sm:flex-row gap-2 mb-8">
+        <button role="tab" id="tab-individual" aria-selected="true" aria-controls="panel-individual" class="tab-btn flex-1 px-5 py-3 rounded-lg font-semibold text-sm border border-navy/20 focus:outline-none focus:ring-2 focus:ring-green">
+          Individual MAP
+        </button>
+        <button role="tab" id="tab-business" aria-selected="false" aria-controls="panel-business" tabindex="-1" class="tab-btn flex-1 px-5 py-3 rounded-lg font-semibold text-sm border border-navy/20 focus:outline-none focus:ring-2 focus:ring-green">
+          Business MAP
+        </button>
+        <button role="tab" id="tab-community" aria-selected="false" aria-controls="panel-community" tabindex="-1" class="tab-btn flex-1 px-5 py-3 rounded-lg font-semibold text-sm border border-navy/20 focus:outline-none focus:ring-2 focus:ring-green">
+          Community MAP
+        </button>
+      </div>
+
+      <!-- Tab Panel: Individual MAP -->
+      <div role="tabpanel" id="panel-individual" aria-labelledby="tab-individual" class="tab-panel is-active bg-white rounded-xl border border-lightgrey p-6 md:p-10">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 bg-navy/10 rounded-full flex items-center justify-center flex-shrink-0">
+            <svg class="w-5 h-5 fill-none stroke-navy" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-010"/></svg>
+          </div>
+          <div>
+            <h3 class="text-xl md:text-2xl font-bold text-navy">Individual MAP: Rise &amp; Thrive Program</h3>
+          </div>
+        </div>
+        <p class="text-darkgrey font-semibold mb-6">Preparing Individuals for the World of Work and Economic Participation</p>
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 mt-0.5 flex-shrink-0 fill-none stroke-green" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-022"/></svg>
+            <span>Work readiness and employability training</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 mt-0.5 flex-shrink-0 fill-none stroke-green" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-022"/></svg>
+            <span>Personal financial literacy and financial wellbeing</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 mt-0.5 flex-shrink-0 fill-none stroke-green" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-022"/></svg>
+            <span>Digital skills and professional development</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 mt-0.5 flex-shrink-0 fill-none stroke-green" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-022"/></svg>
+            <span>Career pathway guidance and entrepreneurship awareness</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 mt-0.5 flex-shrink-0 fill-none stroke-green" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-022"/></svg>
+            <span>Personal branding and productivity systems</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 mt-0.5 flex-shrink-0 fill-none stroke-green" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-022"/></svg>
+            <span>Mentorship and personal growth support</span>
+          </li>
+        </ul>
+        <div class="bg-green/5 border border-green/20 rounded-lg p-5">
+          <p class="text-navy font-semibold text-sm">
+            <span class="text-green font-bold uppercase tracking-wide text-xs block mb-1">Outcome</span>
+            Participants become work-ready, financially responsible, and equipped to participate meaningfully in the economy.
+          </p>
+        </div>
+      </div>
+
+      <!-- Tab Panel: Business MAP -->
+      <div role="tabpanel" id="panel-business" aria-labelledby="tab-business" class="tab-panel bg-white rounded-xl border border-lightgrey p-6 md:p-10" hidden>
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 bg-green/10 rounded-full flex items-center justify-center flex-shrink-0">
+            <svg class="w-5 h-5 fill-none stroke-green" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-012"/></svg>
+          </div>
+          <div>
+            <h3 class="text-xl md:text-2xl font-bold text-navy">Business MAP: Sector Enterprise Development</h3>
+          </div>
+        </div>
+        <p class="text-darkgrey font-semibold mb-2">21 Sector-Based Programs Aligned to National SETAs</p>
+        <p class="text-darkgrey mb-6">The IEGF Business MAP delivers structured enterprise development across 21 economic sectors aligned with the SETA framework, supporting entrepreneurs and businesses to grow into compliant, sustainable enterprises.</p>
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 mt-0.5 flex-shrink-0 fill-none stroke-green" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-022"/></svg>
+            <span>Business compliance and formalisation</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 mt-0.5 flex-shrink-0 fill-none stroke-green" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-022"/></svg>
+            <span>Financial literacy and funding readiness</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 mt-0.5 flex-shrink-0 fill-none stroke-green" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-022"/></svg>
+            <span>Branding, digital presence and market positioning</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 mt-0.5 flex-shrink-0 fill-none stroke-green" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-022"/></svg>
+            <span>Infrastructure and operational systems development</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 mt-0.5 flex-shrink-0 fill-none stroke-green" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-022"/></svg>
+            <span>Risk management and performance monitoring</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 mt-0.5 flex-shrink-0 fill-none stroke-green" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-022"/></svg>
+            <span>Supplier and market access opportunities</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 mt-0.5 flex-shrink-0 fill-none stroke-green" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-022"/></svg>
+            <span>Mentorship and sustainability support</span>
+          </li>
+        </ul>
+        <div class="bg-green/5 border border-green/20 rounded-lg p-5 mb-10">
+          <p class="text-navy font-semibold text-sm">
+            <span class="text-green font-bold uppercase tracking-wide text-xs block mb-1">Outcome</span>
+            Businesses become funding-ready, system-driven, and positioned for sustainable growth within their sectors.
+          </p>
+        </div>
+
+        <!-- 21 Sector Accordion -->
+        <h4 class="text-lg font-bold text-navy mb-4">21 Sector Enterprise Development Programs</h4>
+        <div class="space-y-2" data-accordion="sectors">
+          <div class="border border-lightgrey rounded-lg overflow-hidden">
+            <button class="accordion-trigger w-full flex items-center justify-between px-5 py-4 text-left font-semibold text-navy text-sm" aria-expanded="false" aria-controls="sector-1">
+              <span><span class="text-green font-bold mr-2">01.</span>AgriRise</span>
+              <svg class="accordion-chevron w-5 h-5 flex-shrink-0 fill-none stroke-navy" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-019"/></svg>
+            </button>
+            <div id="sector-1" class="accordion-body px-5 text-sm text-darkgrey" role="region">
+              <div class="pb-4 pt-2">
+                <p class="text-navy font-semibold text-xs uppercase tracking-wide mb-1">Agriculture, farming, forestry, fisheries and agribusiness</p>
+                <p>We support businesses to become compliant, improve production systems, access funding, and connect to markets and supply chains for sustainable growth.</p>
+              </div>
+            </div>
+          </div>
+          <div class="border border-lightgrey rounded-lg overflow-hidden">
+            <button class="accordion-trigger w-full flex items-center justify-between px-5 py-4 text-left font-semibold text-navy text-sm" aria-expanded="false" aria-controls="sector-2">
+              <span><span class="text-green font-bold mr-2">02.</span>MineForce</span>
+              <svg class="accordion-chevron w-5 h-5 flex-shrink-0 fill-none stroke-navy" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-019"/></svg>
+            </button>
+            <div id="sector-2" class="accordion-body px-5 text-sm text-darkgrey" role="region">
+              <div class="pb-4 pt-2">
+                <p class="text-navy font-semibold text-xs uppercase tracking-wide mb-1">Mining, mineral extraction and related support services</p>
+                <p>We assist businesses with compliance, safety standards, funding readiness, and operational systems to strengthen participation in the mining value chain.</p>
+              </div>
+            </div>
+          </div>
+          <div class="border border-lightgrey rounded-lg overflow-hidden">
+            <button class="accordion-trigger w-full flex items-center justify-between px-5 py-4 text-left font-semibold text-navy text-sm" aria-expanded="false" aria-controls="sector-3">
+              <span><span class="text-green font-bold mr-2">03.</span>PowerFlow</span>
+              <svg class="accordion-chevron w-5 h-5 flex-shrink-0 fill-none stroke-navy" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-019"/></svg>
+            </button>
+            <div id="sector-3" class="accordion-body px-5 text-sm text-darkgrey" role="region">
+              <div class="pb-4 pt-2">
+                <p class="text-navy font-semibold text-xs uppercase tracking-wide mb-1">Energy, electricity, renewable energy and water utility</p>
+                <p>This program supports compliance, infrastructure development, funding access, and positioning businesses within the growing energy and water sectors.</p>
+              </div>
+            </div>
+          </div>
+          <div class="border border-lightgrey rounded-lg overflow-hidden">
+            <button class="accordion-trigger w-full flex items-center justify-between px-5 py-4 text-left font-semibold text-navy text-sm" aria-expanded="false" aria-controls="sector-4">
+              <span><span class="text-green font-bold mr-2">04.</span>ManuBuild</span>
+              <svg class="accordion-chevron w-5 h-5 flex-shrink-0 fill-none stroke-navy" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-019"/></svg>
+            </button>
+            <div id="sector-4" class="accordion-body px-5 text-sm text-darkgrey" role="region">
+              <div class="pb-4 pt-2">
+                <p class="text-navy font-semibold text-xs uppercase tracking-wide mb-1">Manufacturing, engineering, automotive and metal industry</p>
+                <p>We help businesses formalise operations, improve production systems, access funding, and scale within industrial value chains.</p>
+              </div>
+            </div>
+          </div>
+          <div class="border border-lightgrey rounded-lg overflow-hidden">
+            <button class="accordion-trigger w-full flex items-center justify-between px-5 py-4 text-left font-semibold text-navy text-sm" aria-expanded="false" aria-controls="sector-5">
+              <span><span class="text-green font-bold mr-2">05.</span>ChemEdge</span>
+              <svg class="accordion-chevron w-5 h-5 flex-shrink-0 fill-none stroke-navy" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-019"/></svg>
+            </button>
+            <div id="sector-5" class="accordion-body px-5 text-sm text-darkgrey" role="region">
+              <div class="pb-4 pt-2">
+                <p class="text-navy font-semibold text-xs uppercase tracking-wide mb-1">Chemical, petroleum, pharmaceutical and plastics</p>
+                <p>We support compliance, regulatory alignment, funding readiness, and safe operational practices to grow within highly regulated industries.</p>
+              </div>
+            </div>
+          </div>
+          <div class="border border-lightgrey rounded-lg overflow-hidden">
+            <button class="accordion-trigger w-full flex items-center justify-between px-5 py-4 text-left font-semibold text-navy text-sm" aria-expanded="false" aria-controls="sector-6">
+              <span><span class="text-green font-bold mr-2">06.</span>FoodChain</span>
+              <svg class="accordion-chevron w-5 h-5 flex-shrink-0 fill-none stroke-navy" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-019"/></svg>
+            </button>
+            <div id="sector-6" class="accordion-body px-5 text-sm text-darkgrey" role="region">
+              <div class="pb-4 pt-2">
+                <p class="text-navy font-semibold text-xs uppercase tracking-wide mb-1">Food production, catering, and beverage manufacturing</p>
+                <p>We assist with compliance, food safety standards, funding access, branding, and market entry into formal retail and distribution channels.</p>
+              </div>
+            </div>
+          </div>
+          <div class="border border-lightgrey rounded-lg overflow-hidden">
+            <button class="accordion-trigger w-full flex items-center justify-between px-5 py-4 text-left font-semibold text-navy text-sm" aria-expanded="false" aria-controls="sector-7">
+              <span><span class="text-green font-bold mr-2">07.</span>Fabrication &amp; Fibre</span>
+              <svg class="accordion-chevron w-5 h-5 flex-shrink-0 fill-none stroke-navy" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-019"/></svg>
+            </button>
+            <div id="sector-7" class="accordion-body px-5 text-sm text-darkgrey" role="region">
+              <div class="pb-4 pt-2">
+                <p class="text-navy font-semibold text-xs uppercase tracking-wide mb-1">Textiles, clothing, furniture, printing and fibre-related</p>
+                <p>We support product development, branding, compliance, and access to manufacturing and retail opportunities.</p>
+              </div>
+            </div>
+          </div>
+          <div class="border border-lightgrey rounded-lg overflow-hidden">
+            <button class="accordion-trigger w-full flex items-center justify-between px-5 py-4 text-left font-semibold text-navy text-sm" aria-expanded="false" aria-controls="sector-8">
+              <span><span class="text-green font-bold mr-2">08.</span>ConstructPro</span>
+              <svg class="accordion-chevron w-5 h-5 flex-shrink-0 fill-none stroke-navy" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-019"/></svg>
+            </button>
+            <div id="sector-8" class="accordion-body px-5 text-sm text-darkgrey" role="region">
+              <div class="pb-4 pt-2">
+                <p class="text-navy font-semibold text-xs uppercase tracking-wide mb-1">Construction, civil works, plumbing and building services</p>
+                <p>We assist contractors with compliance, certifications, funding readiness, project access, and operational systems to scale sustainably.</p>
+              </div>
+            </div>
+          </div>
+          <div class="border border-lightgrey rounded-lg overflow-hidden">
+            <button class="accordion-trigger w-full flex items-center justify-between px-5 py-4 text-left font-semibold text-navy text-sm" aria-expanded="false" aria-controls="sector-9">
+              <span><span class="text-green font-bold mr-2">09.</span>FinBridge</span>
+              <svg class="accordion-chevron w-5 h-5 flex-shrink-0 fill-none stroke-navy" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-019"/></svg>
+            </button>
+            <div id="sector-9" class="accordion-body px-5 text-sm text-darkgrey" role="region">
+              <div class="pb-4 pt-2">
+                <p class="text-navy font-semibold text-xs uppercase tracking-wide mb-1">Banking, microfinance and financial service providers</p>
+                <p>We support compliance, financial systems, funding readiness, and strengthening of financial service offerings.</p>
+              </div>
+            </div>
+          </div>
+          <div class="border border-lightgrey rounded-lg overflow-hidden">
+            <button class="accordion-trigger w-full flex items-center justify-between px-5 py-4 text-left font-semibold text-navy text-sm" aria-expanded="false" aria-controls="sector-10">
+              <span><span class="text-green font-bold mr-2">10.</span>AccuGrowth</span>
+              <svg class="accordion-chevron w-5 h-5 flex-shrink-0 fill-none stroke-navy" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-019"/></svg>
+            </button>
+            <div id="sector-10" class="accordion-body px-5 text-sm text-darkgrey" role="region">
+              <div class="pb-4 pt-2">
+                <p class="text-navy font-semibold text-xs uppercase tracking-wide mb-1">Accounting, auditing, bookkeeping and financial advisory</p>
+                <p>We assist with professional positioning, compliance, systems, and scaling service-based financial businesses.</p>
+              </div>
+            </div>
+          </div>
+          <div class="border border-lightgrey rounded-lg overflow-hidden">
+            <button class="accordion-trigger w-full flex items-center justify-between px-5 py-4 text-left font-semibold text-navy text-sm" aria-expanded="false" aria-controls="sector-11">
+              <span><span class="text-green font-bold mr-2">11.</span>InsurePro</span>
+              <svg class="accordion-chevron w-5 h-5 flex-shrink-0 fill-none stroke-navy" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-019"/></svg>
+            </button>
+            <div id="sector-11" class="accordion-body px-5 text-sm text-darkgrey" role="region">
+              <div class="pb-4 pt-2">
+                <p class="text-navy font-semibold text-xs uppercase tracking-wide mb-1">Insurance, risk management and advisory services</p>
+                <p>We support compliance, client management systems, growth strategies, and access to new markets.</p>
+              </div>
+            </div>
+          </div>
+          <div class="border border-lightgrey rounded-lg overflow-hidden">
+            <button class="accordion-trigger w-full flex items-center justify-between px-5 py-4 text-left font-semibold text-navy text-sm" aria-expanded="false" aria-controls="sector-12">
+              <span><span class="text-green font-bold mr-2">12.</span>DigiScale</span>
+              <svg class="accordion-chevron w-5 h-5 flex-shrink-0 fill-none stroke-navy" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-019"/></svg>
+            </button>
+            <div id="sector-12" class="accordion-body px-5 text-sm text-darkgrey" role="region">
+              <div class="pb-4 pt-2">
+                <p class="text-navy font-semibold text-xs uppercase tracking-wide mb-1">ICT, digital services, media, marketing and creative tech</p>
+                <p>We assist with digital positioning, systems, funding readiness, and scaling within the digital economy.</p>
+              </div>
+            </div>
+          </div>
+          <div class="border border-lightgrey rounded-lg overflow-hidden">
+            <button class="accordion-trigger w-full flex items-center justify-between px-5 py-4 text-left font-semibold text-navy text-sm" aria-expanded="false" aria-controls="sector-13">
+              <span><span class="text-green font-bold mr-2">13.</span>ServicePro</span>
+              <svg class="accordion-chevron w-5 h-5 flex-shrink-0 fill-none stroke-navy" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-019"/></svg>
+            </button>
+            <div id="sector-13" class="accordion-body px-5 text-sm text-darkgrey" role="region">
+              <div class="pb-4 pt-2">
+                <p class="text-navy font-semibold text-xs uppercase tracking-wide mb-1">General services including HR, consulting, cleaning and business services</p>
+                <p>We support compliance, service structuring, pricing, systems, and growth into sustainable enterprises.</p>
+              </div>
+            </div>
+          </div>
+          <div class="border border-lightgrey rounded-lg overflow-hidden">
+            <button class="accordion-trigger w-full flex items-center justify-between px-5 py-4 text-left font-semibold text-navy text-sm" aria-expanded="false" aria-controls="sector-14">
+              <span><span class="text-green font-bold mr-2">14.</span>TradeConnect</span>
+              <svg class="accordion-chevron w-5 h-5 flex-shrink-0 fill-none stroke-navy" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-019"/></svg>
+            </button>
+            <div id="sector-14" class="accordion-body px-5 text-sm text-darkgrey" role="region">
+              <div class="pb-4 pt-2">
+                <p class="text-navy font-semibold text-xs uppercase tracking-wide mb-1">Wholesale, retail, spaza shops and e-commerce</p>
+                <p>We assist with stock systems, supplier access, funding readiness, and expansion into larger markets.</p>
+              </div>
+            </div>
+          </div>
+          <div class="border border-lightgrey rounded-lg overflow-hidden">
+            <button class="accordion-trigger w-full flex items-center justify-between px-5 py-4 text-left font-semibold text-navy text-sm" aria-expanded="false" aria-controls="sector-15">
+              <span><span class="text-green font-bold mr-2">15.</span>MoveNation</span>
+              <svg class="accordion-chevron w-5 h-5 flex-shrink-0 fill-none stroke-navy" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-019"/></svg>
+            </button>
+            <div id="sector-15" class="accordion-body px-5 text-sm text-darkgrey" role="region">
+              <div class="pb-4 pt-2">
+                <p class="text-navy font-semibold text-xs uppercase tracking-wide mb-1">Transport, logistics, delivery and supply chain</p>
+                <p>We support compliance, operational systems, fleet management, and access to logistics opportunities.</p>
+              </div>
+            </div>
+          </div>
+          <div class="border border-lightgrey rounded-lg overflow-hidden">
+            <button class="accordion-trigger w-full flex items-center justify-between px-5 py-4 text-left font-semibold text-navy text-sm" aria-expanded="false" aria-controls="sector-16">
+              <span><span class="text-green font-bold mr-2">16.</span>GovSupport</span>
+              <svg class="accordion-chevron w-5 h-5 flex-shrink-0 fill-none stroke-navy" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-019"/></svg>
+            </button>
+            <div id="sector-16" class="accordion-body px-5 text-sm text-darkgrey" role="region">
+              <div class="pb-4 pt-2">
+                <p class="text-navy font-semibold text-xs uppercase tracking-wide mb-1">Businesses supporting government and public service delivery</p>
+                <p>We assist with compliance, tender readiness, systems, and positioning for public sector opportunities.</p>
+              </div>
+            </div>
+          </div>
+          <div class="border border-lightgrey rounded-lg overflow-hidden">
+            <button class="accordion-trigger w-full flex items-center justify-between px-5 py-4 text-left font-semibold text-navy text-sm" aria-expanded="false" aria-controls="sector-17">
+              <span><span class="text-green font-bold mr-2">17.</span>Local-Impact</span>
+              <svg class="accordion-chevron w-5 h-5 flex-shrink-0 fill-none stroke-navy" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-019"/></svg>
+            </button>
+            <div id="sector-17" class="accordion-body px-5 text-sm text-darkgrey" role="region">
+              <div class="pb-4 pt-2">
+                <p class="text-navy font-semibold text-xs uppercase tracking-wide mb-1">Businesses within municipalities and local government services</p>
+                <p>We support compliance, community-based opportunities, and access to local economic development initiatives.</p>
+              </div>
+            </div>
+          </div>
+          <div class="border border-lightgrey rounded-lg overflow-hidden">
+            <button class="accordion-trigger w-full flex items-center justify-between px-5 py-4 text-left font-semibold text-navy text-sm" aria-expanded="false" aria-controls="sector-18">
+              <span><span class="text-green font-bold mr-2">18.</span>SecureForce</span>
+              <svg class="accordion-chevron w-5 h-5 flex-shrink-0 fill-none stroke-navy" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-019"/></svg>
+            </button>
+            <div id="sector-18" class="accordion-body px-5 text-sm text-darkgrey" role="region">
+              <div class="pb-4 pt-2">
+                <p class="text-navy font-semibold text-xs uppercase tracking-wide mb-1">Security, safety, policing and justice-related services</p>
+                <p>We assist with compliance, certification, operational systems, and growth within regulated environments.</p>
+              </div>
+            </div>
+          </div>
+          <div class="border border-lightgrey rounded-lg overflow-hidden">
+            <button class="accordion-trigger w-full flex items-center justify-between px-5 py-4 text-left font-semibold text-navy text-sm" aria-expanded="false" aria-controls="sector-19">
+              <span><span class="text-green font-bold mr-2">19.</span>Edu-Impact</span>
+              <svg class="accordion-chevron w-5 h-5 flex-shrink-0 fill-none stroke-navy" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-019"/></svg>
+            </button>
+            <div id="sector-19" class="accordion-body px-5 text-sm text-darkgrey" role="region">
+              <div class="pb-4 pt-2">
+                <p class="text-navy font-semibold text-xs uppercase tracking-wide mb-1">Training providers, educators and skills development</p>
+                <p>We support accreditation readiness, compliance, funding access, and program structuring.</p>
+              </div>
+            </div>
+          </div>
+          <div class="border border-lightgrey rounded-lg overflow-hidden">
+            <button class="accordion-trigger w-full flex items-center justify-between px-5 py-4 text-left font-semibold text-navy text-sm" aria-expanded="false" aria-controls="sector-20">
+              <span><span class="text-green font-bold mr-2">20.</span>CareImpact</span>
+              <svg class="accordion-chevron w-5 h-5 flex-shrink-0 fill-none stroke-navy" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-019"/></svg>
+            </button>
+            <div id="sector-20" class="accordion-body px-5 text-sm text-darkgrey" role="region">
+              <div class="pb-4 pt-2">
+                <p class="text-navy font-semibold text-xs uppercase tracking-wide mb-1">Healthcare, wellness, and social development</p>
+                <p>We assist with compliance, operational systems, funding readiness, and service expansion.</p>
+              </div>
+            </div>
+          </div>
+          <div class="border border-lightgrey rounded-lg overflow-hidden">
+            <button class="accordion-trigger w-full flex items-center justify-between px-5 py-4 text-left font-semibold text-navy text-sm" aria-expanded="false" aria-controls="sector-21">
+              <span><span class="text-green font-bold mr-2">21.</span>CultureConnect</span>
+              <svg class="accordion-chevron w-5 h-5 flex-shrink-0 fill-none stroke-navy" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-019"/></svg>
+            </button>
+            <div id="sector-21" class="accordion-body px-5 text-sm text-darkgrey" role="region">
+              <div class="pb-4 pt-2">
+                <p class="text-navy font-semibold text-xs uppercase tracking-wide mb-1">Arts, culture, tourism, hospitality and sports</p>
+                <p>We support branding, market positioning, funding readiness, and access to tourism and creative industry opportunities.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab Panel: Community MAP -->
+      <div role="tabpanel" id="panel-community" aria-labelledby="tab-community" class="tab-panel bg-white rounded-xl border border-lightgrey p-6 md:p-10" hidden>
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 bg-navy/10 rounded-full flex items-center justify-center flex-shrink-0">
+            <svg class="w-5 h-5 fill-none stroke-navy" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-026"/></svg>
+          </div>
+          <div>
+            <h3 class="text-xl md:text-2xl font-bold text-navy">Community MAP: Impact &amp; Empower Program</h3>
+          </div>
+        </div>
+        <p class="text-darkgrey font-semibold mb-6">Strengthening Civil Society and Grassroots Development</p>
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 mt-0.5 flex-shrink-0 fill-none stroke-green" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-022"/></svg>
+            <span>Governance and compliance structuring</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 mt-0.5 flex-shrink-0 fill-none stroke-green" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-022"/></svg>
+            <span>Leadership and organisational capacity building</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 mt-0.5 flex-shrink-0 fill-none stroke-green" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-022"/></svg>
+            <span>Program development and operational systems</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 mt-0.5 flex-shrink-0 fill-none stroke-green" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-022"/></svg>
+            <span>Funding readiness and partnership development</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 mt-0.5 flex-shrink-0 fill-none stroke-green" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-022"/></svg>
+            <span>Community impact measurement and reporting</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 mt-0.5 flex-shrink-0 fill-none stroke-green" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-022"/></svg>
+            <span>Mentorship and sustainability support</span>
+          </li>
+        </ul>
+
+        <!-- Grassroots Impact Connects -->
+        <div class="bg-navy/5 rounded-lg p-6 mb-8">
+          <h4 class="text-lg font-bold text-navy mb-3">Grassroots Impact Connects</h4>
+          <p class="text-darkgrey text-sm mb-4">Community-based development centres providing:</p>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 mt-0.5 flex-shrink-0 fill-none stroke-green" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-028"/></svg>
+              <span class="text-sm">Access to training and skills development</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 mt-0.5 flex-shrink-0 fill-none stroke-green" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-028"/></svg>
+              <span class="text-sm">Business and employment support services</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 mt-0.5 flex-shrink-0 fill-none stroke-green" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-028"/></svg>
+              <span class="text-sm">Resource centres for local communities</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 mt-0.5 flex-shrink-0 fill-none stroke-green" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-028"/></svg>
+              <span class="text-sm">Platforms for collaboration and community initiatives</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-green/5 border border-green/20 rounded-lg p-5">
+          <p class="text-navy font-semibold text-sm">
+            <span class="text-green font-bold uppercase tracking-wide text-xs block mb-1">Outcome</span>
+            Organisations become structured, funding-ready and capable of delivering measurable social impact within their communities.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Economic Engine Diagram -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-bold text-navy text-center mb-4">The Economic Engine</h2>
+      <p class="text-center text-darkgrey max-w-2xl mx-auto mb-12">A connected development model where each element strengthens the next.</p>
+
+      <!-- SVG Flow Diagram -->
+      <div class="overflow-x-auto pb-4">
+        <div class="min-w-[600px] md:min-w-0">
+          <svg viewBox="0 0 900 160" class="w-full" aria-label="Economic flow diagram: Individuals lead to Businesses, which create Jobs, strengthening Communities, resulting in Economic Stability" role="img">
+            <!-- Connection lines -->
+            <line x1="155" y1="80" x2="225" y2="80" stroke="#4ba755" stroke-width="2.5" stroke-dasharray="6 4"/>
+            <line x1="315" y1="80" x2="385" y2="80" stroke="#4ba755" stroke-width="2.5" stroke-dasharray="6 4"/>
+            <line x1="475" y1="80" x2="545" y2="80" stroke="#4ba755" stroke-width="2.5" stroke-dasharray="6 4"/>
+            <line x1="635" y1="80" x2="705" y2="80" stroke="#4ba755" stroke-width="2.5" stroke-dasharray="6 4"/>
+
+            <!-- Arrows -->
+            <polygon points="222,74 232,80 222,86" fill="#4ba755"/>
+            <polygon points="382,74 392,80 382,86" fill="#4ba755"/>
+            <polygon points="542,74 552,80 542,86" fill="#4ba755"/>
+            <polygon points="702,74 712,80 702,86" fill="#4ba755"/>
+
+            <!-- Node 1: Individuals -->
+            <circle cx="90" cy="80" r="55" fill="#052a64" opacity="0.08"/>
+            <circle cx="90" cy="80" r="45" fill="#052a64"/>
+            <text x="90" y="75" text-anchor="middle" fill="#fff" font-family="Montserrat, sans-serif" font-size="11" font-weight="600">Individuals</text>
+            <text x="90" y="92" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Montserrat, sans-serif" font-size="8">Skills &amp; Readiness</text>
+
+            <!-- Node 2: Businesses -->
+            <circle cx="270" cy="80" r="55" fill="#4ba755" opacity="0.08"/>
+            <circle cx="270" cy="80" r="45" fill="#4ba755"/>
+            <text x="270" y="75" text-anchor="middle" fill="#fff" font-family="Montserrat, sans-serif" font-size="11" font-weight="600">Businesses</text>
+            <text x="270" y="92" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Montserrat, sans-serif" font-size="8">Growth &amp; Scale</text>
+
+            <!-- Node 3: Jobs -->
+            <circle cx="430" cy="80" r="55" fill="#052a64" opacity="0.08"/>
+            <circle cx="430" cy="80" r="45" fill="#052a64"/>
+            <text x="430" y="75" text-anchor="middle" fill="#fff" font-family="Montserrat, sans-serif" font-size="11" font-weight="600">Jobs</text>
+            <text x="430" y="92" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Montserrat, sans-serif" font-size="8">Employment</text>
+
+            <!-- Node 4: Communities -->
+            <circle cx="590" cy="80" r="55" fill="#4ba755" opacity="0.08"/>
+            <circle cx="590" cy="80" r="45" fill="#4ba755"/>
+            <text x="590" y="75" text-anchor="middle" fill="#fff" font-family="Montserrat, sans-serif" font-size="11" font-weight="600">Communities</text>
+            <text x="590" y="92" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Montserrat, sans-serif" font-size="8">Strength &amp; Impact</text>
+
+            <!-- Node 5: Economic Stability -->
+            <circle cx="775" cy="80" r="65" fill="#052a64" opacity="0.08"/>
+            <circle cx="775" cy="80" r="55" fill="#052a64"/>
+            <text x="775" y="72" text-anchor="middle" fill="#fff" font-family="Montserrat, sans-serif" font-size="11" font-weight="600">Economic</text>
+            <text x="775" y="88" text-anchor="middle" fill="#fff" font-family="Montserrat, sans-serif" font-size="11" font-weight="600">Stability</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why This Model Works -->
+  <section class="py-16 md:py-20 bg-[#f7f8fb]">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-bold text-navy text-center mb-4">Why This Model Works</h2>
+      <p class="text-center text-darkgrey max-w-2xl mx-auto mb-10">The IEGF MAP creates a connected economic ecosystem:</p>
+
+      <div class="grid md:grid-cols-3 gap-6 mb-12">
+        <div class="bg-white rounded-xl p-6 border border-lightgrey">
+          <div class="w-10 h-10 bg-navy/10 rounded-full flex items-center justify-center mb-3">
+            <svg class="w-5 h-5 fill-none stroke-navy" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-010"/></svg>
+          </div>
+          <p class="text-navy font-semibold text-sm">Individuals gain skills and enter the workforce or start businesses.</p>
+        </div>
+        <div class="bg-white rounded-xl p-6 border border-lightgrey">
+          <div class="w-10 h-10 bg-green/10 rounded-full flex items-center justify-center mb-3">
+            <svg class="w-5 h-5 fill-none stroke-green" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-023"/></svg>
+          </div>
+          <p class="text-navy font-semibold text-sm">Businesses grow and create sustainable jobs.</p>
+        </div>
+        <div class="bg-white rounded-xl p-6 border border-lightgrey">
+          <div class="w-10 h-10 bg-navy/10 rounded-full flex items-center justify-center mb-3">
+            <svg class="w-5 h-5 fill-none stroke-navy" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-026"/></svg>
+          </div>
+          <p class="text-navy font-semibold text-sm">Communities strengthen and support local economies.</p>
+        </div>
+      </div>
+
+      <h3 class="text-lg font-bold text-navy text-center mb-6">Measurable Results</h3>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
+        <ul class="check-list space-y-3 text-sm text-navy font-medium">
+          <li>Reduced unemployment</li>
+          <li>Increased business survival rates</li>
+        </ul>
+        <ul class="check-list space-y-3 text-sm text-navy font-medium">
+          <li>Stronger local economies</li>
+          <li>Financially stable households</li>
+        </ul>
+        <ul class="check-list space-y-3 text-sm text-navy font-medium">
+          <li>Sustainable community development</li>
+          <li>Infrastructure development</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Delivery Model -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-bold text-navy text-center mb-4">Delivery Model</h2>
+      <p class="text-center text-darkgrey max-w-2xl mx-auto mb-10">The program is delivered through a hybrid, tech-enabled system:</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
+        <div class="text-center">
+          <div class="w-14 h-14 mx-auto mb-3 bg-navy/10 rounded-full flex items-center justify-center">
+            <svg class="w-7 h-7 fill-none stroke-navy" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-021"/></svg>
+          </div>
+          <p class="text-sm font-semibold text-navy">Daily Communication</p>
+        </div>
+        <div class="text-center">
+          <div class="w-14 h-14 mx-auto mb-3 bg-green/10 rounded-full flex items-center justify-center">
+            <svg class="w-7 h-7 fill-none stroke-green" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-014"/></svg>
+          </div>
+          <p class="text-sm font-semibold text-navy">Membership Portal</p>
+          <p class="text-xs text-darkgrey mt-1">Training, tracking, uploads</p>
+        </div>
+        <div class="text-center">
+          <div class="w-14 h-14 mx-auto mb-3 bg-navy/10 rounded-full flex items-center justify-center">
+            <svg class="w-7 h-7 fill-none stroke-navy" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-027"/></svg>
+          </div>
+          <p class="text-sm font-semibold text-navy">Webinars &amp; Workshops</p>
+        </div>
+        <div class="text-center">
+          <div class="w-14 h-14 mx-auto mb-3 bg-green/10 rounded-full flex items-center justify-center">
+            <svg class="w-7 h-7 fill-none stroke-green" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-026"/></svg>
+          </div>
+          <p class="text-sm font-semibold text-navy">Face-to-Face Support</p>
+        </div>
+        <div class="text-center">
+          <div class="w-14 h-14 mx-auto mb-3 bg-navy/10 rounded-full flex items-center justify-center">
+            <svg class="w-7 h-7 fill-none stroke-navy" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-016"/></svg>
+          </div>
+          <p class="text-sm font-semibold text-navy">Mentorship &amp; Coaching</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Program Completion & Recognition -->
+  <section class="py-16 md:py-20 bg-[#f7f8fb]">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <h2 class="text-2xl md:text-3xl font-bold text-navy mb-4">Program Completion &amp; Recognition</h2>
+      <p class="text-darkgrey max-w-3xl mx-auto mb-10">At the end of the 18-month journey, all participants qualify for <strong class="text-navy">IEGF IBC Excellence Awards</strong> recognising outstanding achievement across key development areas.</p>
+      <div class="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
+        <span class="inline-flex items-center gap-2 px-4 py-2 bg-white border border-lightgrey rounded-full text-sm font-semibold text-navy">
+          <svg class="w-4 h-4 fill-none stroke-green" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-030"/></svg>
+          Compliance Excellence
+        </span>
+        <span class="inline-flex items-center gap-2 px-4 py-2 bg-white border border-lightgrey rounded-full text-sm font-semibold text-navy">
+          <svg class="w-4 h-4 fill-none stroke-green" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-030"/></svg>
+          Business Growth
+        </span>
+        <span class="inline-flex items-center gap-2 px-4 py-2 bg-white border border-lightgrey rounded-full text-sm font-semibold text-navy">
+          <svg class="w-4 h-4 fill-none stroke-green" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-030"/></svg>
+          Financial Discipline
+        </span>
+        <span class="inline-flex items-center gap-2 px-4 py-2 bg-white border border-lightgrey rounded-full text-sm font-semibold text-navy">
+          <svg class="w-4 h-4 fill-none stroke-green" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-030"/></svg>
+          Innovation
+        </span>
+        <span class="inline-flex items-center gap-2 px-4 py-2 bg-white border border-lightgrey rounded-full text-sm font-semibold text-navy">
+          <svg class="w-4 h-4 fill-none stroke-green" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-030"/></svg>
+          Community Impact
+        </span>
+        <span class="inline-flex items-center gap-2 px-4 py-2 bg-white border border-lightgrey rounded-full text-sm font-semibold text-navy">
+          <svg class="w-4 h-4 fill-none stroke-green" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-030"/></svg>
+          Individual Growth
+        </span>
+        <span class="inline-flex items-center gap-2 px-4 py-2 bg-white border border-lightgrey rounded-full text-sm font-semibold text-navy">
+          <svg class="w-4 h-4 fill-none stroke-green" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-030"/></svg>
+          Job Creation
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final Outcome -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-bold text-navy text-center mb-10">What Participants Leave With</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        <div class="flex items-start gap-3 bg-[#f7f8fb] rounded-lg p-5">
+          <svg class="w-5 h-5 mt-0.5 flex-shrink-0 fill-none stroke-green" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-022"/></svg>
+          <span class="text-sm font-semibold text-navy">Structured systems</span>
+        </div>
+        <div class="flex items-start gap-3 bg-[#f7f8fb] rounded-lg p-5">
+          <svg class="w-5 h-5 mt-0.5 flex-shrink-0 fill-none stroke-green" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-022"/></svg>
+          <span class="text-sm font-semibold text-navy">Financial stability</span>
+        </div>
+        <div class="flex items-start gap-3 bg-[#f7f8fb] rounded-lg p-5">
+          <svg class="w-5 h-5 mt-0.5 flex-shrink-0 fill-none stroke-green" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-022"/></svg>
+          <span class="text-sm font-semibold text-navy">Compliance &amp; credibility</span>
+        </div>
+        <div class="flex items-start gap-3 bg-[#f7f8fb] rounded-lg p-5">
+          <svg class="w-5 h-5 mt-0.5 flex-shrink-0 fill-none stroke-green" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-022"/></svg>
+          <span class="text-sm font-semibold text-navy">Market access</span>
+        </div>
+        <div class="flex items-start gap-3 bg-[#f7f8fb] rounded-lg p-5">
+          <svg class="w-5 h-5 mt-0.5 flex-shrink-0 fill-none stroke-green" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-022"/></svg>
+          <span class="text-sm font-semibold text-navy">Growth strategy</span>
+        </div>
+        <div class="flex items-start gap-3 bg-[#f7f8fb] rounded-lg p-5">
+          <svg class="w-5 h-5 mt-0.5 flex-shrink-0 fill-none stroke-green" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-022"/></svg>
+          <span class="text-sm font-semibold text-navy">Community impact footprint</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Positioning Statement -->
+  <section class="py-16 md:py-20 bg-navy text-white">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <div class="relative">
+        <svg class="w-10 h-10 mx-auto mb-6 opacity-30" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+        </svg>
+        <blockquote class="text-xl md:text-2xl lg:text-3xl font-bold leading-snug mb-6">
+          We don't just train &mdash; we build compliant, funding-ready and sustainable economic participants.
+        </blockquote>
+        <p class="text-green font-semibold text-lg">Choose your sector. Build your business. Access growth.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-[#0e141f] text-white py-12">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <p class="text-green font-bold text-lg tracking-wider uppercase mb-2">IEGF</p>
+      <p class="text-white/60 text-sm mb-8">Informal Economy Global Forum</p>
+      <a href="map-app.html" class="inline-flex items-center justify-center gap-2 px-8 py-3 bg-green text-white font-semibold rounded-lg hover:bg-green/90 transition-colors focus:outline-none focus:ring-2 focus:ring-green focus:ring-offset-2 focus:ring-offset-[#0e141f]">
+        Access MAP Portal
+        <svg class="w-5 h-5 fill-none stroke-current" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-011"/></svg>
+      </a>
+      <p class="text-white/40 text-xs mt-8">&copy; 2026 Informal Economy Global Forum. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript: Tabs & Accordion -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* ── Tabs ── */
+      var tabList = document.querySelector('[role="tablist"]');
+      var tabs = Array.from(tabList.querySelectorAll('[role="tab"]'));
+      var panels = tabs.map(function (tab) {
+        return document.getElementById(tab.getAttribute('aria-controls'));
+      });
+
+      function activateTab(tab) {
+        tabs.forEach(function (t) {
+          t.setAttribute('aria-selected', 'false');
+          t.setAttribute('tabindex', '-1');
+        });
+        panels.forEach(function (p) {
+          p.classList.remove('is-active');
+          p.setAttribute('hidden', '');
+        });
+        tab.setAttribute('aria-selected', 'true');
+        tab.removeAttribute('tabindex');
+        tab.focus();
+        var panel = document.getElementById(tab.getAttribute('aria-controls'));
+        panel.classList.add('is-active');
+        panel.removeAttribute('hidden');
+      }
+
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          activateTab(tab);
+        });
+
+        tab.addEventListener('keydown', function (e) {
+          var index = tabs.indexOf(tab);
+          var next;
+          if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+            e.preventDefault();
+            next = tabs[(index + 1) % tabs.length];
+            activateTab(next);
+          } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+            e.preventDefault();
+            next = tabs[(index - 1 + tabs.length) % tabs.length];
+            activateTab(next);
+          } else if (e.key === 'Home') {
+            e.preventDefault();
+            activateTab(tabs[0]);
+          } else if (e.key === 'End') {
+            e.preventDefault();
+            activateTab(tabs[tabs.length - 1]);
+          }
+        });
+      });
+
+      /* ── Accordion ── */
+      var accordionGroups = document.querySelectorAll('[data-accordion]');
+      accordionGroups.forEach(function (group) {
+        var triggers = group.querySelectorAll('.accordion-trigger');
+        triggers.forEach(function (trigger) {
+          trigger.addEventListener('click', function () {
+            var isOpen = trigger.getAttribute('aria-expanded') === 'true';
+            // Close all in the group
+            triggers.forEach(function (t) {
+              t.setAttribute('aria-expanded', 'false');
+              var body = document.getElementById(t.getAttribute('aria-controls'));
+              if (body) { body.classList.remove('is-open'); }
+            });
+            // Toggle clicked
+            if (!isOpen) {
+              trigger.setAttribute('aria-expanded', 'true');
+              var body = document.getElementById(trigger.getAttribute('aria-controls'));
+              if (body) { body.classList.add('is-open'); }
+            }
+          });
+        });
+      });
+
+      /* ── Smooth scroll for anchor links ── */
+      document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+        link.addEventListener('click', function (e) {
+          var target = document.querySelector(link.getAttribute('href'));
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
