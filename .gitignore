@@ -4,3 +4,6 @@ team-update.md
 image-prompts.md
 node_modules/
 package-lock.json
+.venv/
+.env
+IMAGE-GENERATION.md
