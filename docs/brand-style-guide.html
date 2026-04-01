@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IEGF Brand Style Guide</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Montserrat', sans-serif; color: #333; line-height: 1.6; background: #f7f8fb; }
+    .page { max-width: 900px; margin: 0 auto; padding: 40px 24px; }
+    h1 { font-size: 2.5rem; font-weight: 700; color: #052a64; margin-bottom: 8px; }
+    h2 { font-size: 1.75rem; font-weight: 700; color: #052a64; margin: 48px 0 16px; border-bottom: 2px solid #d9d9d9; padding-bottom: 8px; }
+    h3 { font-size: 1.15rem; font-weight: 700; color: #052a64; margin: 24px 0 8px; }
+    p, li { font-size: 0.95rem; color: #737373; margin-bottom: 8px; }
+    .subtitle { font-size: 1.1rem; color: #737373; margin-bottom: 40px; }
+    .meta { font-size: 0.8rem; color: #999; margin-bottom: 32px; }
+    code { background: #eee; padding: 2px 6px; border-radius: 4px; font-size: 0.85rem; }
+    ul { padding-left: 20px; }
+
+    /* Color swatches */
+    .color-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin: 16px 0; }
+    .color-card { border-radius: 12px; overflow: hidden; background: #fff; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+    .color-swatch { height: 100px; display: flex; align-items: flex-end; padding: 10px; }
+    .color-swatch span { font-size: 0.8rem; font-weight: 600; }
+    .color-info { padding: 12px; }
+    .color-info .name { font-weight: 700; color: #052a64; font-size: 0.95rem; }
+    .color-info .hex { font-size: 0.85rem; color: #737373; }
+    .color-info .rgb { font-size: 0.8rem; color: #999; }
+    .color-info .use { font-size: 0.8rem; color: #737373; margin-top: 4px; }
+
+    /* Gradient swatches */
+    .gradient-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin: 16px 0; }
+    .gradient-card { border-radius: 12px; overflow: hidden; background: #fff; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+    .gradient-swatch { height: 80px; }
+    .gradient-info { padding: 12px; }
+    .gradient-info .name { font-weight: 700; color: #052a64; font-size: 0.9rem; }
+    .gradient-info .css { font-size: 0.75rem; color: #999; word-break: break-all; margin-top: 4px; }
+
+    /* Font specimens */
+    .font-specimen { background: #fff; border-radius: 12px; padding: 24px; margin: 16px 0; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+    .font-specimen .sample { margin: 12px 0; }
+    .weight-400 { font-weight: 400; }
+    .weight-600 { font-weight: 600; }
+    .weight-700 { font-weight: 700; }
+
+    /* Button specimens */
+    .btn-row { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; margin: 16px 0; }
+    .btn { display: inline-block; padding: 12px 24px; border-radius: 8px; font-family: 'Montserrat', sans-serif; font-size: 0.95rem; font-weight: 600; text-decoration: none; border: none; cursor: pointer; transition: all 0.18s ease; }
+    .btn-primary { background: #4ba755; color: #fff; }
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-2px); }
+    .btn-secondary { background: transparent; color: #052a64; border: 2px solid #052a64; }
+    .btn-secondary:hover { background: #052a64; color: #fff; }
+    .btn-navy { background: #052a64; color: #fff; }
+    .btn-navy:hover { opacity: 0.9; }
+    .btn-white-outline { background: transparent; color: #fff; border: 2px solid #fff; }
+
+    /* Card specimen */
+    .card-specimen { background: #fff; border-radius: 16px; padding: 32px; box-shadow: 0 8px 28px rgba(5,42,100,0.1); margin: 16px 0; max-width: 340px; }
+    .card-specimen:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(5,42,100,0.14); }
+    .card-icon { width: 56px; height: 56px; border-radius: 16px; background: linear-gradient(135deg, #052a64, #4ba755); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; color: #fff; font-size: 1.5rem; }
+
+    /* Spacing reference */
+    .spacing-row { display: flex; align-items: center; gap: 12px; margin: 8px 0; }
+    .spacing-bar { height: 24px; background: linear-gradient(135deg, #052a64, #4ba755); border-radius: 4px; }
+    .spacing-label { font-size: 0.8rem; color: #737373; min-width: 120px; }
+
+    /* Dark section for white button demo */
+    .dark-section { background: #052a64; border-radius: 12px; padding: 24px; margin: 16px 0; }
+
+    /* Do/Don't */
+    .do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+    .do-box, .dont-box { border-radius: 12px; padding: 20px; }
+    .do-box { background: #e8f5e9; border-left: 4px solid #4ba755; }
+    .dont-box { background: #ffeaea; border-left: 4px solid #ef4444; }
+    .do-box h4 { color: #4ba755; margin-bottom: 8px; }
+    .dont-box h4 { color: #ef4444; margin-bottom: 8px; }
+
+    /* Needed/placeholder items */
+    .needed-badge { display: inline-block; background: #f59e0b; color: #fff; font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em; vertical-align: middle; margin-left: 8px; }
+    .have-badge { display: inline-block; background: #4ba755; color: #fff; font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em; vertical-align: middle; margin-left: 8px; }
+    .checklist { list-style: none; padding-left: 0; }
+    .checklist li { padding: 8px 0; border-bottom: 1px solid #eee; font-size: 0.9rem; }
+    .checklist li:last-child { border-bottom: none; }
+    .asset-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 16px 0; }
+    .asset-card { background: #fff; border-radius: 12px; padding: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+    .asset-card h4 { color: #052a64; font-size: 0.95rem; margin-bottom: 4px; }
+    .asset-card p { font-size: 0.8rem; color: #737373; margin-bottom: 0; }
+    .asset-placeholder { height: 80px; background: repeating-linear-gradient(45deg, #f0f0f0, #f0f0f0 10px, #e8e8e8 10px, #e8e8e8 20px); border-radius: 8px; margin-bottom: 12px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; color: #999; }
+
+    @media (max-width: 600px) {
+      .color-grid { grid-template-columns: 1fr 1fr; }
+      .do-dont { grid-template-columns: 1fr; }
+      h1 { font-size: 1.8rem; }
+    }
+    @media print {
+      .page { max-width: 100%; }
+      .color-swatch, .gradient-swatch { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <h1>IEGF Brand Style Guide</h1>
+  <p class="subtitle">Informal Economy Global Forum &mdash; Visual Identity Reference</p>
+  <p class="meta">Generated from codebase on 26 March 2026 &bull; For use when setting up Canva Brand Kit, templates, and marketing collateral</p>
+
+  <!-- ============================================ -->
+  <h2>1. Brand Colours</h2>
+  <p>These are the core brand colours. Use them consistently across all materials.</p>
+
+  <h3>Primary Colours</h3>
+  <div class="color-grid">
+    <div class="color-card">
+      <div class="color-swatch" style="background:#052a64;"><span style="color:#fff;">Navy</span></div>
+      <div class="color-info">
+        <div class="name">Navy</div>
+        <div class="hex">HEX: #052A64</div>
+        <div class="rgb">RGB: 5, 42, 100</div>
+        <div class="use">Primary brand colour. Authority &amp; trust. Used for headings, navigation, section backgrounds.</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#4ba755;"><span style="color:#fff;">Green</span></div>
+      <div class="color-info">
+        <div class="name">Green</div>
+        <div class="hex">HEX: #4BA755</div>
+        <div class="rgb">RGB: 75, 167, 85</div>
+        <div class="use">Call-to-action colour. Growth &amp; action. Used for primary buttons, accents, highlights.</div>
+      </div>
+    </div>
+  </div>
+
+  <h3>Secondary / Neutral Colours</h3>
+  <div class="color-grid">
+    <div class="color-card">
+      <div class="color-swatch" style="background:#d9d9d9;"><span style="color:#333;">Light Grey</span></div>
+      <div class="color-info">
+        <div class="name">Light Grey</div>
+        <div class="hex">HEX: #D9D9D9</div>
+        <div class="rgb">RGB: 217, 217, 217</div>
+        <div class="use">Background panels, dividers, subtle borders.</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#737373;"><span style="color:#fff;">Dark Grey</span></div>
+      <div class="color-info">
+        <div class="name">Dark Grey</div>
+        <div class="hex">HEX: #737373</div>
+        <div class="rgb">RGB: 115, 115, 115</div>
+        <div class="use">Body text, paragraphs, secondary information.</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#f7f8fb;"><span style="color:#333;">Off-White</span></div>
+      <div class="color-info">
+        <div class="name">Off-White (Background)</div>
+        <div class="hex">HEX: #F7F8FB</div>
+        <div class="rgb">RGB: 247, 248, 251</div>
+        <div class="use">Page background. Slightly warm white, avoids harsh pure white.</div>
+      </div>
+    </div>
+  </div>
+
+  <h3>Utility Colours (sparingly)</h3>
+  <div class="color-grid">
+    <div class="color-card">
+      <div class="color-swatch" style="background:#f59e0b;"><span style="color:#fff;">Amber</span></div>
+      <div class="color-info">
+        <div class="name">Amber</div>
+        <div class="hex">HEX: #F59E0B</div>
+        <div class="rgb">RGB: 245, 158, 11</div>
+        <div class="use">Warnings, attention highlights. Use sparingly.</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#ef4444;"><span style="color:#fff;">Red</span></div>
+      <div class="color-info">
+        <div class="name">Red</div>
+        <div class="hex">HEX: #EF4444</div>
+        <div class="rgb">RGB: 239, 68, 68</div>
+        <div class="use">Errors, critical alerts. Use sparingly.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <h2>2. Brand Gradients</h2>
+  <p>These gradients add depth and visual interest. Use them for hero sections, accent strips, and icon containers.</p>
+
+  <div class="gradient-grid">
+    <div class="gradient-card">
+      <div class="gradient-swatch" style="background:linear-gradient(135deg, #052a64 0%, #4ba755 100%);"></div>
+      <div class="gradient-info">
+        <div class="name">Accent Gradient (Primary)</div>
+        <div class="css">linear-gradient(135deg, #052A64 0%, #4BA755 100%)</div>
+        <p style="font-size:0.8rem; color:#737373; margin-top:4px;">Used for icon containers, nav underlines, decorative accents.</p>
+      </div>
+    </div>
+    <div class="gradient-card">
+      <div class="gradient-swatch" style="background:linear-gradient(120deg, rgba(5,42,100,0.9) 0%, rgba(5,42,100,0.6) 45%, rgba(14,20,31,0.75) 100%);"></div>
+      <div class="gradient-info">
+        <div class="name">Hero Overlay</div>
+        <div class="css">Navy overlay at varying opacities &mdash; applied over hero photography</div>
+        <p style="font-size:0.8rem; color:#737373; margin-top:4px;">Ensures text readability over background images.</p>
+      </div>
+    </div>
+    <div class="gradient-card">
+      <div class="gradient-swatch" style="background:linear-gradient(180deg, rgba(247,248,251,1) 0%, rgba(236,239,245,1) 100%);"></div>
+      <div class="gradient-info">
+        <div class="name">Trust Strip (subtle)</div>
+        <div class="css">Subtle off-white to light grey vertical fade</div>
+        <p style="font-size:0.8rem; color:#737373; margin-top:4px;">Used for statistics/trust-signal sections.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <h2>3. Typography</h2>
+
+  <div class="font-specimen">
+    <h3 style="margin-top:0;">Montserrat &mdash; Primary (and only) Typeface</h3>
+    <p style="color:#737373; font-size:0.85rem;">Source: Google Fonts &bull; License: SIL Open Font License</p>
+
+    <div class="sample">
+      <p style="font-size:0.8rem; color:#999; margin-bottom:4px;">Regular 400 &mdash; Body text, paragraphs, descriptions</p>
+      <p class="weight-400" style="font-size:1.1rem; color:#737373;">
+        The Informal Economy Global Forum empowers communities across Africa through structured development, skills training, and grassroots economic inclusion.
+      </p>
+    </div>
+
+    <div class="sample">
+      <p style="font-size:0.8rem; color:#999; margin-bottom:4px;">Semi-Bold 600 &mdash; Buttons, labels, overlines, navigation</p>
+      <p class="weight-600" style="font-size:1.1rem; color:#052a64;">
+        Get Involved &bull; Learn More &bull; Partner With Us &bull; Join a Task Force
+      </p>
+    </div>
+
+    <div class="sample">
+      <p style="font-size:0.8rem; color:#999; margin-bottom:4px;">Bold 700 &mdash; Headings, titles, statistics</p>
+      <p class="weight-700" style="font-size:1.8rem; color:#052a64;">
+        Empowering Africa's Informal Economy
+      </p>
+    </div>
+  </div>
+
+  <h3>Type Scale (Website)</h3>
+  <div class="font-specimen">
+    <p class="weight-700" style="font-size:3rem; color:#052a64; margin-bottom:8px;">Page Title (H1)</p>
+    <p style="font-size:0.8rem; color:#999; margin-bottom:16px;">3rem / 48px &bull; Bold 700 &bull; Navy or White (on dark backgrounds)</p>
+
+    <p class="weight-700" style="font-size:2.25rem; color:#052a64; margin-bottom:8px;">Section Heading (H2)</p>
+    <p style="font-size:0.8rem; color:#999; margin-bottom:16px;">2.25rem / 36px &bull; Bold 700 &bull; Navy &bull; tracking-tight</p>
+
+    <p class="weight-700" style="font-size:1.25rem; color:#052a64; margin-bottom:8px;">Card / Subsection Title (H3)</p>
+    <p style="font-size:0.8rem; color:#999; margin-bottom:16px;">1.25rem / 20px &bull; Bold 700 &bull; Navy</p>
+
+    <p class="weight-600" style="font-size:0.875rem; color:#4ba755; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:8px;">SECTION OVERLINE / LABEL</p>
+    <p style="font-size:0.8rem; color:#999; margin-bottom:16px;">0.875rem / 14px &bull; Semi-Bold 600 &bull; Green &bull; Uppercase &bull; tracking-wide</p>
+
+    <p class="weight-400" style="font-size:0.95rem; color:#737373; margin-bottom:8px;">Body text and paragraphs use this size and weight for comfortable reading at any screen width.</p>
+    <p style="font-size:0.8rem; color:#999;">0.95rem / ~15px &bull; Regular 400 &bull; Dark Grey (#737373)</p>
+  </div>
+
+  <!-- ============================================ -->
+  <h2>4. Buttons</h2>
+  <p>All buttons use Montserrat Semi-Bold 600, rounded corners (8px), and include hover + focus states.</p>
+
+  <h3>Primary CTA (Green)</h3>
+  <div class="btn-row">
+    <button class="btn btn-primary">Get Involved</button>
+    <button class="btn btn-primary" style="padding:16px 32px; font-size:1.05rem;">Learn More</button>
+  </div>
+  <p style="font-size:0.85rem;">Background: Green (#4BA755) &bull; Text: White &bull; Hover: slight opacity reduction + lift</p>
+
+  <h3>Secondary CTA (Navy Outline)</h3>
+  <div class="btn-row">
+    <button class="btn btn-secondary">Speak to Our Team</button>
+    <button class="btn btn-secondary">Download Report</button>
+  </div>
+  <p style="font-size:0.85rem;">Border: 2px Navy (#052A64) &bull; Text: Navy &bull; Hover: fills Navy, text turns White</p>
+
+  <h3>Navy Solid Button</h3>
+  <div class="btn-row">
+    <button class="btn btn-navy">Join a Task Force</button>
+  </div>
+  <p style="font-size:0.85rem;">Background: Navy (#052A64) &bull; Text: White &bull; Used as secondary emphasis on light backgrounds</p>
+
+  <h3>White Outline (on dark backgrounds)</h3>
+  <div class="dark-section">
+    <div class="btn-row">
+      <button class="btn btn-white-outline">Partner With Us</button>
+    </div>
+  </div>
+  <p style="font-size:0.85rem;">Border: 2px White &bull; Text: White &bull; Hover: fills White, text turns Navy &bull; Used on Navy/dark hero sections</p>
+
+  <h3>Focus States</h3>
+  <p>All interactive elements show a <strong style="color:#4ba755;">Green (#4BA755)</strong> focus ring (2px, 2px offset) for accessibility.</p>
+
+  <!-- ============================================ -->
+  <h2>5. Cards</h2>
+  <p>Cards are the primary content container across the site.</p>
+
+  <div style="display:flex; gap:24px; flex-wrap:wrap; margin:16px 0;">
+    <div class="card-specimen" style="transition:all 0.32s cubic-bezier(0.22,1,0.36,1);">
+      <div class="card-icon">M</div>
+      <h3 style="margin-top:0;">Membership</h3>
+      <p style="font-size:0.9rem;">Join a growing network of informal economy stakeholders across Africa.</p>
+      <button class="btn btn-primary" style="margin-top:12px; padding:8px 20px; font-size:0.85rem;">Learn More</button>
+    </div>
+  </div>
+
+  <h3>Card Specs</h3>
+  <ul>
+    <li><strong>Background:</strong> White</li>
+    <li><strong>Border radius:</strong> 16px (rounded-2xl)</li>
+    <li><strong>Padding:</strong> 32px</li>
+    <li><strong>Shadow (rest):</strong> 0 8px 28px rgba(5,42,100, 0.10)</li>
+    <li><strong>Shadow (hover):</strong> 0 16px 40px rgba(5,42,100, 0.14)</li>
+    <li><strong>Hover effect:</strong> translateY(-6px) lift</li>
+    <li><strong>Icon container:</strong> 56x56px, 16px radius, Navy-to-Green gradient background</li>
+  </ul>
+
+  <!-- ============================================ -->
+  <h2>6. Spacing &amp; Layout</h2>
+
+  <h3>Content Width</h3>
+  <p>Maximum content width: <strong>1152px</strong> (max-w-6xl), centred with auto margins and 16px horizontal padding.</p>
+
+  <h3>Common Spacing Values</h3>
+  <div style="margin:16px 0;">
+    <div class="spacing-row">
+      <div class="spacing-label">4px (1 unit)</div>
+      <div class="spacing-bar" style="width:16px;"></div>
+    </div>
+    <div class="spacing-row">
+      <div class="spacing-label">8px (2 units)</div>
+      <div class="spacing-bar" style="width:32px;"></div>
+    </div>
+    <div class="spacing-row">
+      <div class="spacing-label">16px (4 units)</div>
+      <div class="spacing-bar" style="width:64px;"></div>
+    </div>
+    <div class="spacing-row">
+      <div class="spacing-label">24px (6 units)</div>
+      <div class="spacing-bar" style="width:96px;"></div>
+    </div>
+    <div class="spacing-row">
+      <div class="spacing-label">32px (8 units)</div>
+      <div class="spacing-bar" style="width:128px;"></div>
+    </div>
+    <div class="spacing-row">
+      <div class="spacing-label">48px (12 units)</div>
+      <div class="spacing-bar" style="width:192px;"></div>
+    </div>
+    <div class="spacing-row">
+      <div class="spacing-label">64px (16 units)</div>
+      <div class="spacing-bar" style="width:256px;"></div>
+    </div>
+  </div>
+
+  <h3>Breakpoints</h3>
+  <ul>
+    <li><strong>Mobile-first</strong> &mdash; base styles target small screens</li>
+    <li><strong>md:</strong> 768px &mdash; tablet and up</li>
+    <li><strong>lg:</strong> 1024px &mdash; desktop and up</li>
+  </ul>
+
+  <!-- ============================================ -->
+  <h2>7. Shadows</h2>
+  <div style="display:flex; gap:24px; flex-wrap:wrap; margin:16px 0;">
+    <div style="width:140px; height:80px; background:#fff; border-radius:12px; box-shadow:0 8px 28px rgba(5,42,100,0.1); display:flex; align-items:center; justify-content:center; font-size:0.75rem; color:#737373;">Soft</div>
+    <div style="width:140px; height:80px; background:#fff; border-radius:12px; box-shadow:0 16px 40px rgba(5,42,100,0.14); display:flex; align-items:center; justify-content:center; font-size:0.75rem; color:#737373;">Card</div>
+    <div style="width:140px; height:80px; background:#fff; border-radius:12px; box-shadow:0 24px 55px rgba(5,42,100,0.2); display:flex; align-items:center; justify-content:center; font-size:0.75rem; color:#737373;">Float</div>
+  </div>
+  <ul>
+    <li><strong>Soft:</strong> <code>0 8px 28px rgba(5,42,100, 0.10)</code> &mdash; default resting state</li>
+    <li><strong>Card:</strong> <code>0 16px 40px rgba(5,42,100, 0.14)</code> &mdash; hover / elevated</li>
+    <li><strong>Float:</strong> <code>0 24px 55px rgba(5,42,100, 0.20)</code> &mdash; modals, dropdowns</li>
+  </ul>
+  <p style="font-size:0.85rem; margin-top:8px;">Note: All shadows use Navy as the base colour (not black), giving them a warmer, branded feel.</p>
+
+  <!-- ============================================ -->
+  <h2>8. Animation &amp; Motion</h2>
+  <ul>
+    <li><strong>Duration (fast):</strong> 180ms &mdash; button clicks, micro-interactions</li>
+    <li><strong>Duration (base):</strong> 320ms &mdash; card hovers, transitions</li>
+    <li><strong>Easing:</strong> <code>cubic-bezier(0.22, 1, 0.36, 1)</code> &mdash; premium, slightly bouncy deceleration</li>
+    <li><strong>Hover lift:</strong> Cards lift 6px, buttons lift 2px</li>
+    <li><strong>Reduced motion:</strong> All animations and transitions are disabled when user prefers reduced motion</li>
+  </ul>
+
+  <!-- ============================================ -->
+  <h2>9. Logo <span class="needed-badge">Needed</span></h2>
+  <p>The logo is currently a text placeholder ("IEGF"). The following versions are needed for the brand kit:</p>
+
+  <div class="asset-grid">
+    <div class="asset-card">
+      <div class="asset-placeholder">Primary Logo</div>
+      <h4>Primary Logo</h4>
+      <p>Full colour on white/light backgrounds. Navy + Green.</p>
+    </div>
+    <div class="asset-card">
+      <div class="asset-placeholder">Reversed Logo</div>
+      <h4>Reversed (White)</h4>
+      <p>All-white version for Navy/dark backgrounds and hero overlays.</p>
+    </div>
+    <div class="asset-card">
+      <div class="asset-placeholder">Icon Mark</div>
+      <h4>Icon / Favicon</h4>
+      <p>Square mark for favicons, app icons, social avatars. Sizes: 32px, 192px, 512px.</p>
+    </div>
+    <div class="asset-card">
+      <div class="asset-placeholder">Monochrome</div>
+      <h4>Monochrome</h4>
+      <p>Single-colour version (Navy or Black) for print, fax, stamps.</p>
+    </div>
+  </div>
+
+  <h3>Logo Specifications</h3>
+  <ul>
+    <li><strong>File formats needed:</strong> SVG (primary), PNG (with transparency), ICO (favicon)</li>
+    <li><strong>Clear space:</strong> Minimum padding equal to the height of the logo mark on all sides</li>
+    <li><strong>Minimum size:</strong> Define a minimum width below which the logo should not be displayed</li>
+    <li><strong>Placement:</strong> Currently top-left in the site header, height ~40px</li>
+    <li><strong>Favicon sizes:</strong> 32x32 (favicon-32.png), 192x192 (favicon-192.png), 180x180 (apple-touch-icon.png)</li>
+  </ul>
+
+  <!-- ============================================ -->
+  <h2>10. Brand Voice <span class="needed-badge">Needed</span></h2>
+  <p>Brand voice defines how IEGF communicates in writing. This should be configured in Canva's Brand Voice feature so all team content stays consistent.</p>
+
+  <h3>Tone Attributes (Recommended)</h3>
+  <div class="asset-grid">
+    <div class="asset-card" style="border-left:4px solid #052a64;">
+      <h4>Empowering</h4>
+      <p>We uplift and enable. Focus on what communities <em>can</em> achieve, not what they lack.</p>
+    </div>
+    <div class="asset-card" style="border-left:4px solid #052a64;">
+      <h4>Inclusive</h4>
+      <p>Accessible language. Avoid jargon. Speak to informal economy workers directly, not about them.</p>
+    </div>
+    <div class="asset-card" style="border-left:4px solid #052a64;">
+      <h4>Professional</h4>
+      <p>Credible and trustworthy. We're an organisation that partners with governments and institutions.</p>
+    </div>
+    <div class="asset-card" style="border-left:4px solid #052a64;">
+      <h4>Action-Oriented</h4>
+      <p>Direct, clear CTAs. "Join us", "Get involved", "Partner with us" &mdash; not passive language.</p>
+    </div>
+  </div>
+
+  <h3>Key Terminology</h3>
+  <ul class="checklist">
+    <li><strong>"Informal economy"</strong> &mdash; not "informal sector" (economy is broader and more accurate)</li>
+    <li><strong>"Workers"</strong> or <strong>"participants"</strong> &mdash; not "beneficiaries" (agency, not charity)</li>
+    <li><strong>"People-centred"</strong> &mdash; core descriptor, hyphenated, used consistently</li>
+    <li><strong>"Grassroots"</strong> &mdash; used for community-level work and the GIC programme</li>
+    <li><strong>"Structured development"</strong> &mdash; IEGF's approach to formalising pathways</li>
+  </ul>
+
+  <h3>Still Needed</h3>
+  <ul class="checklist">
+    <li>Approved tagline / strapline for use across materials</li>
+    <li>Elevator pitch (30-second description for bios, about sections, social profiles)</li>
+    <li>Boilerplate paragraph for press releases and formal documents</li>
+    <li>List of words/phrases to avoid</li>
+  </ul>
+
+  <!-- ============================================ -->
+  <h2>11. Photography <span class="needed-badge">Needed</span></h2>
+  <p>The site currently uses placeholder gradients. The following photo categories are needed:</p>
+
+  <div class="asset-grid">
+    <div class="asset-card">
+      <div class="asset-placeholder">Hero Image</div>
+      <h4>Hero / Banner Images</h4>
+      <p>Wide-format (16:9 or wider). African communities, markets, enterprise. Min 1920x1080px.</p>
+    </div>
+    <div class="asset-card">
+      <div class="asset-placeholder">Team Photos</div>
+      <h4>Team Portraits</h4>
+      <p>Consistent style, neutral background. Square crop (1:1). Min 600x600px.</p>
+    </div>
+    <div class="asset-card">
+      <div class="asset-placeholder">Event Photos</div>
+      <h4>Event Photography</h4>
+      <p>Conferences, workshops, community events. Candid and staged. Min 1200x800px.</p>
+    </div>
+    <div class="asset-card">
+      <div class="asset-placeholder">Impact Photos</div>
+      <h4>Impact / Story Images</h4>
+      <p>Real people, real outcomes. For case studies, testimonials, news articles.</p>
+    </div>
+  </div>
+
+  <h3>Photo Guidelines for Canva</h3>
+  <ul>
+    <li><strong>Style:</strong> Warm, natural lighting. Authentic (not stock-looking). People in context.</li>
+    <li><strong>Overlay:</strong> Hero images get the Navy gradient overlay (see Section 2) for text readability</li>
+    <li><strong>Colour treatment:</strong> Slight warmth. Avoid cold/blue-tinted photography that clashes with Navy.</li>
+    <li><strong>Formats:</strong> WebP for web (with JPEG fallback), full-res JPEG/PNG for print</li>
+    <li><strong>Optimisation:</strong> Run through TinyPNG before adding to the website</li>
+  </ul>
+
+  <!-- ============================================ -->
+  <h2>12. Graphics &amp; Patterns <span class="needed-badge">Needed</span></h2>
+  <p>Decorative elements that reinforce the brand identity across materials.</p>
+
+  <div class="asset-grid">
+    <div class="asset-card">
+      <div class="asset-placeholder" style="background:linear-gradient(135deg, #052a64, #4ba755);">
+        <span style="color:#fff;">Gradient</span>
+      </div>
+      <h4>Accent Gradient</h4>
+      <p>Navy-to-Green diagonal. Used for icon containers, dividers, decorative strips. <span class="have-badge">Have</span></p>
+    </div>
+    <div class="asset-card">
+      <div class="asset-placeholder">Pattern</div>
+      <h4>Brand Pattern</h4>
+      <p>Repeatable geometric or organic pattern for backgrounds, envelopes, packaging. <span class="needed-badge">Needed</span></p>
+    </div>
+    <div class="asset-card">
+      <div class="asset-placeholder">Shapes</div>
+      <h4>Decorative Shapes</h4>
+      <p>Abstract shapes or African-inspired motifs for section breaks and slide backgrounds. <span class="needed-badge">Needed</span></p>
+    </div>
+    <div class="asset-card">
+      <div class="asset-placeholder">Textures</div>
+      <h4>Background Textures</h4>
+      <p>Subtle textures for cards, headers, or print materials. Complements Off-White. <span class="needed-badge">Needed</span></p>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <h2>13. Icon Set <span class="have-badge">Have</span></h2>
+  <p>The website uses an SVG icon sprite (<code>assets/icons.svg</code>). These should be uploaded to Canva as individual graphics for use in templates.</p>
+
+  <h3>Current Icon Specs</h3>
+  <ul>
+    <li><strong>Format:</strong> SVG sprite with individual symbol IDs</li>
+    <li><strong>Style:</strong> Outline/stroke icons (not filled), <code>currentColor</code> for colour inheritance</li>
+    <li><strong>Sizes used on site:</strong> 24x24 (small), 28x28 (nav/cards), 64x64 (feature icons)</li>
+    <li><strong>Viewbox:</strong> 0 0 24 24</li>
+  </ul>
+
+  <h3>For Canva Upload</h3>
+  <ul>
+    <li>Export each icon as an individual SVG file</li>
+    <li>Upload to Canva Brand Kit under "Graphics" &rarr; "Icons"</li>
+    <li>Provide both Navy and White versions for flexibility</li>
+    <li>Consider adding filled variants for social media use</li>
+  </ul>
+
+  <!-- ============================================ -->
+  <h2>14. Templates <span class="needed-badge">Needed</span></h2>
+  <p>Canva templates ensure consistent branded output across all communications. Create these in Canva using the brand kit colours, fonts, and logo.</p>
+
+  <h3>Social Media Templates</h3>
+  <ul class="checklist">
+    <li><strong>Facebook / LinkedIn post</strong> &mdash; 1200x630px. Quote cards, event announcements, impact stats</li>
+    <li><strong>Instagram post</strong> &mdash; 1080x1080px. Photo + text overlay, carousel slides</li>
+    <li><strong>Instagram / Facebook Story</strong> &mdash; 1080x1920px. Event promos, behind-the-scenes</li>
+    <li><strong>X (Twitter) post</strong> &mdash; 1200x675px. News highlights, link previews</li>
+    <li><strong>LinkedIn banner</strong> &mdash; 1584x396px. Company page cover</li>
+    <li><strong>YouTube thumbnail</strong> &mdash; 1280x720px. Webinar and video thumbnails</li>
+  </ul>
+
+  <h3>Email Templates</h3>
+  <ul class="checklist">
+    <li><strong>Email header banner</strong> &mdash; 600x200px. Newsletter and announcement headers</li>
+    <li><strong>Email signature banner</strong> &mdash; 600x100px. Staff email signatures</li>
+  </ul>
+
+  <h3>Event Templates</h3>
+  <ul class="checklist">
+    <li><strong>Event banner</strong> &mdash; 1920x1080px. Conference, webinar, and workshop promotions</li>
+    <li><strong>Event flyer</strong> &mdash; A4 / Letter. Print-ready event announcements</li>
+    <li><strong>Name badge</strong> &mdash; Standard badge size. Conference attendee badges</li>
+    <li><strong>Certificate</strong> &mdash; A4 landscape. Training completion, membership certificates</li>
+  </ul>
+
+  <h3>Web Graphics Templates</h3>
+  <ul class="checklist">
+    <li><strong>OG image</strong> &mdash; 1200x630px. Default social preview for each page</li>
+    <li><strong>News article thumbnail</strong> &mdash; 800x450px. Media releases and news items</li>
+    <li><strong>Partner logo card</strong> &mdash; 300x200px. Consistent partner/sponsor display</li>
+  </ul>
+
+  <!-- ============================================ -->
+  <h2>15. Document Templates <span class="needed-badge">Needed</span></h2>
+  <p>Professional documents for internal and external use.</p>
+
+  <ul class="checklist">
+    <li><strong>Letterhead</strong> &mdash; A4. Logo top-left, contact details in footer. Navy header accent strip.</li>
+    <li><strong>Presentation deck</strong> &mdash; 16:9. Title slide, content slide, section divider, closing slide. Navy/Green gradient accents.</li>
+    <li><strong>Report cover</strong> &mdash; A4. Annual reports, research papers, policy documents.</li>
+    <li><strong>One-pager / Fact sheet</strong> &mdash; A4. Programme overviews, partnership proposals.</li>
+    <li><strong>Invoice / Receipt</strong> &mdash; A4. Membership fees, event registration.</li>
+    <li><strong>Meeting agenda</strong> &mdash; A4. Task force meetings, board meetings.</li>
+    <li><strong>Business card</strong> &mdash; 90x55mm. Staff and board member cards.</li>
+  </ul>
+
+  <!-- ============================================ -->
+  <h2>16. Video &amp; Motion <span class="needed-badge">Needed</span></h2>
+  <p>Branded motion graphics for video content and presentations.</p>
+
+  <ul class="checklist">
+    <li><strong>Video intro</strong> &mdash; 3-5 seconds. Logo animation with Navy-to-Green gradient sweep. For webinars, YouTube videos.</li>
+    <li><strong>Video outro</strong> &mdash; 5-8 seconds. Logo + website URL + social handles. CTA to get involved.</li>
+    <li><strong>Lower third</strong> &mdash; Speaker name/title overlay for webinars and interviews. Navy bar with white text.</li>
+    <li><strong>Animated social post</strong> &mdash; Short looping animations for social media (stats, quotes, announcements).</li>
+    <li><strong>Webinar holding screen</strong> &mdash; "Starting soon" / "We'll be right back" screens with brand styling.</li>
+  </ul>
+
+  <h3>Motion Guidelines</h3>
+  <ul>
+    <li><strong>Easing:</strong> Match the website &mdash; <code>cubic-bezier(0.22, 1, 0.36, 1)</code> for smooth deceleration</li>
+    <li><strong>Transitions:</strong> Fade and slide, no harsh cuts. Elements should feel like they flow in.</li>
+    <li><strong>Colour in motion:</strong> Navy-to-Green gradient sweeps are the signature brand animation</li>
+    <li><strong>Duration:</strong> Keep intros/outros under 5 seconds to respect viewer time</li>
+  </ul>
+
+  <!-- ============================================ -->
+  <h2>17. Do's and Don'ts</h2>
+
+  <div class="do-dont">
+    <div class="do-box">
+      <h4>Do</h4>
+      <ul>
+        <li>Use Navy for headings and authority</li>
+        <li>Use Green for primary CTAs and action</li>
+        <li>Use Dark Grey for body text</li>
+        <li>Maintain high contrast for accessibility</li>
+        <li>Use the Navy-to-Green gradient for accents</li>
+        <li>Keep Montserrat as the only typeface</li>
+      </ul>
+    </div>
+    <div class="dont-box">
+      <h4>Don't</h4>
+      <ul>
+        <li>Don't use Navy and Green at equal visual weight &mdash; one should dominate</li>
+        <li>Don't use pure black (#000) for text &mdash; use Dark Grey or Navy</li>
+        <li>Don't use Amber or Red for decorative purposes &mdash; only for system states</li>
+        <li>Don't mix other typefaces with Montserrat</li>
+        <li>Don't place light text on Light Grey backgrounds</li>
+        <li>Don't use the gradient as a text colour</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <h2>18. Canva Brand Kit Quick-Setup Checklist</h2>
+  <p>Use this checklist when configuring the IEGF Brand Kit in your Canva account:</p>
+
+  <h3>Colours to Add</h3>
+  <table style="width:100%; border-collapse:collapse; margin:12px 0; font-size:0.9rem;">
+    <tr style="background:#f0f0f0; text-align:left;">
+      <th style="padding:8px;">Name</th><th style="padding:8px;">HEX</th><th style="padding:8px;">Role</th>
+    </tr>
+    <tr><td style="padding:8px; border-bottom:1px solid #eee;">Navy</td><td style="padding:8px; border-bottom:1px solid #eee;">#052A64</td><td style="padding:8px; border-bottom:1px solid #eee;">Primary</td></tr>
+    <tr><td style="padding:8px; border-bottom:1px solid #eee;">Green</td><td style="padding:8px; border-bottom:1px solid #eee;">#4BA755</td><td style="padding:8px; border-bottom:1px solid #eee;">CTA / Accent</td></tr>
+    <tr><td style="padding:8px; border-bottom:1px solid #eee;">Light Grey</td><td style="padding:8px; border-bottom:1px solid #eee;">#D9D9D9</td><td style="padding:8px; border-bottom:1px solid #eee;">Background</td></tr>
+    <tr><td style="padding:8px; border-bottom:1px solid #eee;">Dark Grey</td><td style="padding:8px; border-bottom:1px solid #eee;">#737373</td><td style="padding:8px; border-bottom:1px solid #eee;">Body text</td></tr>
+    <tr><td style="padding:8px; border-bottom:1px solid #eee;">Off-White</td><td style="padding:8px; border-bottom:1px solid #eee;">#F7F8FB</td><td style="padding:8px; border-bottom:1px solid #eee;">Page background</td></tr>
+    <tr><td style="padding:8px; border-bottom:1px solid #eee;">White</td><td style="padding:8px; border-bottom:1px solid #eee;">#FFFFFF</td><td style="padding:8px; border-bottom:1px solid #eee;">Cards / containers</td></tr>
+  </table>
+
+  <h3>Font to Add</h3>
+  <ul>
+    <li><strong>Montserrat</strong> (available in Canva's font library)</li>
+    <li>Set as <strong>Heading font</strong>: Montserrat Bold (700)</li>
+    <li>Set as <strong>Subheading font</strong>: Montserrat Semi-Bold (600)</li>
+    <li>Set as <strong>Body font</strong>: Montserrat Regular (400)</li>
+  </ul>
+
+  <h3>Logo</h3>
+  <ul>
+    <li>Upload logo once finalised (currently text placeholder "IEGF")</li>
+    <li>Upload both dark-background (white text) and light-background (navy text) versions</li>
+    <li>Upload square icon mark for social avatars and favicons</li>
+  </ul>
+
+  <h3>Brand Voice</h3>
+  <ul>
+    <li>Set tone to: Empowering, Inclusive, Professional, Action-Oriented</li>
+    <li>Add key terminology list (see Section 10)</li>
+    <li>Add tagline and boilerplate when finalised</li>
+  </ul>
+
+  <h3>Photos</h3>
+  <ul>
+    <li>Upload hero images, team portraits, event photos, and impact photography</li>
+    <li>Tag by category for easy discovery in Canva</li>
+  </ul>
+
+  <h3>Graphics</h3>
+  <ul>
+    <li>Upload individual icon SVGs from the icon sprite</li>
+    <li>Create and upload brand pattern, decorative shapes, and background textures</li>
+  </ul>
+
+  <h3>Templates to Create</h3>
+  <ul>
+    <li>Social media: Facebook/LinkedIn, Instagram, Stories, X, YouTube thumbnail</li>
+    <li>Email: header banner, signature banner</li>
+    <li>Events: banners, flyers, name badges, certificates</li>
+    <li>Documents: letterhead, presentation deck, report cover, one-pager, business card</li>
+    <li>Video: intro, outro, lower thirds, holding screens</li>
+  </ul>
+
+  <!-- ============================================ -->
+  <h2>19. Brand Kit Completeness</h2>
+  <p>At-a-glance status of every brand kit category:</p>
+
+  <table style="width:100%; border-collapse:collapse; margin:12px 0; font-size:0.9rem;">
+    <tr style="background:#052a64; color:#fff; text-align:left;">
+      <th style="padding:10px;">Category</th><th style="padding:10px;">Status</th><th style="padding:10px;">Notes</th>
+    </tr>
+    <tr><td style="padding:10px; border-bottom:1px solid #eee;">Colours</td><td style="padding:10px; border-bottom:1px solid #eee;"><span class="have-badge">Have</span></td><td style="padding:10px; border-bottom:1px solid #eee;">6 brand colours + 2 utility colours defined</td></tr>
+    <tr><td style="padding:10px; border-bottom:1px solid #eee;">Gradients</td><td style="padding:10px; border-bottom:1px solid #eee;"><span class="have-badge">Have</span></td><td style="padding:10px; border-bottom:1px solid #eee;">3 gradients defined with CSS values</td></tr>
+    <tr><td style="padding:10px; border-bottom:1px solid #eee;">Fonts</td><td style="padding:10px; border-bottom:1px solid #eee;"><span class="have-badge">Have</span></td><td style="padding:10px; border-bottom:1px solid #eee;">Montserrat 400/600/700</td></tr>
+    <tr><td style="padding:10px; border-bottom:1px solid #eee;">Logo</td><td style="padding:10px; border-bottom:1px solid #eee;"><span class="needed-badge">Needed</span></td><td style="padding:10px; border-bottom:1px solid #eee;">Currently text placeholder. Need 4 versions.</td></tr>
+    <tr><td style="padding:10px; border-bottom:1px solid #eee;">Brand Voice</td><td style="padding:10px; border-bottom:1px solid #eee;"><span class="needed-badge">Needed</span></td><td style="padding:10px; border-bottom:1px solid #eee;">Tone attributes drafted, tagline + boilerplate needed</td></tr>
+    <tr><td style="padding:10px; border-bottom:1px solid #eee;">Photography</td><td style="padding:10px; border-bottom:1px solid #eee;"><span class="needed-badge">Needed</span></td><td style="padding:10px; border-bottom:1px solid #eee;">Hero, team, event, impact photos all needed</td></tr>
+    <tr><td style="padding:10px; border-bottom:1px solid #eee;">Graphics &amp; Patterns</td><td style="padding:10px; border-bottom:1px solid #eee;"><span class="needed-badge">Needed</span></td><td style="padding:10px; border-bottom:1px solid #eee;">Have gradient. Need pattern, shapes, textures.</td></tr>
+    <tr><td style="padding:10px; border-bottom:1px solid #eee;">Icons</td><td style="padding:10px; border-bottom:1px solid #eee;"><span class="have-badge">Have</span></td><td style="padding:10px; border-bottom:1px solid #eee;">SVG sprite exists. Need individual exports for Canva.</td></tr>
+    <tr><td style="padding:10px; border-bottom:1px solid #eee;">Social Media Templates</td><td style="padding:10px; border-bottom:1px solid #eee;"><span class="needed-badge">Needed</span></td><td style="padding:10px; border-bottom:1px solid #eee;">6 template types identified</td></tr>
+    <tr><td style="padding:10px; border-bottom:1px solid #eee;">Email Templates</td><td style="padding:10px; border-bottom:1px solid #eee;"><span class="needed-badge">Needed</span></td><td style="padding:10px; border-bottom:1px solid #eee;">Header banner + email signature</td></tr>
+    <tr><td style="padding:10px; border-bottom:1px solid #eee;">Event Templates</td><td style="padding:10px; border-bottom:1px solid #eee;"><span class="needed-badge">Needed</span></td><td style="padding:10px; border-bottom:1px solid #eee;">Banners, flyers, badges, certificates</td></tr>
+    <tr><td style="padding:10px; border-bottom:1px solid #eee;">Document Templates</td><td style="padding:10px; border-bottom:1px solid #eee;"><span class="needed-badge">Needed</span></td><td style="padding:10px; border-bottom:1px solid #eee;">Letterhead, presentations, reports, business cards</td></tr>
+    <tr><td style="padding:10px;">Video &amp; Motion</td><td style="padding:10px;"><span class="needed-badge">Needed</span></td><td style="padding:10px;">Intro, outro, lower thirds, holding screens</td></tr>
+  </table>
+
+  <!-- ============================================ -->
+  <h2>20. Summary Table</h2>
+  <table style="width:100%; border-collapse:collapse; margin:12px 0; font-size:0.85rem;">
+    <tr style="background:#052a64; color:#fff; text-align:left;">
+      <th style="padding:10px;">Element</th><th style="padding:10px;">Specification</th>
+    </tr>
+    <tr><td style="padding:10px; border-bottom:1px solid #eee;"><strong>Primary Colour</strong></td><td style="padding:10px; border-bottom:1px solid #eee;">Navy #052A64</td></tr>
+    <tr><td style="padding:10px; border-bottom:1px solid #eee;"><strong>Accent Colour</strong></td><td style="padding:10px; border-bottom:1px solid #eee;">Green #4BA755</td></tr>
+    <tr><td style="padding:10px; border-bottom:1px solid #eee;"><strong>Body Text</strong></td><td style="padding:10px; border-bottom:1px solid #eee;">Dark Grey #737373</td></tr>
+    <tr><td style="padding:10px; border-bottom:1px solid #eee;"><strong>Typeface</strong></td><td style="padding:10px; border-bottom:1px solid #eee;">Montserrat (400, 600, 700)</td></tr>
+    <tr><td style="padding:10px; border-bottom:1px solid #eee;"><strong>Border Radius (buttons)</strong></td><td style="padding:10px; border-bottom:1px solid #eee;">8px</td></tr>
+    <tr><td style="padding:10px; border-bottom:1px solid #eee;"><strong>Border Radius (cards)</strong></td><td style="padding:10px; border-bottom:1px solid #eee;">16px</td></tr>
+    <tr><td style="padding:10px; border-bottom:1px solid #eee;"><strong>Max Content Width</strong></td><td style="padding:10px; border-bottom:1px solid #eee;">1152px</td></tr>
+    <tr><td style="padding:10px; border-bottom:1px solid #eee;"><strong>Shadow Colour Base</strong></td><td style="padding:10px; border-bottom:1px solid #eee;">rgba(5, 42, 100, 0.10–0.20)</td></tr>
+    <tr><td style="padding:10px; border-bottom:1px solid #eee;"><strong>Animation Easing</strong></td><td style="padding:10px; border-bottom:1px solid #eee;">cubic-bezier(0.22, 1, 0.36, 1)</td></tr>
+    <tr><td style="padding:10px;"><strong>Gradient (accent)</strong></td><td style="padding:10px;">135deg, Navy → Green</td></tr>
+  </table>
+
+  <hr style="margin:48px 0 24px; border:none; border-top:1px solid #d9d9d9;">
+  <p style="font-size:0.8rem; color:#999; text-align:center;">
+    IEGF Brand Style Guide &bull; Generated from <code>tailwind.config.js</code> and site CSS &bull; ie-gf.org
+  </p>
+
+</div>
+</body>
+</html>
