@@ -104,6 +104,21 @@
     }
 
     /* Economic engine diagram */
+    .engine-card {
+      width: 16rem;
+      padding: 1.25rem 1rem;
+      border-radius: 0.875rem;
+      background: linear-gradient(180deg, #eee, #f7f7f7);
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center;
+    }
+    .engine-icon {
+      width: 3rem; height: 3rem;
+      border-radius: 0.75rem;
+      display: flex; align-items: center; justify-content: center;
+      color: white;
+      margin-bottom: 0.5rem;
+    }
     .engine-node {
       width: 7rem; height: 7rem;
       border-radius: 9999px;
@@ -667,58 +682,55 @@
   <section class="py-16 md:py-20 bg-white">
     <div class="max-w-6xl mx-auto px-4">
       <h2 class="text-2xl md:text-3xl font-bold text-navy text-center mb-12">The Economic Engine</h2>
-      <!-- Desktop: horizontal flow -->
-      <div class="hidden md:flex items-center justify-center gap-4 mb-12">
-        <div class="engine-node flex-col gap-1">
-          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-010"></use></svg>
-          <span>Individuals</span>
-        </div>
-        <svg class="w-10 h-10 text-green flex-shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-        <div class="engine-node flex-col gap-1">
-          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-012"></use></svg>
-          <span>Businesses</span>
-        </div>
-        <svg class="w-10 h-10 text-green flex-shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-        <div class="engine-node flex-col gap-1">
-          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-015"></use></svg>
-          <span>Jobs</span>
-        </div>
-        <svg class="w-10 h-10 text-green flex-shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-        <div class="engine-node flex-col gap-1">
-          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-026"></use></svg>
-          <span>Communities</span>
-        </div>
-        <svg class="w-10 h-10 text-green flex-shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-        <div class="engine-node flex-col gap-1" style="background: #4ba755;">
-          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-022"></use></svg>
-          <span>Economic Stability</span>
-        </div>
+      <!-- Desktop: SVG diagram -->
+      <div class="hidden md:block mb-12">
+        <img src="assets/economic-engine.svg" alt="The Economic Engine: Individuals gain skills and readiness, Businesses achieve growth and scale, Jobs create employment, Communities build strength and impact, leading to Economic Stability" class="w-full max-w-5xl mx-auto">
       </div>
       <!-- Mobile: vertical flow -->
       <div class="flex md:hidden flex-col items-center gap-3 mb-12">
-        <div class="engine-node flex-col gap-1">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-010"></use></svg>
-          <span>Individuals</span>
+        <div class="engine-card">
+          <div class="engine-icon" style="background: linear-gradient(135deg, #064a64, #2a7a42);">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-010"></use></svg>
+          </div>
+          <p class="font-bold text-navy text-sm">INDIVIDUALS</p>
+          <p class="text-navy text-xs">(Skills & Readiness)</p>
+          <p class="text-darkgrey text-xs mt-1">Acquire vital skills, certification, and readiness for a structured workforce.</p>
         </div>
         <svg class="w-8 h-8 text-green" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m0 0l-5-5m5 5l5-5"/></svg>
-        <div class="engine-node flex-col gap-1">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-012"></use></svg>
-          <span>Businesses</span>
+        <div class="engine-card">
+          <div class="engine-icon" style="background: linear-gradient(135deg, #0a5a5a, #2d7a3f);">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-012"></use></svg>
+          </div>
+          <p class="font-bold text-navy text-sm">BUSINESSES</p>
+          <p class="text-navy text-xs">(Growth & Scale)</p>
+          <p class="text-darkgrey text-xs mt-1">Apply formal structures and training to achieve sustainable growth and operational scale.</p>
         </div>
         <svg class="w-8 h-8 text-green" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m0 0l-5-5m5 5l5-5"/></svg>
-        <div class="engine-node flex-col gap-1">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-015"></use></svg>
-          <span>Jobs</span>
+        <div class="engine-card">
+          <div class="engine-icon" style="background: linear-gradient(135deg, #1a6a50, #358840);">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-015"></use></svg>
+          </div>
+          <p class="font-bold text-navy text-sm">JOBS</p>
+          <p class="text-navy text-xs">(Employment)</p>
+          <p class="text-darkgrey text-xs mt-1">Create stable, productive employment opportunities within the formalized economy.</p>
         </div>
         <svg class="w-8 h-8 text-green" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m0 0l-5-5m5 5l5-5"/></svg>
-        <div class="engine-node flex-col gap-1">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-026"></use></svg>
-          <span>Communities</span>
+        <div class="engine-card">
+          <div class="engine-icon" style="background: linear-gradient(135deg, #256a48, #3d9045);">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-026"></use></svg>
+          </div>
+          <p class="font-bold text-navy text-sm">COMMUNITIES</p>
+          <p class="text-navy text-xs">(Strength & Impact)</p>
+          <p class="text-darkgrey text-xs mt-1">Strengthen local social fabric and create positive, measurable impact through inclusive prosperity.</p>
         </div>
         <svg class="w-8 h-8 text-green" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m0 0l-5-5m5 5l5-5"/></svg>
-        <div class="engine-node flex-col gap-1" style="background: #4ba755;">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-022"></use></svg>
-          <span>Economic Stability</span>
+        <div class="engine-card">
+          <div class="engine-icon" style="background: linear-gradient(135deg, #2e7040, #4ba755);">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg?v=2#icon-022"></use></svg>
+          </div>
+          <p class="font-bold text-navy text-sm">ECONOMIC</p>
+          <p class="text-navy text-xs">(Stability)</p>
+          <p class="text-darkgrey text-xs mt-1">Achieve broader economic stability and structural resilience, bridging the gap for inclusion.</p>
         </div>
       </div>
     </div>

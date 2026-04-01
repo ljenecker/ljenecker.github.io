@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 500" font-family="'Montserrat', 'Segoe UI', Arial, sans-serif" role="img" aria-labelledby="ee-title ee-desc">
+  <title id="ee-title">The Economic Engine</title>
+  <desc id="ee-desc">Flow diagram showing how Individuals gain skills, enabling Businesses to grow, creating Jobs, strengthening Communities, and achieving Economic Stability.</desc>
+
+  <defs>
+    <linearGradient id="iconGrad1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#064a64"/>
+      <stop offset="100%" stop-color="#2a7a42"/>
+    </linearGradient>
+    <linearGradient id="iconGrad2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a5a5a"/>
+      <stop offset="100%" stop-color="#2d7a3f"/>
+    </linearGradient>
+    <linearGradient id="iconGrad3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a6a50"/>
+      <stop offset="100%" stop-color="#358840"/>
+    </linearGradient>
+    <linearGradient id="iconGrad4" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#256a48"/>
+      <stop offset="100%" stop-color="#3d9045"/>
+    </linearGradient>
+    <linearGradient id="iconGrad5" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2e7040"/>
+      <stop offset="100%" stop-color="#4ba755"/>
+    </linearGradient>
+    <linearGradient id="cardGrad1" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#e8e8e8"/>
+      <stop offset="100%" stop-color="#f5f5f5"/>
+    </linearGradient>
+    <linearGradient id="cardGrad2" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#e4eae5"/>
+      <stop offset="100%" stop-color="#f3f5f3"/>
+    </linearGradient>
+    <linearGradient id="cardGrad3" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#e0ebe2"/>
+      <stop offset="100%" stop-color="#f0f5f0"/>
+    </linearGradient>
+    <linearGradient id="cardGrad4" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#dceade"/>
+      <stop offset="100%" stop-color="#eef4ee"/>
+    </linearGradient>
+    <linearGradient id="cardGrad5" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#d8e9da"/>
+      <stop offset="100%" stop-color="#ecf3ec"/>
+    </linearGradient>
+    <linearGradient id="arrowGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3d9e48"/>
+      <stop offset="100%" stop-color="#4ba755"/>
+    </linearGradient>
+    <linearGradient id="arrowGradDown" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3d9e48"/>
+      <stop offset="100%" stop-color="#4ba755"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ============ ROW 1: Individuals → Businesses → Jobs ============ -->
+
+  <!-- Card 1: Individuals -->
+  <rect x="0" y="5" width="260" height="210" rx="14" fill="url(#cardGrad1)"/>
+  <rect x="103" y="22" width="54" height="54" rx="14" fill="url(#iconGrad1)"/>
+  <g transform="translate(116, 34)" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="14" cy="9" r="6"/>
+    <path d="M3 30a11 11 0 0 1 22 0"/>
+  </g>
+  <text x="130" y="102" text-anchor="middle" font-weight="700" font-size="15" fill="#052a64">INDIVIDUALS</text>
+  <text x="130" y="120" text-anchor="middle" font-size="12" fill="#052a64">(Skills &amp; Readiness)</text>
+  <text x="130" y="148" text-anchor="middle" font-size="12" fill="#555">
+    <tspan x="130" dy="0">Acquire vital skills, certification,</tspan>
+    <tspan x="130" dy="18">and readiness for a structured</tspan>
+    <tspan x="130" dy="18">workforce.</tspan>
+  </text>
+
+  <!-- Arrow 1 (right) -->
+  <g transform="translate(270, 95)">
+    <polygon points="0,10 26,10 40,25 26,40 0,40" fill="url(#arrowGrad)"/>
+  </g>
+
+  <!-- Card 2: Businesses -->
+  <rect x="310" y="5" width="260" height="210" rx="14" fill="url(#cardGrad2)"/>
+  <rect x="413" y="22" width="54" height="54" rx="14" fill="url(#iconGrad2)"/>
+  <g transform="translate(424, 33)" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 28V16h7v12"/>
+    <path d="M13 28V9h7v19"/>
+    <path d="M22 28V4h7v24"/>
+    <path d="M2 20l13-15 15 11" stroke-width="2"/>
+  </g>
+  <text x="440" y="102" text-anchor="middle" font-weight="700" font-size="15" fill="#052a64">BUSINESSES</text>
+  <text x="440" y="120" text-anchor="middle" font-size="12" fill="#052a64">(Growth &amp; Scale)</text>
+  <text x="440" y="148" text-anchor="middle" font-size="12" fill="#555">
+    <tspan x="440" dy="0">Apply formal structures and</tspan>
+    <tspan x="440" dy="18">training to achieve sustainable</tspan>
+    <tspan x="440" dy="18">growth and operational scale.</tspan>
+  </text>
+
+  <!-- Arrow 2 (right) -->
+  <g transform="translate(580, 95)">
+    <polygon points="0,10 26,10 40,25 26,40 0,40" fill="url(#arrowGrad)"/>
+  </g>
+
+  <!-- Card 3: Jobs -->
+  <rect x="620" y="5" width="260" height="210" rx="14" fill="url(#cardGrad3)"/>
+  <rect x="723" y="22" width="54" height="54" rx="14" fill="url(#iconGrad3)"/>
+  <g transform="translate(735, 34)" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="9" width="26" height="17" rx="2"/>
+    <path d="M9 9V6a3.5 3.5 0 0 1 3.5-3.5h5A3.5 3.5 0 0 1 21 6v3"/>
+    <line x1="15" y1="15" x2="15" y2="20"/>
+  </g>
+  <text x="750" y="102" text-anchor="middle" font-weight="700" font-size="15" fill="#052a64">JOBS</text>
+  <text x="750" y="120" text-anchor="middle" font-size="12" fill="#052a64">(Employment)</text>
+  <text x="750" y="148" text-anchor="middle" font-size="12" fill="#555">
+    <tspan x="750" dy="0">Create stable, productive</tspan>
+    <tspan x="750" dy="18">employment opportunities within</tspan>
+    <tspan x="750" dy="18">the formalized economy.</tspan>
+  </text>
+
+  <!-- ============ TURNING ARROW (down, right side) ============ -->
+  <g transform="translate(735, 225)">
+    <polygon points="0,0 30,0 30,28 45,28 15,55 -15,28 0,28" fill="url(#arrowGradDown)"/>
+  </g>
+
+  <!-- ============ ROW 2: Communities ← Economic (right-to-left) ============ -->
+
+  <!-- Card 4: Communities -->
+  <rect x="620" y="290" width="260" height="210" rx="14" fill="url(#cardGrad4)"/>
+  <rect x="723" y="307" width="54" height="54" rx="14" fill="url(#iconGrad4)"/>
+  <g transform="translate(737, 320)" fill="#fff" stroke="none">
+    <path d="M13 27s-10-6-10-13a6 6 0 0 1 10-4.6A6 6 0 0 1 23 14c0 7-10 13-10 13z"/>
+  </g>
+  <text x="750" y="387" text-anchor="middle" font-weight="700" font-size="15" fill="#052a64">COMMUNITIES</text>
+  <text x="750" y="405" text-anchor="middle" font-size="12" fill="#052a64">(Strength &amp; Impact)</text>
+  <text x="750" y="433" text-anchor="middle" font-size="12" fill="#555">
+    <tspan x="750" dy="0">Strengthen local social fabric</tspan>
+    <tspan x="750" dy="18">and create positive, measurable</tspan>
+    <tspan x="750" dy="18">impact through inclusive prosperity.</tspan>
+  </text>
+
+  <!-- Arrow 3 (left, from Communities to Economic) -->
+  <g transform="translate(580, 380)">
+    <polygon points="40,10 14,10 0,25 14,40 40,40" fill="url(#arrowGrad)"/>
+  </g>
+
+  <!-- Card 5: Economic Stability -->
+  <rect x="310" y="290" width="260" height="210" rx="14" fill="url(#cardGrad5)"/>
+  <rect x="413" y="307" width="54" height="54" rx="14" fill="url(#iconGrad5)"/>
+  <g transform="translate(426, 319)" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="14" cy="15" r="13"/>
+    <path d="M11 22V10m7 0c1.8 0 3.2 1.2 3.2 2.7S19.8 15 18 15h-7m6 0c1.8 0 3.2 1.2 3.2 2.7S19.8 20 18 20h-7" stroke-width="1.6"/>
+  </g>
+  <text x="440" y="387" text-anchor="middle" font-weight="700" font-size="15" fill="#052a64">ECONOMIC</text>
+  <text x="440" y="405" text-anchor="middle" font-size="12" fill="#052a64">(Stability)</text>
+  <text x="440" y="433" text-anchor="middle" font-size="12" fill="#555">
+    <tspan x="440" dy="0">Achieve broader economic stability</tspan>
+    <tspan x="440" dy="18">and structural resilience, bridging</tspan>
+    <tspan x="440" dy="18">the gap for inclusion.</tspan>
+  </text>
+</svg>
