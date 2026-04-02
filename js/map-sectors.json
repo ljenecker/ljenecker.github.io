@@ -1,0 +1,287 @@
+[
+  {
+    "id": "agriculture",
+    "name": "Agriculture & Agribusiness",
+    "program": "AgriRise",
+    "description": "The AgriRise Program supports entrepreneurs operating within the agriculture, farming, forestry, fisheries and agribusiness sectors.",
+    "types": [
+      "Crop farming (maize, vegetables, grains)",
+      "Fruit farming",
+      "Poultry farming",
+      "Livestock farming (cattle, goats, sheep)",
+      "Dairy farming",
+      "Aquaculture / fish farming",
+      "Forestry operations",
+      "Agricultural processing (food processing, packaging)",
+      "Agricultural supply businesses (seeds, fertiliser, equipment)",
+      "Agricultural services (irrigation, mechanisation services)",
+      "Agricultural cooperatives",
+      "Agribusiness distribution"
+    ]
+  },
+  {
+    "id": "mining",
+    "name": "Mining",
+    "program": "MineForce",
+    "description": "The MineForce Program supports entrepreneurs and businesses in the mining and mineral extraction sectors.",
+    "types": [
+      "Mineral extraction",
+      "Small-scale mining operations",
+      "Mining equipment supply",
+      "Mining safety services",
+      "Mining transport services",
+      "Mineral processing",
+      "Mining consulting services"
+    ]
+  },
+  {
+    "id": "energy",
+    "name": "Energy & Water",
+    "program": "PowerFlow",
+    "description": "The PowerFlow Program supports entrepreneurs and businesses in the energy, water and utilities sectors.",
+    "types": [
+      "Solar installation businesses",
+      "Renewable energy installation",
+      "Electrical services",
+      "Energy consulting",
+      "Water purification services",
+      "Borehole drilling services",
+      "Water infrastructure services",
+      "Energy equipment supply"
+    ]
+  },
+  {
+    "id": "manufacturing",
+    "name": "Manufacturing & Engineering",
+    "program": "ManuBuild",
+    "description": "The ManuBuild Program supports entrepreneurs and businesses in the manufacturing and engineering sectors.",
+    "types": [
+      "Metal fabrication workshops",
+      "Engineering services",
+      "Automotive repair workshops",
+      "Industrial manufacturing",
+      "Machinery manufacturing",
+      "Tool manufacturing",
+      "Automotive component manufacturing"
+    ]
+  },
+  {
+    "id": "chemical",
+    "name": "Chemical Industries",
+    "program": "ChemEdge",
+    "description": "The ChemEdge Program supports entrepreneurs and businesses in the chemical and pharmaceutical sectors.",
+    "types": [
+      "Chemical manufacturing",
+      "Cleaning chemical production",
+      "Plastic manufacturing",
+      "Pharmaceutical distribution",
+      "Cosmetic manufacturing",
+      "Chemical supply businesses"
+    ]
+  },
+  {
+    "id": "food",
+    "name": "Food & Beverage",
+    "program": "FoodChain",
+    "description": "The FoodChain Program supports entrepreneurs and businesses in the food production and beverage sectors.",
+    "types": [
+      "Food processing businesses",
+      "Catering businesses",
+      "Bakery businesses",
+      "Beverage manufacturing",
+      "Packaged food production",
+      "Street food businesses",
+      "Restaurant food production suppliers"
+    ]
+  },
+  {
+    "id": "textiles",
+    "name": "Textiles / Fibre Processing",
+    "program": "Fabric & Fibre",
+    "description": "The Fabric & Fibre Program supports entrepreneurs and businesses in the textiles, clothing, furniture and printing sectors.",
+    "types": [
+      "Clothing manufacturing",
+      "Fashion designers",
+      "Textile production",
+      "Upholstery businesses",
+      "Furniture manufacturing",
+      "Printing businesses",
+      "Screen printing businesses",
+      "Textile distribution"
+    ]
+  },
+  {
+    "id": "construction",
+    "name": "Construction",
+    "program": "ConstructPro",
+    "description": "The ConstructPro Program supports entrepreneurs and businesses in the construction and property sectors.",
+    "types": [
+      "Building contractors",
+      "Civil construction companies",
+      "Plumbing businesses",
+      "Electrical contractors",
+      "Tiling contractors",
+      "Painting contractors",
+      "Property maintenance businesses"
+    ]
+  },
+  {
+    "id": "banking",
+    "name": "Banking & Microfinance",
+    "program": "FinBridge",
+    "description": "The FinBridge Program supports entrepreneurs and businesses in the banking and microfinance sectors.",
+    "types": [
+      "Microfinance businesses",
+      "Financial advisory services",
+      "Financial technology services",
+      "Investment advisory services"
+    ]
+  },
+  {
+    "id": "accounting",
+    "name": "Accounting & Financial Services",
+    "program": "AccuGrowth",
+    "description": "The AccuGrowth Program supports entrepreneurs and businesses in the accounting and financial services sectors.",
+    "types": [
+      "Accounting firms",
+      "Bookkeeping services",
+      "Tax advisory services",
+      "Financial consulting services"
+    ]
+  },
+  {
+    "id": "insurance",
+    "name": "Insurance",
+    "program": "InsurePro",
+    "description": "The InsurePro Program supports entrepreneurs and businesses in the insurance and risk management sectors.",
+    "types": [
+      "Insurance brokerage",
+      "Risk management consulting",
+      "Financial protection services"
+    ]
+  },
+  {
+    "id": "ict",
+    "name": "ICT & Digital Economy",
+    "program": "DigiScale",
+    "description": "The DigiScale Program supports entrepreneurs and businesses in the ICT and digital economy sectors.",
+    "types": [
+      "Web development",
+      "Digital marketing agencies",
+      "Graphic design businesses",
+      "Media production companies",
+      "IT services",
+      "App development"
+    ]
+  },
+  {
+    "id": "professional",
+    "name": "Professional Services",
+    "program": "ServicePro",
+    "description": "The ServicePro Program supports entrepreneurs and businesses in the professional and business services sectors.",
+    "types": [
+      "Human resource services",
+      "Business consulting",
+      "Cleaning services",
+      "Office administration services",
+      "Recruitment services"
+    ]
+  },
+  {
+    "id": "wholesale",
+    "name": "Wholesale & Retail",
+    "program": "TradeConnect",
+    "description": "The TradeConnect Program supports entrepreneurs and businesses in the wholesale and retail sectors.",
+    "types": [
+      "Retail stores",
+      "Spaza shops",
+      "Wholesale distribution",
+      "E-commerce stores",
+      "Product resellers"
+    ]
+  },
+  {
+    "id": "transport",
+    "name": "Transport & Logistics",
+    "program": "MoveNation",
+    "description": "The MoveNation Program supports entrepreneurs and businesses in the transport and logistics sectors.",
+    "types": [
+      "Logistics companies",
+      "Delivery services",
+      "Trucking businesses",
+      "Passenger transport services",
+      "Courier services"
+    ]
+  },
+  {
+    "id": "government",
+    "name": "Public Sector Support",
+    "program": "GovSupport",
+    "description": "The GovSupport Program supports entrepreneurs and businesses serving the public sector and government.",
+    "types": [
+      "Tender support services",
+      "Government supply businesses",
+      "Public administration consulting"
+    ]
+  },
+  {
+    "id": "local-government",
+    "name": "Local Government Services",
+    "program": "Local Impact",
+    "description": "The Local Impact Program supports entrepreneurs and businesses within municipalities and local government services.",
+    "types": [
+      "Waste management services",
+      "Community infrastructure services",
+      "Local maintenance services"
+    ]
+  },
+  {
+    "id": "security",
+    "name": "Security Services",
+    "program": "SecureForce",
+    "description": "The SecureForce Program supports entrepreneurs and businesses in the security and safety sectors.",
+    "types": [
+      "Security companies",
+      "Event security services",
+      "CCTV installation",
+      "Safety consulting"
+    ]
+  },
+  {
+    "id": "education",
+    "name": "Education & Training",
+    "program": "EduImpact",
+    "description": "The EduImpact Program supports entrepreneurs and businesses in the education and skills development sectors.",
+    "types": [
+      "Training providers",
+      "Skills development organisations",
+      "Tutoring services",
+      "Educational consulting"
+    ]
+  },
+  {
+    "id": "health",
+    "name": "Health & Social Development",
+    "program": "CareImpact",
+    "description": "The CareImpact Program supports entrepreneurs and businesses in the healthcare and social development sectors.",
+    "types": [
+      "Clinics",
+      "Wellness centres",
+      "Home care services",
+      "Social development services"
+    ]
+  },
+  {
+    "id": "arts",
+    "name": "Arts / Tourism / Hospitality",
+    "program": "CultureConnect",
+    "description": "The CultureConnect Program supports entrepreneurs and businesses in the arts, culture, tourism and hospitality sectors.",
+    "types": [
+      "Tourism operators",
+      "Event planners",
+      "Hospitality businesses",
+      "Artists and performers",
+      "Sports organisations"
+    ]
+  }
+]
