@@ -308,10 +308,10 @@ function initScene(container, texture) {
   controls.autoRotateSpeed = 0.3;
   controls.enableDamping = true;
   controls.dampingFactor = 0.08;
-  controls.minPolarAngle = Math.PI * 0.3;
-  controls.maxPolarAngle = Math.PI * 0.7;
-  controls.minAzimuthAngle = -Math.PI * 0.35;
-  controls.maxAzimuthAngle = Math.PI * 0.35;
+  controls.minPolarAngle = Math.PI * 0.35;
+  controls.maxPolarAngle = Math.PI * 0.65;
+  controls.minAzimuthAngle = -Math.PI * 0.15;
+  controls.maxAzimuthAngle = Math.PI * 0.15;
 
   raycaster = new THREE.Raycaster();
   pointer = new THREE.Vector2();
@@ -320,7 +320,7 @@ function initScene(container, texture) {
   createPins();
 
   // Set initial rotation so Africa faces camera (don't touch globe.rotation)
-  globe.rotation.y = -2.8;
+  globe.rotation.y = -2.05;
 
   handleResize(container);
 
