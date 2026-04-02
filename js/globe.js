@@ -308,8 +308,8 @@ function initScene(container, texture) {
   var aspect = container.clientWidth / container.clientHeight;
   var visibleHeight = 2 * Math.tan(fov / 2);
   var visibleWidth = visibleHeight * aspect;
-  var minDist = GLOBE_RADIUS / (visibleWidth / 2) + 0.15;
-  controls.minDistance = Math.max(minDist, 2.4);
+  var minDist = GLOBE_RADIUS / (visibleWidth / 2) + 0.35;
+  controls.minDistance = Math.max(minDist, 2.6);
   controls.maxDistance = 4.5;
   controls.zoomSpeed = 0.5;
   controls.enablePan = false;
