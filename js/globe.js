@@ -409,7 +409,7 @@ function animate() {
 
 /* ── Init ── */
 
-async function init() {
+function init(geojson) {
   const container = document.getElementById('globe-canvas-wrap');
   if (!container) return;
 
@@ -420,13 +420,10 @@ async function init() {
     return;
   }
 
-  // Load GeoJSON and build texture
   let texture;
-  try {
-    const resp = await fetch('assets/world.geojson');
-    const geojson = await resp.json();
+  if (geojson) {
     texture = createEarthTexture(geojson);
-  } catch (e) {
+  } else {
     // Fallback: plain navy texture
     const c = document.createElement('canvas');
     c.width = 512; c.height = 256;
@@ -450,13 +447,17 @@ async function init() {
   });
 }
 
-// Lazy-load
+// Preload GeoJSON immediately so data is ready when the section scrolls in
 const section = document.getElementById('globe-section');
 if (section) {
+  const geojsonReady = fetch('assets/world.geojson')
+    .then((r) => r.json())
+    .catch(() => null);
+
   const lazyObserver = new IntersectionObserver((entries) => {
     if (entries[0].isIntersecting) {
-      init();
       lazyObserver.disconnect();
+      geojsonReady.then((geojson) => init(geojson));
     }
   }, { rootMargin: '300px' });
   lazyObserver.observe(section);
