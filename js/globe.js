@@ -301,7 +301,7 @@ function initScene(container, texture) {
   labelRenderer.domElement.className = 'globe-labels';
   container.appendChild(labelRenderer.domElement);
 
-  controls = new OrbitControls(camera, labelRenderer.domElement);
+  controls = new OrbitControls(camera, renderer.domElement);
   controls.enableZoom = false;
   controls.enablePan = false;
   controls.autoRotate = true;
@@ -327,8 +327,8 @@ function initScene(container, texture) {
   const ro = new ResizeObserver(() => handleResize(container));
   ro.observe(container);
 
-  labelRenderer.domElement.addEventListener('pointermove', onPointerMove);
-  labelRenderer.domElement.addEventListener('pointerdown', onPointerDown);
+  renderer.domElement.addEventListener('pointermove', onPointerMove);
+  renderer.domElement.addEventListener('pointerdown', onPointerDown);
 
   controls.addEventListener('start', () => { controls.autoRotate = false; });
   controls.addEventListener('end', () => {

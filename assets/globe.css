@@ -19,7 +19,7 @@
 }
 
 .globe-labels > div {
-  pointer-events: auto;
+  pointer-events: none;
 }
 
 /* Pin labels */
