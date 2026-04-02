@@ -303,7 +303,13 @@ function initScene(container, texture) {
 
   controls = new OrbitControls(camera, renderer.domElement);
   controls.enableZoom = isMobile;
-  controls.minDistance = 2.2;
+  // Calculate min distance so globe never exceeds container width
+  var fov = camera.fov * (Math.PI / 180);
+  var aspect = container.clientWidth / container.clientHeight;
+  var visibleHeight = 2 * Math.tan(fov / 2);
+  var visibleWidth = visibleHeight * aspect;
+  var minDist = GLOBE_RADIUS / (visibleWidth / 2) + 0.15;
+  controls.minDistance = Math.max(minDist, 2.4);
   controls.maxDistance = 4.5;
   controls.zoomSpeed = 0.5;
   controls.enablePan = false;
