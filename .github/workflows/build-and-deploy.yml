@@ -39,6 +39,16 @@ jobs:
           fi
 
       # --- Deploy (always uses the freshly built CSS) ---
+      - name: Cache-bust asset references
+        run: |
+          HASH=$(git rev-parse --short HEAD)
+          echo "Appending ?v=$HASH to local asset references"
+          for f in *.html media/**/*.html; do
+            [ -f "$f" ] || continue
+            sed -i -E \
+              "s#(href|src)=\"((assets|js)/[^\"]+\.(css|js))\"#\1=\"\2?v=$HASH\"#g" "$f"
+          done
+
       - name: Write production robots.txt
         run: |
           cat > robots.txt <<'ROBOTS'
