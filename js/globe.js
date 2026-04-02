@@ -302,7 +302,10 @@ function initScene(container, texture) {
   container.appendChild(labelRenderer.domElement);
 
   controls = new OrbitControls(camera, renderer.domElement);
-  controls.enableZoom = false;
+  controls.enableZoom = isMobile;
+  controls.minDistance = 2.2;
+  controls.maxDistance = 4.5;
+  controls.zoomSpeed = 0.5;
   controls.enablePan = false;
   controls.autoRotate = true;
   controls.autoRotateSpeed = 0.3;
