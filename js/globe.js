@@ -38,6 +38,8 @@ let pinMeshes = [];
 let raycaster, pointer;
 let isVisible = false;
 let autoRotateDir = 1;
+let focusAnim = null;
+let initialGlobeRotationY = 0;
 
 /* ── Coordinate helpers ── */
 
@@ -329,7 +331,8 @@ function initScene(container, texture) {
   createPins();
 
   // Set initial rotation so Africa faces camera (don't touch globe.rotation)
-  globe.rotation.y = -2.05;
+  initialGlobeRotationY = -2.05;
+  globe.rotation.y = initialGlobeRotationY;
 
   handleResize(container);
 
@@ -382,6 +385,98 @@ function checkHover() {
     const label = mesh.parent?.children.find(c => c instanceof CSS2DObject);
     if (label) label.element.classList.toggle('visible', true);
   }
+}
+
+/* ── Focus Country ── */
+
+function focusCountry(countryName) {
+  const country = COUNTRIES.find(function (c) { return c.name === countryName; });
+  if (!country || !globe || !controls) return;
+
+  // Stop auto-rotate during animation
+  controls.autoRotate = false;
+  if (focusAnim) cancelAnimationFrame(focusAnim);
+
+  // Calculate target globe rotation to center this country's longitude
+  // The globe's Y rotation maps longitude: rotation = -(lng + 180) * π/180 + offset
+  var targetRotY = initialGlobeRotationY - (country.lng * Math.PI / 180) * 0.35;
+
+  // Calculate target polar angle to show the country's latitude
+  // Polar angle: π/2 is equator, smaller is north, larger is south
+  var targetPolar = Math.PI / 2 - (country.lat * Math.PI / 180) * 0.3;
+  targetPolar = Math.max(controls.minPolarAngle, Math.min(controls.maxPolarAngle, targetPolar));
+
+  // Reset azimuth to center
+  var targetAzimuth = 0;
+
+  var startRotY = globe.rotation.y;
+  var startPolar = controls.getPolarAngle();
+  var startAzimuth = controls.getAzimuthalAngle();
+  var startTime = performance.now();
+  var duration = 800;
+
+  // Show the label for the focused country
+  pinMeshes.forEach(function (mesh) {
+    var label = mesh.parent?.children.find(function (c) { return c instanceof CSS2DObject; });
+    if (label) {
+      var isTarget = mesh.userData.country && mesh.userData.country.name === countryName;
+      label.element.classList.toggle('visible', isTarget);
+    }
+  });
+
+  // Highlight the active button
+  var buttons = document.querySelectorAll('.globe-country-btn');
+  buttons.forEach(function (btn) {
+    var isActive = btn.dataset.country === countryName;
+    btn.classList.toggle('ring-2', isActive);
+    btn.classList.toggle('ring-green', isActive);
+    btn.classList.toggle('shadow-md', isActive);
+  });
+
+  function step(now) {
+    var t = Math.min((now - startTime) / duration, 1);
+    // Ease out cubic
+    var ease = 1 - Math.pow(1 - t, 3);
+
+    globe.rotation.y = startRotY + (targetRotY - startRotY) * ease;
+
+    // Smoothly move polar and azimuth angles
+    var newPolar = startPolar + (targetPolar - startPolar) * ease;
+    var newAzimuth = startAzimuth + (targetAzimuth - startAzimuth) * ease;
+    controls.minPolarAngle = Math.min(newPolar, controls.minPolarAngle);
+    controls.maxPolarAngle = Math.max(newPolar, controls.maxPolarAngle);
+    controls.minAzimuthAngle = Math.min(newAzimuth, -Math.PI * 0.15);
+    controls.maxAzimuthAngle = Math.max(newAzimuth, Math.PI * 0.15);
+
+    // Set the orbital position via spherical coordinates
+    var dist = camera.position.length();
+    camera.position.setFromSpherical(new THREE.Spherical(dist, newPolar, newAzimuth));
+    controls.update();
+
+    if (t < 1) {
+      focusAnim = requestAnimationFrame(step);
+    } else {
+      // Restore normal limits
+      controls.minPolarAngle = Math.PI * 0.35;
+      controls.maxPolarAngle = Math.PI * 0.65;
+      controls.minAzimuthAngle = -Math.PI * 0.15;
+      controls.maxAzimuthAngle = Math.PI * 0.15;
+      controls.update();
+      // Resume auto-rotate after delay
+      setTimeout(function () { controls.autoRotate = true; }, 3000);
+    }
+  }
+
+  focusAnim = requestAnimationFrame(step);
+}
+
+function bindCountryList() {
+  var buttons = document.querySelectorAll('.globe-country-btn');
+  buttons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      focusCountry(btn.dataset.country);
+    });
+  });
 }
 
 /* ── Animation ── */
@@ -443,6 +538,7 @@ function init(geojson) {
   }
 
   initScene(container, texture);
+  bindCountryList();
   animate();
 
   const visObserver = new IntersectionObserver((entries) => {
